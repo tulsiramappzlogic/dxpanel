@@ -1,0 +1,300 @@
+# Nginx Server Configurations for dxpanel
+# Place these files in /etc/nginx/sites-enabled/
+
+================================================================================
+FILE: /etc/nginx/sites-available/dxpanel-uk
+LINK: ln -s /etc/nginx/sites-available/dxpanel-uk /etc/nginx/sites-enabled/dxpanel-uk
+================================================================================
+
+server {
+    listen 8083;
+    server_name uk.dxpanel.local;
+
+    root /var/www/dxpanel/UK;
+    index uk.php index.html;
+
+    # Access and error logs
+    access_log /var/log/nginx/dxpanel-uk-access.log;
+    error_log /var/log/nginx/dxpanel-uk-error.log;
+
+    location / {
+        try_files $uri $uri/ /uk.php?$query_string;
+    }
+
+    # PHP processing for uk.php
+    location ~ \.php$ {
+        include /etc/nginx/snippets/fastcgi-php.conf;
+        fastcgi_pass unix:/var/run/php/php8.2-fpm.sock;
+        fastcgi_param SCRIPT_FILENAME $document_root$fastcgi_script_name;
+    }
+
+    # Deny access to .htaccess and other hidden files
+    location ~ /\. {
+        deny all;
+    }
+}
+
+================================================================================
+FILE: /etc/nginx/sites-available/dxpanel-ph
+LINK: ln -s /etc/nginx/sites-available/dxpanel-ph /etc/nginx/sites-enabled/dxpanel-ph
+================================================================================
+
+server {
+    listen 8084;
+    server_name ph.dxpanel.local;
+
+    root /var/www/dxpanel/PH;
+    index ph.php index.html;
+
+    # Access and error logs
+    access_log /var/log/nginx/dxpanel-ph-access.log;
+    error_log /var/log/nginx/dxpanel-ph-error.log;
+
+    location / {
+        try_files $uri $uri/ /ph.php?$query_string;
+    }
+
+    # PHP processing for ph.php
+    location ~ \.php$ {
+        include /etc/nginx/snippets/fastcgi-php.conf;
+        fastcgi_pass unix:/var/run/php/php8.2-fpm.sock;
+        fastcgi_param SCRIPT_FILENAME $document_root$fastcgi_script_name;
+    }
+
+    # Deny access to .htaccess and other hidden files
+    location ~ /\. {
+        deny all;
+    }
+}
+
+================================================================================
+FILE: /etc/nginx/sites-available/dxpanel-sg
+LINK: ln -s /etc/nginx/sites-available/dxpanel-sg /etc/nginx/sites-enabled/dxpanel-sg
+================================================================================
+
+server {
+    listen 8085;
+    server_name sg.dxpanel.local;
+
+    root /var/www/dxpanel/SG;
+    index sg.php index.html;
+
+    # Access and error logs
+    access_log /var/log/nginx/dxpanel-sg-access.log;
+    error_log /var/log/nginx/dxpanel-sg-error.log;
+
+    location / {
+        try_files $uri $uri/ /sg.php?$query_string;
+    }
+
+    # PHP processing for sg.php
+    location ~ \.php$ {
+        include /etc/nginx/snippets/fastcgi-php.conf;
+        fastcgi_pass unix:/var/run/php/php8.2-fpm.sock;
+        fastcgi_param SCRIPT_FILENAME $document_root$fastcgi_script_name;
+    }
+
+    # Deny access to .htaccess and other hidden files
+    location ~ /\. {
+        deny all;
+    }
+}
+
+================================================================================
+FILE: /etc/nginx/sites-available/dxpanel-my
+LINK: ln -s /etc/nginx/sites-available/dxpanel-my /etc/nginx/sites-enabled/dxpanel-my
+================================================================================
+
+server {
+    listen 8086;
+    server_name my.dxpanel.local;
+
+    root /var/www/dxpanel/MY;
+    index my.php index.html;
+
+    # Access and error logs
+    access_log /var/log/nginx/dxpanel-my-access.log;
+    error_log /var/log/nginx/dxpanel-my-error.log;
+
+    location / {
+        try_files $uri $uri/ /my.php?$query_string;
+    }
+
+    # PHP processing for my.php
+    location ~ \.php$ {
+        include /etc/nginx/snippets/fastcgi-php.conf;
+        fastcgi_pass unix:/var/run/php/php8.2-fpm.sock;
+        fastcgi_param SCRIPT_FILENAME $document_root$fastcgi_script_name;
+    }
+
+    # Deny access to .htaccess and other hidden files
+    location ~ /\. {
+        deny all;
+    }
+}
+
+================================================================================
+ALTERNATIVE: Single Main Domain with Subdirectories
+FILE: /etc/nginx/sites-available/dxpanel-main
+LINK: ln -s /etc/nginx/sites-available/dxpanel-main /etc/nginx/sites-enabled/dxpanel-main
+================================================================================
+
+server {
+    listen 8087;
+    server_name dxpanel.local www.dxpanel.local;
+
+    root /var/www/dxpanel;
+    index index.php index.html;
+
+    # Access and error logs
+    access_log /var/log/nginx/dxpanel-access.log;
+    error_log /var/log/nginx/dxpanel-error.log;
+
+    # Main site
+    location / {
+        try_files $uri $uri/ /index.php?$query_string;
+    }
+
+    # UK subdirectory
+    location /uk/ {
+        alias /var/www/dxpanel/UK/;
+        try_files $uri $uri/ /uk/uk.php?$query_string;
+        
+        location ~ \.php$ {
+            include /etc/nginx/snippets/fastcgi-php.conf;
+            fastcgi_pass unix:/var/run/php/php8.2-fpm.sock;
+            fastcgi_param SCRIPT_FILENAME /var/www/dxpanel/UK/uk.php;
+        }
+    }
+
+    # Philippines subdirectory
+    location /ph/ {
+        alias /var/www/dxpanel/PH/;
+        try_files $uri $uri/ /ph/ph.php?$query_string;
+        
+        location ~ \.php$ {
+            include /etc/nginx/snippets/fastcgi-php.conf;
+            fastcgi_pass unix:/var/run/php/php8.2-fpm.sock;
+            fastcgi_param SCRIPT_FILENAME /var/www/dxpanel/PH/ph.php;
+        }
+    }
+
+    # Singapore subdirectory
+    location /sg/ {
+        alias /var/www/dxpanel/SG/;
+        try_files $uri $uri/ /sg/sg.php?$query_string;
+        
+        location ~ \.php$ {
+            include /etc/nginx/snippets/fastcgi-php.conf;
+            fastcgi_pass unix:/var/run/php/php8.2-fpm.sock;
+            fastcgi_param SCRIPT_FILENAME /var/www/dxpanel/SG/sg.php;
+        }
+    }
+
+    # Malaysia subdirectory
+    location /my/ {
+        alias /var/www/dxpanel/MY/;
+        try_files $uri $uri/ /my/my.php?$query_string;
+        
+        location ~ \.php$ {
+            include /etc/nginx/snippets/fastcgi-php.conf;
+            fastcgi_pass unix:/var/run/php/php8.2-fpm.sock;
+            fastcgi_param SCRIPT_FILENAME /var/www/dxpanel/MY/my.php;
+        }
+    }
+
+    # Main PHP processing
+    location ~ \.php$ {
+        include /etc/nginx/snippets/fastcgi-php.conf;
+        fastcgi_pass unix:/var/run/php/php8.2-fpm.sock;
+        fastcgi_param SCRIPT_FILENAME $document_root$fastcgi_script_name;
+    }
+
+    # Deny access to hidden files
+    location ~ /\. {
+        deny all;
+    }
+}
+
+================================================================================
+SSL/HTTPS CONFIGURATION (Let's Encrypt)
+================================================================================
+
+# After obtaining SSL certificates, modify the server blocks:
+
+server {
+    listen 443 ssl;
+    server_name uk.dxpanel.local;
+
+    # SSL certificate paths (adjust paths for your certificate)
+    ssl_certificate /etc/letsencrypt/live/uk.dxpanel.local/fullchain.pem;
+    ssl_certificate_key /etc/letsencrypt/live/uk.dxpanel.local/privkey.pem;
+
+    # SSL configuration
+    ssl_session_timeout 1d;
+    ssl_session_cache shared:SSL:50m;
+    ssl_session_tickets off;
+
+    # Modern SSL configuration
+    ssl_protocols TLSv1.2 TLSv1.3;
+    ssl_ciphers ECDHE-ECDSA-AES128-GCM-SHA256:ECDHE-RSA-AES128-GCM-SHA256:ECDHE-ECDSA-AES256-GCM-SHA384:ECDHE-RSA-AES256-GCM-SHA384;
+    ssl_prefer_server_ciphers off;
+
+    # HSTS header
+    add_header Strict-Transport-Security "max-age=63072000" always;
+
+    # Other settings same as above...
+    root /var/www/dxpanel/UK;
+    index uk.php index.html;
+
+    location / {
+        try_files $uri $uri/ /uk.php?$query_string;
+    }
+
+    location ~ \.php$ {
+        include /etc/nginx/snippets/fastcgi-php.conf;
+        fastcgi_pass unix:/var/run/php/php8.2-fpm.sock;
+        fastcgi_param SCRIPT_FILENAME $document_root$fastcgi_script_name;
+    }
+}
+
+# HTTP to HTTPS redirect
+server {
+    listen 80;
+    server_name uk.dxpanel.local;
+    return 301 https://$host$request_uri;
+}
+
+================================================================================
+INSTALLATION COMMANDS
+================================================================================
+
+# 1. Create site configuration files
+sudo nano /etc/nginx/sites-available/dxpanel-uk
+sudo nano /etc/nginx/sites-available/dxpanel-ph
+sudo nano /etc/nginx/sites-available/dxpanel-sg
+sudo nano /etc/nginx/sites-available/dxpanel-my
+
+# 2. Create symlinks
+sudo ln -s /etc/nginx/sites-available/dxpanel-uk /etc/nginx/sites-enabled/dxpanel-uk
+sudo ln -s /etc/nginx/sites-available/dxpanel-ph /etc/nginx/sites-enabled/dxpanel-ph
+sudo ln -s /etc/nginx/sites-available/dxpanel-sg /etc/nginx/sites-enabled/dxpanel-sg
+sudo ln -s /etc/nginx/sites-available/dxpanel-my /etc/nginx/sites-enabled/dxpanel-my
+
+# 3. Test configuration
+sudo nginx -t
+
+# 4. Reload nginx
+sudo systemctl reload nginx
+
+# 5. Add hosts entries (for local testing)
+echo "127.0.0.1 uk.dxpanel.local" | sudo tee -a /etc/hosts
+echo "127.0.0.1 ph.dxpanel.local" | sudo tee -a /etc/hosts
+echo "127.0.0.1 sg.dxpanel.local" | sudo tee -a /etc/hosts
+echo "127.0.0.1 my.dxpanel.local" | sudo tee -a /etc/hosts
+
+# 6. Create log directories
+sudo mkdir -p /var/log/nginx
+sudo touch /var/log/nginx/dxpanel-uk-access.log
+sudo touch /var/log/nginx/dxpanel-uk-error.log
+
