@@ -1,0 +1,41 @@
+.font-family-expletus {
+    font-family: "Expletus Sans", sans-serif;
+    font-optical-sizing: auto;
+    font-style: normal;
+}
+
+.font-family-mulish {
+    font-family: "Mulish", sans-serif;
+    font-optical-sizing: auto;
+    font-style: normal;
+}
+
+.fw-400 {
+    font-weight: 400;
+}
+
+.box-shadow-1 {
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5) !important;
+}
+
+.brand-logo {
+    height: 58px;
+    width: auto;
+}
+
+div.social-icons {
+    display: flex;
+    gap: 10px;
+}
+
+div.social-icons img {
+    width: 35px;
+}
+
+.color-blue-1 {
+    color: rgba(39, 51, 118, 1);
+}
+
+.color-red-1 {
+    color: rgba(210, 29, 44, 1);
+}

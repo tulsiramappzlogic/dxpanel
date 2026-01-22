@@ -1,4 +1,5 @@
 <?php
+
 /**
  * UK Polls Registration Form with OTP Verification
  * Frontend form that submits to otp_verify.php for processing
@@ -14,6 +15,10 @@
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
   <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Expletus+Sans:ital,wght@0,400..700;1,400..700&family=Mulish:ital,wght@0,200..1000;1,200..1000&display=swap"
+    rel="stylesheet" />
+  <link rel="stylesheet" href="./style/commonStyle.css" />
   <style>
     :root {
       --uk-blue: #2c366a;
@@ -21,8 +26,8 @@
     }
 
     body {
-      font-family: "Arial", sans-serif;
-      background-color: #f8f9fa;
+      font-family: 'Arial', sans-serif;
+      background-color: #fff;
     }
 
     /* Header Styling */
@@ -44,7 +49,7 @@
     }
 
     .social-icons a:hover {
-      background-color: #b91c22;
+      background-color: var(--uk-red);
       transform: translateY(-3px);
       box-shadow: 0 4px 8px rgba(214, 33, 40, 0.3);
     }
@@ -54,19 +59,33 @@
       color: white;
     }
 
+    /* .btn-auth {
+        border-radius: 20px;
+        padding: 2px 20px;
+        border: 1px solid #ccc;
+        font-size: 0.9rem;
+        color: #555;
+        text-decoration: none;
+      } */
+
     /* Updated Auth Button Styling */
     .btn-auth {
       display: inline-flex;
       align-items: center;
       border-radius: 50px;
+      /* Makes it pill-shaped */
       padding: 2px 5px 2px 20px;
-      border: 1px solid #707070;
-      font-size: 1.1rem;
+      /* Extra padding on the left for text */
+      border: 1px solid rgba(88, 89, 91, 1);
+      font-size: 1rem;
       font-weight: 500;
       color: #555;
       text-decoration: none;
       background-color: #fff;
       transition: all 0.3s ease;
+      font-family: 'Mulish', sans-serif;
+      font-optical-sizing: auto;
+      font-style: normal;
     }
 
     .btn-auth:hover {
@@ -79,11 +98,17 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      width: 30px;
-      height: 30px;
+      width: 20px;
+      height: 20px;
       border-radius: 50%;
       margin-left: 10px;
+      /* Space between text and icon */
       color: white;
+      font-size: 15px;
+    }
+
+    .icon-circle i {
+      font-size: 12px;
     }
 
     .bg-uk-blue {
@@ -130,20 +155,15 @@
       line-height: 1;
     }
 
-    .hero-text h1 span {
-      color: var(--uk-red);
-    }
-
     .form-control {
-      border-radius: 16px;
-      border: 1px solid #525252;
-      color: #525252;
+      border-radius: 20px;
+      border: 1px solid #000;
+      color: #dc3545;
     }
 
     .form-control::placeholder {
-     color: #cc0000;
-      font-weight: 500;
-      opacity: 1;
+      color: #dc3545;
+      opacity: 0.6;
     }
 
     .otp-section {
@@ -152,191 +172,189 @@
       border-radius: 10px;
     }
 
-    .btn-verify {
-      background-color: var(--uk-blue);
-      color: white;
+    .btn-submit {
+      background-color: rgba(0, 55, 168, 1);
+      color: #fff;
       border-radius: 20px;
       padding: 5px 30px;
     }
 
-    .btn-verify:hover {
-      background-color: #1e2a52;
-      color: white;
-    }
-
-    .btn-verify:disabled {
-      background-color: #6c757d;
-      cursor: not-allowed;
-    }
-
-    .otp-timer {
-      font-size: 0.9rem;
-      color: var(--uk-red);
-      font-weight: bold;
-    }
-
-    .loading {
-      opacity: 0.7;
-      pointer-events: none;
-    }
-
-    .success-message {
-      background-color: #d4edda;
-      border-color: #c3e6cb;
-      color: #155724;
-      padding: 15px;
-      border-radius: 10px;
-      margin-bottom: 20px;
-    }
-
-    .error-message {
-      background-color: #f8d7da;
-      border-color: #f5c6cb;
-      color: #721c24;
-      padding: 15px;
-      border-radius: 10px;
-      margin-bottom: 20px;
+    .btn-submit:hover {
+      background-color: #fff;
+      color: rgba(0, 55, 168, 1);
+      border: 1px solid rgba(0, 55, 168, 1);
     }
   </style>
 </head>
 
 <body>
-  <header class="bg-white border-bottom py-3">
-    <div class="container d-flex justify-content-between align-items-center">
-      <div class="social-icons">
-        <a href="#"><i class="fab fa-facebook-f"></i></a>
-        <a href="#"><i class="fab fa-linkedin-in"></i></a>
-        <a href="#"><i class="fab fa-instagram"></i></a>
-      </div>
-      <div class="text-center">
-        <h2 class="mb-0 fw-bold">
-          <img src="./image/UKPolls Logo.png" alt="UKPolls Logo" height="96" width="auto" />
-        </h2>
-      </div>
-      <div class="auth-buttons">
-        <div class="auth-buttons d-flex align-items-center">
-          <a href="#" class="btn-auth me-3">
-            Login
-            <span class="icon-circle bg-uk-blue">
-              <i class="fas fa-angle-double-right"></i>
-            </span>
-          </a>
-
-          <a href="#" class="btn-auth">
-            Sign Up
-            <span class="icon-circle bg-uk-red">
-              <i class="fas fa-angle-double-right"></i>
-            </span>
-          </a>
+  <header class="bg-white border-bottom py-3 box-shadow-1">
+    <div class="container">
+      <div class="row align-items-center">
+        <div class="col text-start">
+          <div class="social-icons">
+            <a href="#"><i class="fab fa-facebook-f"></i></a>
+            <a href="#"><i class="fab fa-linkedin-in"></i></a>
+            <a href="#"><i class="fab fa-instagram"></i></a>
+          </div>
         </div>
+        <div class="col text-center">
+          <img
+            src="./image/UKPolls Logo.png "
+            alt="UKPolls Logo"
+            class="brand-logo" />
+        </div>
+        <div class="col text-end">
+          <div class="auth-buttons d-flex justify-content-end">
+            <div class="auth-buttons d-flex align-items-center">
+              <a href="#" class="btn-auth me-3">
+                Login
+                <span class="icon-circle bg-uk-blue">
+                  <i class="fas fa-angle-double-right"></i>
+                </span>
+              </a>
+
+              <a href="#" class="btn-auth">
+                Sign Up
+                <span class="icon-circle bg-uk-red">
+                  <i class="fas fa-angle-double-right"></i>
+                </span>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="text-center">
+        <h2 class="mb-0 fw-bold"></h2>
       </div>
     </div>
   </header>
 
-  <main class="container my-5">
-    <div class="row align-items-center">
-      <div class="col-lg-5">
-        <div class="photo-grid">
-          <div class="box blue"></div>
-          <div class="box"><img src="./image/1.png" alt="Worker" /></div>
-          <div class="box"><img src="./image/2.png" alt="Doctor" /></div>
-          <div class="box"><img src="./image/3.png" alt="Delivery" /></div>
-          <div class="box"></div>
-          <div class="box"><img src="./image/4.png" alt="Professional" /></div>
-          <div class="box"><img src="./image/5.png" alt="Couple" /></div>
-          <div class="box"><img src="./image/6.png" alt="Student" /></div>
-          <div class="box red"></div>
-        </div>
-      </div>
-
-      <div class="col-lg-7 ps-lg-4">
-        <div class="hero-text mb-4">
-          <h1>
-            Hello<br /><span>UK</span>
-            <i class="fa fa-chevron-right opacity-50"></i><i class="fa fa-chevron-right opacity-50"></i>
-          </h1>
-          <p class="lead fw-normal h4">
-            Welcome to UK's newest, coolest <br />and most rewarding community!
-          </p>
+  <main class="my-5 mx-5">
+    <div class="container-fluid">
+      <div class="row align-items-center">
+        <div class="col-lg-5">
+          <div class="photo-grid">
+            <div class="box blue"></div>
+            <div class="box"><img src="./image/1.png" alt="Worker" /></div>
+            <div class="box"><img src="./image/2.png" alt="Doctor" /></div>
+            <div class="box"><img src="./image/3.png" alt="Delivery" /></div>
+            <div class="box"></div>
+            <div class="box"><img src="./image/4.png" alt="Professional" /></div>
+            <div class="box"><img src="./image/5.png" alt="Couple" /></div>
+            <div class="box"><img src="./image/6.png" alt="Student" /></div>
+            <div class="box red"></div>
+          </div>
         </div>
 
-        <!-- Message Display -->
-        <div id="messageContainer"></div>
+        <div class="col-lg-7 ps-lg-4">
+          <div class="hero-text mb-4">
+            <h1>
+              <span class="font-family-expletus color-blue-1 fw-400">Hello</span><br /><span
+                class="font-family-expletus color-red-1 fw-400 d-flex align-items-center gap-3">UK<img width="40px" src="./image/icons/curveIcon.png" /></span>
+            </h1>
+            <p class="lead fw-normal font-family-mulish">
+              Welcome to UK's newest, coolest<br />
+              and most rewarding community!
+            </p>
+          </div>
 
-        <form id="ukPollsForm">
-          <!-- Form Fields Section -->
-          <div class="form-section" id="formSection">
-            <div class="row g-3">
-              <div class="col-md-4">
-                <input type="text" name="full_name" id="full_name" class="form-control" placeholder="Full Name"
-                  pattern="[a-zA-Z\s]+"
-                  oninput="this.value = this.value.replace(/[^a-zA-Z\s]/g, ''); checkFormCompletion();" required />
+          <!-- Message Display -->
+          <div id="messageContainer"></div>
+
+          <form id="ukPollsForm">
+            <!-- Form Fields Section -->
+            <div class="form-section" id="formSection">
+              <div class="row g-3">
+                <div class="col-md-4">
+                  <input type="text" name="full_name" id="full_name" class="form-control" placeholder="Full Name"
+                    pattern="[a-zA-Z\s]+"
+                    oninput="this.value = this.value.replace(/[^a-zA-Z\s]/g, ''); checkFormCompletion();" required />
+                </div>
+                <div class="col-md-4">
+                  <input type="email" name="email" id="email" class="form-control" placeholder="Email"
+                    oninput="checkFormCompletion();" required />
+                </div>
+                <div class="col-md-4">
+                  <input type="date" name="date_of_birth" id="date_of_birth" class="form-control"
+                    placeholder="Date Of Birth" onchange="checkFormCompletion();" required />
+                </div>
+                <div class="col-md-4">
+                  <select class="form-control" name="gender" id="gender" onchange="checkFormCompletion();" required>
+                    <option value="">Select Gender</option>
+                    <option value="Male">Male</option>
+                    <option value="Female">Female</option>
+                    <option value="Other">Other</option>
+                  </select>
+                </div>
+                <div class="col-md-4">
+                  <textarea name="address" id="address" class="form-control" placeholder="Address line" required rows="1"
+                    oninput="checkFormCompletion();"></textarea>
+                </div>
+                <div class="col-md-4">
+                  <input type="text" name="city" id="city" class="form-control" placeholder="City / Town"
+                    oninput="checkFormCompletion();" required />
+                </div>
+                <div class="col-md-4">
+                  <input type="text" name="country" id="country" class="form-control" placeholder="Country"
+                    oninput="checkFormCompletion();" required />
+                </div>
+                <div class="col-md-4">
+                  <input type="text" name="postcode" id="postcode" class="form-control" placeholder="Postcode"
+                    oninput="checkFormCompletion();" required />
+                </div>
               </div>
-              <div class="col-md-4">
-                <input type="email" name="email" id="email" class="form-control" placeholder="Email"
-                  oninput="checkFormCompletion();" required />
+              <div class="row mt-4 align-items-center">
+                <div class="col-md-auto">
+                  <small class="text-muted font-family-mulish">*Please ENTER the OTP sent to your Email and Submit</small>
+                </div>
+                <div class="col-md-5 d-flex gap-2">
+                  <input
+                    type="text"
+                    id="otp"
+                    name="otp"
+                    class="form-control"
+                    placeholder="Email OTP"
+                    maxlength="6" />
+                  <button type="button" id="submitBtn" class="btn btn-submit">
+                    Submit
+                  </button>
+                </div>
               </div>
-              <div class="col-md-4">
-                <input type="date" name="date_of_birth" id="date_of_birth" class="form-control"
-                  placeholder="Date Of Birth" onchange="checkFormCompletion();" required />
-              </div>
-              <div class="col-md-4">
-                <select class="form-control" name="gender" id="gender" onchange="checkFormCompletion();" required>
-                  <option value="">Select Gender</option>
-                  <option value="Male">Male</option>
-                  <option value="Female">Female</option>
-                  <option value="Other">Other</option>
-                </select>
-              </div>
-              <div class="col-md-4">
-                <textarea name="address" id="address" class="form-control" placeholder="Address line" required rows="1"
-                  oninput="checkFormCompletion();"></textarea>
-              </div>
-              <div class="col-md-4">
-                <input type="text" name="city" id="city" class="form-control" placeholder="City / Town"
-                  oninput="checkFormCompletion();" required />
-              </div>
-              <div class="col-md-4">
-                <input type="text" name="country" id="country" class="form-control" placeholder="Country"
-                  oninput="checkFormCompletion();" required />
-              </div>
-              <div class="col-md-4">
-                <input type="text" name="postcode" id="postcode" class="form-control" placeholder="Postcode"
-                  oninput="checkFormCompletion();" required />
-              </div>
+          </form>
+
+          <!-- OTP Section (hidden initially) -->
+          <div class="row mt-4 align-items-center" id="otpRow" style="display: none;">
+            <div class="col-md-7">
+              <small class="text-muted fw-bolder" style="font-size: .850em;">*OTP sent to your Email. Enter OTP and
+                Verify</small>
             </div>
-        </form>
+            <div class="col-md-4">
+              <input type="text" name="otp" id="otp" class="form-control" placeholder="Email OTP" maxlength="6" />
+            </div>
+            <div class="col-md-1">
+              <button type="button" class="btn btn-verify" id="verifyBtn">
+                Submit
+              </button>
+            </div>
+          </div>
 
-        <!-- OTP Section (hidden initially) -->
-        <div class="row mt-4 align-items-center" id="otpRow" style="display: none;">
-          <div class="col-md-7">
-            <small class="text-muted fw-bolder" style="font-size: .850em;">*OTP sent to your Email. Enter OTP and
-              Verify</small>
+          <!-- OTP Timer Display -->
+          <div class="row mt-2" id="otpTimerContainer" style="display: none;">
+            <div class="col-md-12">
+              <small class="otp-timer" id="otpTimer"></small>
+            </div>
           </div>
-          <div class="col-md-4">
-            <input type="text" name="otp" id="otp" class="form-control" placeholder="Email OTP" maxlength="6" />
-          </div>
-          <div class="col-md-1">
-            <button type="button" class="btn btn-verify" id="verifyBtn">
-              Submit
-            </button>
-          </div>
-        </div>
 
-        <!-- OTP Timer Display -->
-        <div class="row mt-2" id="otpTimerContainer" style="display: none;">
-          <div class="col-md-12">
-            <small class="otp-timer" id="otpTimer"></small>
-          </div>
-        </div>
-
-        <!-- Loading indicator for auto-send -->
-        <div class="row mt-3" id="autoSendIndicator" style="display: none;">
-          <div class="col-md-12">
-            <div class="d-flex align-items-center">
-              <strong class="text-primary me-2">Sending OTP...</strong>
-              <div class="spinner-border spinner-border-sm text-primary" role="status">
-                <span class="visually-hidden">Loading...</span>
+          <!-- Loading indicator for auto-send -->
+          <div class="row mt-3" id="autoSendIndicator" style="display: none;">
+            <div class="col-md-12">
+              <div class="d-flex align-items-center">
+                <strong class="text-primary me-2">Sending OTP...</strong>
+                <div class="spinner-border spinner-border-sm text-primary" role="status">
+                  <span class="visually-hidden">Loading...</span>
+                </div>
               </div>
             </div>
           </div>
@@ -347,7 +365,7 @@
 
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
   <script>
-    $(document).ready(function () {
+    $(document).ready(function() {
       let otpTimerInterval;
       let isOtpSent = false;
       let isFormSubmitting = false;
@@ -402,7 +420,7 @@
             postcode: $('#postcode').val()
           },
           dataType: 'json',
-          success: function (response) {
+          success: function(response) {
             $('#autoSendIndicator').fadeOut();
             showMessage(response.message, response.success ? 'success' : 'error');
 
@@ -423,7 +441,7 @@
               isFormSubmitting = false;
             }
           },
-          error: function (xhr, status, error) {
+          error: function(xhr, status, error) {
             $('#autoSendIndicator').fadeOut();
             showMessage('An error occurred. Please try again.', 'error');
             console.error('AJAX Error:', status, error);
@@ -433,7 +451,7 @@
       }
 
       // Verify OTP Button Click
-      $('#verifyBtn').on('click', function () {
+      $('#verifyBtn').on('click', function() {
         var otp = $('#otp').val();
         var email = $('#email').val();
 
@@ -455,7 +473,7 @@
             email: email
           },
           dataType: 'json',
-          success: function (response) {
+          success: function(response) {
             showMessage(response.message, response.success ? 'success' : 'error');
 
             if (response.success) {
@@ -473,11 +491,11 @@
               isFormSubmitting = false;
             }
           },
-          error: function (xhr, status, error) {
+          error: function(xhr, status, error) {
             showMessage('An error occurred. Please try again.', 'error');
             console.error('AJAX Error:', status, error);
           },
-          complete: function () {
+          complete: function() {
             $('#verifyBtn').prop('disabled', false).text('Submit');
           }
         });
@@ -489,7 +507,7 @@
 
         clearInterval(otpTimerInterval);
 
-        otpTimerInterval = setInterval(function () {
+        otpTimerInterval = setInterval(function() {
           var minutes = Math.floor(duration / 60);
           var seconds = duration % 60;
 
@@ -512,8 +530,8 @@
 
         // Auto-hide after 5 seconds for success messages
         if (type === 'success') {
-          setTimeout(function () {
-            $('#messageContainer').fadeOut(function () {
+          setTimeout(function() {
+            $('#messageContainer').fadeOut(function() {
               $(this).empty().show();
             });
           }, 5000);
