@@ -1,0 +1,595 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <link href='https://fonts.googleapis.com/css?family=Mulish' rel='stylesheet'>
+  <!-- code implemented by ab start-->
+  <link href='https://fonts.googleapis.com/css?family=Expletus Sans' rel='stylesheet'>
+  <link href='https://fonts.googleapis.com/css?family=Poppins' rel='stylesheet'>
+  <!-- Google Tag Manager -->
+  <script>(function (w, d, s, l, i) {
+      w[l] = w[l] || []; w[l].push({
+        'gtm.start':
+          new Date().getTime(), event: 'gtm.js'
+      }); var f = d.getElementsByTagName(s)[0],
+        j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : ''; j.async = true; j.src =
+          'https://www.googletagmanager.com/gtm.js?id=' + i + dl; f.parentNode.insertBefore(j, f);
+    })(window, document, 'script', 'dataLayer', 'GTM-MD98WBMJ');</script>
+  <!-- End Google Tag Manager -->
+
+  <!-- end -->
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+  <meta name="description" content="">
+  <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
+  <meta name="generator" content="Hugo 0.88.1">
+  <title>IndiaPolls – India’s premier opinions panel and community</title>
+
+
+
+  <link rel="icon" href="https://panel.indiapolls.com/assets/img/favicon2.jpeg">
+  <!-- Bootstrap core CSS -->
+  <link href="Indiapolls-en/css/bootstrap.min.css" rel="stylesheet">
+  <!-- <link href="Indiapolls-en/css/style.css" rel="stylesheet"> -->
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-B5JKQXZRJF"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    gtag('js', new Date());
+
+    gtag('config', 'G-B5JKQXZRJF');
+  </script>
+
+  <!-- Meta Pixel Code -->
+  <script>
+    !function (f, b, e, v, n, t, s) {
+      if (f.fbq) return; n = f.fbq = function () {
+        n.callMethod ?
+          n.callMethod.apply(n, arguments) : n.queue.push(arguments)
+      };
+      if (!f._fbq) f._fbq = n; n.push = n; n.loaded = !0; n.version = '2.0';
+      n.queue = []; t = b.createElement(e); t.async = !0;
+      t.src = v; s = b.getElementsByTagName(e)[0];
+      s.parentNode.insertBefore(t, s)
+    }(window, document, 'script',
+      'https://connect.facebook.net/en_US/fbevents.js');
+    fbq('init', '279432368508277');
+    fbq('track', 'PageView');
+  </script>
+  <noscript><img height="1" width="1" style="display:none"
+      src="https://www.facebook.com/tr?id=279432368508277&ev=PageView&noscript=1" /></noscript>
+  <!-- End Meta Pixel Code -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <style>
+    body {
+      font-family: 'Mulish';
+      margin-top: 100px;
+    }
+
+    header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      z-index: 1000;
+      background-color: white;
+      /* Make sure it's visually distinct */
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      /* Optional: Adds a shadow effect */
+    }
+
+    p {
+      line-height: 1.5;
+    }
+
+    .branddiv {
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+    }
+
+    .sitelink ul {
+      padding: 0;
+      margin: 0;
+      list-style: none;
+    }
+
+    .sitelink ul li {
+      display: inline-block;
+    }
+
+    .sitelink ul li a {
+      font-size: 14px;
+      color: #fff;
+      text-decoration: none;
+    }
+
+    .footer {
+      display: flex;
+      background: #58595b;
+      bottom: 15px;
+      color: #c6c6c7;
+      font-size: 18px;
+    }
+
+    .language-select {
+      background: none !important;
+      cursor: pointer !important;
+    }
+
+    .newlang {
+      border-radius: 12px;
+      height: 28px;
+    }
+
+    .socialindiaicon {
+      width: 40%;
+      justify-content: center;
+    }
+
+    .brandlogo {
+      width: 20%
+    }
+
+    .functionaltab {
+      display: flex;
+      width: 40%
+    }
+
+    .hamberger {
+      display: none;
+    }
+
+    .iconsheader {
+      height: 35px;
+      width: 35px;
+    }
+
+    .brand_logo {
+      width: 180px;
+      height: 58px
+    }
+
+    .divsec {
+      display: flex;
+    }
+
+    .divsecw25 {
+      width: 25%;
+      display: flex;
+      justify-content: end;
+    }
+
+    .divsecw75 {
+      width: 75%;
+      display: flex;
+      justify-content: start;
+    }
+
+    .divimagemain {
+      justify-content: start;
+    }
+
+
+    .auth-links ul {
+      display: flex;
+      list-style: none;
+      padding: 0;
+    }
+
+    /* .auth-links ul li {
+      margin: 0px -14px 0 0;
+    } */
+
+    .auth-links {
+      display: flex !important;
+      justify-content: flex-end !important;
+      align-items: center !important;
+      gap: 20px !important;
+      margin: 0px -69px 0 0;
+    }
+
+    .auth-links a {
+      text-decoration: none !important;
+      color: black !important;
+    }
+
+    .hamburger-active .auth-links {
+      display: flex !important;
+      /* Show the auth links when hamburger menu is clicked */
+      flex-direction: column !important;
+      position: absolute !important;
+      right: 20px !important;
+      top: 60px !important;
+      background-color: #fff !important;
+      padding: 10px !important;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1) !important;
+    }
+
+    a {
+      color: black;
+    }
+
+    .footsec1 {
+      display: flex;
+      width: 40%
+    }
+
+    .footsec2 {
+      width: 20%;
+    }
+
+    .footsec3 {
+      width: 40%;
+    }
+
+    .maindivcont {
+      display: flex;
+    }
+
+    .imagediv {
+      width: 50%;
+      justify-content: end;
+    }
+
+    .maincontent {
+      width: 50%;
+      display: flex;
+      justify-content: start;
+    }
+
+    .logodivconus {
+      justify-content: start;
+    }
+
+    .imagecontactus {
+      width: 417px;
+      height: 327px;
+    }
+
+
+    @media screen and (max-width: 475px) {
+      .socialindiaicon {
+        width: 40%;
+        justify-content: start;
+      }
+
+      .imagecontactus {
+        width: 333px;
+        height: 261px;
+      }
+
+      .brandlogo {
+        width: 40%
+      }
+
+      .functionaltab {
+        display: none;
+      }
+
+      .hamberger {
+        display: flex;
+        width: 20%;
+      }
+
+      .brand_logo {
+        width: 126px;
+        height: 40.6px
+      }
+
+      .divsec {
+        display: block;
+      }
+
+      .divsecw25 {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+      }
+
+      .divsecw75 {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+      }
+
+      .divimagemain {
+        justify-content: center;
+      }
+
+      .footer {
+        display: block;
+      }
+
+      .footsec1 {
+        display: block;
+        width: 100%
+      }
+
+      .footsec2 {
+        width: 100%;
+      }
+
+      .footsec3 {
+        width: 100%;
+      }
+
+      .imagediv {
+        width: 100%;
+        justify-content: center;
+      }
+
+      .maindivcont {
+        display: block;
+      }
+
+      .maincontent {
+        width: 100%;
+      }
+
+      .logodivconus {
+        justify-content: center;
+      }
+
+    }
+
+    /* ======================= */
+    .hamburger-menu {
+      display: none;
+      cursor: pointer;
+    }
+
+    .auth-links {
+      width: 43%;
+    }
+
+    @media only screen and (max-width: 768px) {
+      .auth-links {
+        display: none;
+        width: 43%;
+      }
+
+      .hamburger-menu {
+        display: block;
+        cursor: pointer;
+      }
+
+      .hamburger-menu i {
+        font-size: 24px;
+        margin: 9px -26px 5px 6px;
+      }
+    }
+
+
+
+    .auth-links ul {
+      list-style: none;
+      padding: 0;
+    }
+
+    /* .auth-links ul li {
+      margin: 0px -14px 0 0;
+    } */
+
+    .auth-links {
+      display: flex !important;
+      justify-content: center !important;
+      align-items: center !important;
+      gap: 20px !important;
+      margin: 0px -69px 0 0;
+    }
+
+    .auth-links a {
+      text-decoration: none !important;
+      color: black !important;
+    }
+
+    .auth-menu {
+      display: flex !important;
+      list-style: none !important;
+      margin: 0 !important;
+      padding: 0 !important;
+    }
+
+    .auth-menu li {
+      margin-left: 20px !important;
+    }
+
+    .newlang {
+      border-radius: 12px;
+
+    }
+
+    @media only screen and (max-width: 768px) {
+      .auth-links {
+        display: none !important;
+      }
+
+      .newlang {
+        margin: 0px 0 0 0;
+      }
+
+      .auth-links.active {
+        display: block !important;
+        position: absolute !important;
+        top: 50px !important;
+        right: 87px !important;
+        background-color: white !important;
+        padding: 10px !important;
+        border: 1px solid #ccc !important;
+        z-index: 1000 !important;
+      }
+
+      .auth-menu {
+        display: block !important;
+        margin: 0 !important;
+        padding: 0 !important;
+      }
+
+      .auth-menu li {
+        margin: 10px 0 !important;
+        padding-left: 20px;
+      }
+
+      .auth-menu li a {
+        display: block !important;
+        padding: 5px !important;
+        /* border: 1px solid #ccc !important; */
+        text-align: center !important;
+        width: 79% !important;
+      }
+
+      .auth-menu select {
+        width: 110px !important;
+        text-align: center;
+
+      }
+    }
+
+    /* Optional: Add a custom arrow */
+    .language-select::after {
+      content: '';
+      position: absolute;
+      right: 10px;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 0;
+      height: 0;
+      border-left: 5px solid transparent;
+      border-right: 5px solid transparent;
+      border-top: 5px solid #000;
+    }
+  </style>
+</head>
+
+<body>
+  <header class="w-100 d-flex justify-content-center align-items-cente w-100 branddiv">
+    <div class="d-flex align-items-center socialindiaicon">
+      <a href="https://www.facebook.com/IndiaPolls/"><img src="images/facebookicon.png" alt="" class="iconsheader mx-1"></a>
+      <a href="https://in.linkedin.com/company/indiapolls"><img src="images/linkdine.png" alt="" class="iconsheader mx-1"></a>
+      <a href="https://www.instagram.com/indiapolls_/"><img src="images/insta.png" alt="" class="iconsheader mx-1"></a>
+    </div>
+    <div class="d-flex justify-content-center align-items-center brandlogo">
+      <a href="index.html"><img src="images/Assetv4.png" alt="brand_logo" class="my-2 brand_logo"></a>
+    </div>
+    <div class="auth-links">
+      <ul class="auth-menu">
+        <li style="margin-left: 30px;">
+          <a href="https://indiapolls.proeffico.com/#/auth/login">
+            <img src="images/AllImg/Hompage PNG/Login Engligh.png" alt="" style="height: 29px;">
+          </a>
+        </li>
+        <li>
+          <a href="https://indiapolls.proeffico.com/#/auth/signup?regType=web">
+            <img src="images/AllImg/Hompage PNG/Sign Up English.png" alt="" style="height: 29px;">
+          </a>
+        </li>
+        <li style="padding-left: 24px;" class="">
+          <select class="language-select newlang mx-0" style="color: #444547d6;border: 1.60px solid rgb(41, 41, 41); width: 100px" onchange="changeLanguage(this)">
+            <option value="en" style="font-family: 'mulish';font-weight: 700 !important;">&nbsp;&nbsp;English&nbsp;&nbsp;
+            </option>
+            <option value="hi" style="font-family: 'mulish';font-weight: 700 !important;">&nbsp;&nbsp;हिंदी&nbsp;&nbsp;</option>
+
+
+          </select>
+        </li>
+      </ul>
+    </div>
+    <div class="justify-content-center align-items-center hamberger">
+      <div class="hamburger-menu">
+        <i class="fas fa-bars"></i>
+      </div>
+    </div>
+  </header>
+  <div class="justify-content-center align-items-center w-100 maindivcont my-5">
+    <div class="d-flex align-items-cente imagediv" style="padding-top : 5px">
+      <img src="./images/about-and-contact-us/Asset 6.png" alt="" class="mx-3 imagecontactus" />
+    </div>
+    <div class="d-flex align-items-cente maincontent">
+      <div class="section-right">
+        <div class="d-flex align-items-center logodivconus my-3">
+          <img src="./images/about-and-contact-us/contactuslogo.png" alt="" height="60px" style="margin-top: 30px;" />
+        </div>
+        <div class="section-right-bottom my-3">
+          <div class="faq-link mx-3">
+            <h5 style="color: #F58232;"><b>Questions? Support?</b></h5>
+            <p>
+              Please <a href="https://panel.indiapolls.com/#/faq"><b>Click here</b></a> for our
+              Frequently Asked Questions
+            </p>
+          </div>
+          <div class="contact-info mx-3">
+            <p>
+              If you still have a question, please feel free to reach out to:<br>
+              <a href="mailto:info@indiapolls.com"><b>info@indiapolls.com</b></a>
+            </p>
+
+            <p>
+              If you are a client, or would like to know about our services,
+              please <br><a href="https://www.dataxing.com/indiapolls"><b>Click here</b></a> to visit our client page, or reach out to:<br>
+              <a href="mailto:enquiry@indiapolls.com"><b>enquiry@indiapolls.com</b></a>
+            </p>
+
+            <p>For media enquiries, please email us at:<br>
+              <a href="mailto:media@indiapolls.com"><b>media@indiapolls.com</b></a>
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="w-100 d-flex justify-content-center align-items-cente w-100">
+    <img src="images/Assetv5.png" alt="brand_logo" class="w-100">
+  </div>
+
+  <div class="justify-content-center align-items-center footer">
+    <div class="justify-content-center align-items-center footsec1">
+      <div class="d-flex justify-content-center align-items-center">
+        <div class=" sitelink mt-2 mb-2">
+          <ul class="mt-2" style="text-align: center;">
+            <li><a href="about-us.html" style="border-right: 2px solid #f58232;" class="px-2">About Us</a></li>
+            <li><a href="privacypolicy.html" style="border-right: 2px solid #f58232;" class="px-2">Privacy Policy</a>
+            </li>
+            <li><a href="termandconditio.html" style="border-right: 2px solid #f58232;" class="px-2">Terms &
+                Conditions</a></li>
+            <li><a href="https://www.dataxing.com/indiapolls" style="border-right: 2px solid #f58232;" class="px-2">For
+                Clients</a></li>
+            <li><a href="contact-us.html" style="border-right: 2px solid #f58232;" class="px-2">Contact Us</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="d-flex justify-content-center align-items-center footsec2">
+      <a href="https://www.facebook.com/IndiaPolls/"><img src="images/facebookicon.png" alt="" style="height: 35px; width: 35px;" class="mx-2"></a>
+      <a href="https://in.linkedin.com/company/indiapolls"><img src="images/linkdine.png" alt="" style="height: 35px; width: 35px;" class="mx-2"></a>
+      <a href="https://www.instagram.com/indiapolls_/"><img src="images/insta.png" alt="" style="height: 35px; width: 35px;" class="mx-2"></a>
+    </div>
+    <div class="d-flex justify-content-center align-items-center footsec3">
+      <p style="font-size: 14px;" class="my-3 text-light">
+        @2024 IndiaPolls. All Rights Reserved.
+      </p>
+    </div>
+  </div>
+  <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js"
+    integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+    crossorigin="anonymous"></script>
+    <script>
+      function changeLanguage(select) {
+        var value = select.value;
+        if (value === 'hi') {
+          window.location.href = 'contact-us-hi.html';
+        } else {
+          window.location.href = 'contact-us.html';
+        }
+      }
+    </script>
+  <script>
+    document.querySelector('.hamburger-menu').addEventListener('click', function () {
+      const authLinks = document.querySelector('.auth-links');
+      authLinks.classList.toggle('active');
+    });
+  </script>
+</body>
+
+</html>
