@@ -165,6 +165,25 @@ if (!function_exists('validateEmail')) {
 }
 
 /**
+ * Validate UK postcode format
+ */
+if (!function_exists('validateUKPostcode')) {
+    function validateUKPostcode($postcode)
+    {
+        if (empty($postcode)) {
+            return false;
+        }
+        
+        // UK Postcode regex patterns
+        // Outward code: 1 or 2 letters + 1 or 2 digits
+        // Inward code: 1 digit + 2 letters
+        $ukPostcodeRegex = '/^(?:[A-Z]{1,2}[0-9][0-9A-Z]?)[ ]?[0-9][A-Z]{2}$/i';
+        
+        return preg_match($ukPostcodeRegex, trim($postcode)) === 1;
+    }
+}
+
+/**
  * Save form data to database with pending OTP status
  */
 function saveFormDataWithOTP($pdo, $data, $otp)
@@ -312,6 +331,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['action']) && $_POST['
         } elseif (!validateEmail($email)) {
             logError("Validation failed: Invalid email format");
             $response['message'] = "Invalid email format!";
+        } elseif (!validateUKPostcode($postcode)) {
+            logError("Validation failed: Invalid UK postcode format: " . $postcode);
+            $response['message'] = "Invalid UK postcode format! Please enter a valid postcode (e.g., EH1 1AB, SW1A 1AA).";
         } elseif (checkEmailExists($pdo, $email)) {
             logError("Validation failed: Email already exists and verified");
             $response['message'] = "This email is already registered and verified!";

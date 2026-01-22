@@ -278,7 +278,7 @@
                 </div>
                 <div class="col-md-4">
                   <input type="date" name="date_of_birth" id="date_of_birth" class="form-control"
-                    placeholder="Date Of Birth" onchange="checkFormCompletion();" required />
+                    placeholder="Date Of Birth" onchange="validateAge(); checkFormCompletion();" required />
                 </div>
                 <div class="col-md-4">
                   <select class="form-control" name="gender" id="gender" onchange="checkFormCompletion();" required>
@@ -297,12 +297,13 @@
                     oninput="checkFormCompletion();" required />
                 </div>
                 <div class="col-md-4">
-                  <input type="text" name="country" id="country" class="form-control" placeholder="Country"
+                  <input type="text" name="country" id="country" class="form-control" placeholder="Country" value="UK"
                     oninput="checkFormCompletion();" required />
                 </div>
                 <div class="col-md-4">
-                  <input type="text" name="postcode" id="postcode" class="form-control" placeholder="Postcode"
-                    oninput="checkFormCompletion();" required />
+                  <input type="text" name="postcode" id="postcode" class="form-control" placeholder="Postcode (e.g., EH1 1AB)"
+                    oninput="onPostcodeInput(); validateUKPostcode(); checkFormCompletion();" required />
+                  <small class="text-muted" id="postcodeHint" style="font-size: 0.7em;">Format: AA9A 9AA, A9 9AA, A99 9AA, etc.</small>
                 </div>
               </div>
               <div class="row mt-4 align-items-center">
@@ -525,7 +526,7 @@
 
       // Show Message Function
       function showMessage(message, type) {
-        var html = '<div class="' + (type === 'success' ? 'success-message' : 'error-message') + '">' + message + '</div>';
+        var html = '<div class="' + (type === 'success' ? 'success-message alert alert-success m-2 p-2' : 'error-message alert alert-danger m-2 p-2') + '">' + message + '</div>';
         $('#messageContainer').html(html);
 
         // Auto-hide after 5 seconds for success messages
@@ -540,6 +541,120 @@
 
       // Make checkFormCompletion globally available
       window.checkFormCompletion = checkFormCompletion;
+
+      // Age Validation Function (16 years and above)
+      function validateAge() {
+        var dobInput = $('#date_of_birth');
+        var dobValue = dobInput.val();
+        
+        if (!dobValue) return true;
+        
+        var dob = new Date(dobValue);
+        var today = new Date();
+        var age = today.getFullYear() - dob.getFullYear();
+        var monthDiff = today.getMonth() - dob.getMonth();
+        
+        // Adjust age if birthday hasn't occurred yet this year
+        if (monthDiff < 0 || (monthDiff === 0 && today.getDate() < dob.getDate())) {
+          age--;
+        }
+
+        // Check if under 16
+        if (age < 16) {
+          showMessage('You must be 16 years or older to register.', 'error');
+          dobInput.val(''); // Clear invalid date
+          return false;
+        }
+        
+        // Clear any previous error messages when valid age is entered
+        $('#messageContainer').empty();
+        return true;
+      }
+
+      // Make validateAge globally available
+      window.validateAge = validateAge;
+
+      // Postcode input handler - triggers lookup when 6-7 characters entered
+      function onPostcodeInput() {
+        var postcode = $('#postcode').val().trim();
+        
+        // UK postcodes are typically 5-8 characters (with spaces)
+        // Format: AN NAA, ANN NAA, AAN NAA, AANN NAA, ANA NAA, AANA NAA
+        var postcodeClean = postcode.replace(/\s+/g, '');
+        
+        if (postcodeClean.length >= 5 && postcodeClean.length <= 8) {
+          lookupPostcode(postcodeClean);
+        }
+      }
+
+      // Make onPostcodeInput globally available
+      window.onPostcodeInput = onPostcodeInput;
+
+      // UK Postcode Validation Function
+      function validateUKPostcode() {
+        var postcode = $('#postcode').val().trim();
+        var postcodeHint = $('#postcodeHint');
+        
+        // UK Postcode regex patterns
+        // Outward code: 1 or 2 letters + 1 or 2 digits
+        // Inward code: 1 digit + 2 letters
+        var ukPostcodeRegex = /^(?:[A-Z]{1,2}[0-9][0-9A-Z]?)[ ]?[0-9][A-Z]{2}$/i;
+        
+        if (postcode.length > 0) {
+          if (ukPostcodeRegex.test(postcode)) {
+            postcodeHint.removeClass('text-danger').addClass('text-success').text('✓ Valid UK postcode format');
+            return true;
+          } else {
+            postcodeHint.removeClass('text-success').addClass('text-danger').text('✗ Invalid UK postcode format');
+            return false;
+          }
+        } else {
+          postcodeHint.removeClass('text-success text-danger').addClass('text-muted').text('Format: AA9A 9AA, A9 9AA, A99 9AA, etc.');
+          return false;
+        }
+      }
+
+      // Make validateUKPostcode globally available
+      window.validateUKPostcode = validateUKPostcode;
+
+      // UK Postcode Lookup Function using postcodes.io API
+      function lookupPostcode(postcode) {
+        var postcodeInput = $('#postcode');
+        var cityInput = $('#city');
+        
+        // Clear city when postcode changes
+        cityInput.val('');
+        
+        // Make API call to postcodes.io
+        $.ajax({
+          url: 'https://api.postcodes.io/postcodes/' + postcode,
+          type: 'GET',
+          dataType: 'json',
+          success: function(response) {
+            if (response.status === 200 && response.result) {
+              var result = response.result;
+              
+              // Auto-fill city/town from API response
+              if (result.admin_district || result.postcode_town) {
+                var cityValue = result.admin_district || result.postcode_town;
+                cityInput.val(cityValue);
+                
+                // Trigger checkFormCompletion after filling city
+                setTimeout(function() {
+                  checkFormCompletion();
+                }, 100);
+              }
+            } else {
+              // API returned error - user can still proceed manually
+              console.log('Postcode not found in API. Please enter city/town manually.');
+            }
+          },
+          error: function(xhr, status, error) {
+            // API call failed - user can still proceed manually
+            console.log('Postcode lookup API unavailable. Please enter city/town manually.');
+          }
+        });
+      }
     });
   </script>
 </body>
