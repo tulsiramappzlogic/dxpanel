@@ -137,7 +137,7 @@
                     onblur="this.value = this.value.replace(/[^a-zA-Z\s]/g, ''); validateFullName();" required />
                 </div>
                 <div class="col-md-4">
-<input type="email" name="email" id="email" class="form-control" placeholder="Email"
+                  <input type="email" name="email" id="email" class="form-control" placeholder="Email"
                     onblur="this.value = this.value.replace(/[^a-zA-Z0-9._%+-@]/g, ''); validateEmail();" required />
                 </div>
                 <div class="col-md-4">
@@ -157,15 +157,15 @@
                     rows="1" onblur="validateAddress();"></textarea>
                 </div>
                 <div class="col-md-4">
-<input type="text" name="postcode" id="postcode" class="form-control" placeholder="Postcode"
+                  <input type="text" name="postcode" id="postcode" class="form-control" placeholder="Postcode"
                     pattern="[0-9]{6}" oninput="validatePostcode();" onblur="validatePostcode();" required />
                 </div>
               </div>
-          
+
           </form>
 
           <!-- OTP Section (hidden initially) -->
-          <div class="row mt-4 align-items-center" id="otpRow" >
+          <div class="row mt-4 align-items-center" id="otpRow">
             <div class="col-md-auto">
               <small class="text-muted font-family-mulish">*Please ENTER the OTP sent to your Email and Submit</small>
             </div>

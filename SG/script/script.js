@@ -21,14 +21,12 @@ $(document).ready(function () {
   let isOtpSent = false;
   let isFormSubmitting = false;
 
-  // Full Name Validation - Min 3 characters
+// Full Name Validation - Min 3 characters
   function validateFullName() {
     var fullName = $("#full_name").val().trim();
     var minLength = 3;
 
     if (fullName.length >= minLength) {
-      // Valid - trigger checkFormCompletion
-      checkFormCompletion();
       return true;
     } else {
       // Show error message if user has started typing
@@ -45,14 +43,12 @@ $(document).ready(function () {
   // Make validateFullName globally available
   window.validateFullName = validateFullName;
 
-  // Email Validation
+// Email Validation
   function validateEmail() {
     var email = $("#email").val().trim();
     var emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
     if (emailPattern.test(email)) {
-      // Valid - trigger checkFormCompletion
-      checkFormCompletion();
       return true;
     } else {
       // Show error message if user has started typing
@@ -66,14 +62,12 @@ $(document).ready(function () {
   // Make validateEmail globally available
   window.validateEmail = validateEmail;
 
-  // Address Validation - Min 15 characters
+// Address Validation - Min 15 characters
   function validateAddress() {
     var address = $("#address").val().trim();
     var minLength = 15;
 
     if (address.length >= minLength) {
-      // Valid - trigger checkFormCompletion
-      checkFormCompletion();
       return true;
     } else {
       // Show error message if user has started typing
@@ -90,7 +84,7 @@ $(document).ready(function () {
   // Make validateAddress globally available
   window.validateAddress = validateAddress;
 
-  // Validate Postal Code (6 digits only) and trigger checkFormCompletion
+// Validate Postal Code (6 digits only)
   function validatePostcode() {
     var postcodeInput = $("#postcode");
     var postcodeValue = postcodeInput.val().trim();
@@ -107,8 +101,6 @@ $(document).ready(function () {
       return false;
     }
 
-    // Valid - trigger checkFormCompletion
-    checkFormCompletion();
     return true;
   }
 
@@ -129,7 +121,7 @@ $(document).ready(function () {
 
     // Validate if 6 digits entered
     if (value.length === 6) {
-      validatePostalCode();
+      validatePostcode();
     }
   });
 
@@ -338,7 +330,7 @@ $(document).ready(function () {
   // Make checkFormCompletion globally available
   window.checkFormCompletion = checkFormCompletion;
 
-  // Age Validation Function (16 years and above)
+// Age Validation Function (16 years and above)
   function validateAge() {
     var dobInput = $("#date_of_birth");
     var dobValue = dobInput.val();
@@ -362,8 +354,6 @@ $(document).ready(function () {
       return false;
     }
 
-    // Clear any previous error messages when valid age is entered
-    $("#messageContainer").empty();
     return true;
   }
 
