@@ -30,18 +30,17 @@
         <!-- Social Icons - Left Column -->
         <div class="col-4 col-lg-3 text-start">
           <div class="social-icons d-flex flex-wrap">
-            <a href="https://www.facebook.com/people/PhilippinesPolls/61586548725477/" class="me-2 me-md-3" title="Facebook"><i class="fab fa-facebook-f"></i></a>
-            <a href="https://in.linkedin.com/company/dataxing-digital" class="me-2 me-md-3" title="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+            <a href="https://www.facebook.com/people/PhilippinesPolls/61586548725477/" class="me-2 me-md-3"
+              title="Facebook"><i class="fab fa-facebook-f"></i></a>
+            <a href="https://in.linkedin.com/company/dataxing-digital" class="me-2 me-md-3" title="LinkedIn"><i
+                class="fab fa-linkedin-in"></i></a>
             <a href="#" title="Instagram"><i class="fab fa-instagram"></i></a>
           </div>
         </div>
 
         <!-- Logo - Center Column -->
         <div class="col-4 col-lg-6 text-center py-2 py-sm-0">
-          <img
-            src="./image/PhilippinesPolls Logo.png"
-            alt="PhilippinesPolls Logo"
-            class="brand-logo"
+          <img src="./image/PhilippinesPolls Logo.png" alt="PhilippinesPolls Logo" class="brand-logo"
             style="max-width: 100%; height: auto;" />
         </div>
 
@@ -65,7 +64,8 @@
 
         <!-- Mobile/Tablet Menu Button -->
         <div class="col-4 col-lg-3 text-center text-end d-md-none">
-          <button class="btn btn-outline-secondary rounded-pill" type="button" id="authMenuToggle" style="border: 1px solid rgba(88, 89, 91, 1); padding: 6px 16px;">
+          <button class="btn btn-outline-secondary rounded-pill" type="button" id="authMenuToggle"
+            style="border: 1px solid rgba(88, 89, 91, 1); padding: 6px 16px;">
             <i class="fas fa-bars"></i> Menu
           </button>
         </div>
@@ -114,7 +114,8 @@
           <div class="hero-text mb-4">
             <h1>
               <span class="font-family-expletus color-blue-1 fw-400">Mabuhay</span><br /><span
-                class="font-family-expletus color-red-1 fw-400 d-flex align-items-center gap-3">Pilipinas<img src="./image/icons/curveIcon.png" alt="curve" /></span>
+                class="font-family-expletus color-red-1 fw-400 d-flex align-items-center gap-3">Pilipinas<img
+                  src="./image/icons/curveIcon.png" alt="curve" /></span>
             </h1>
             <p class="lead fw-normal font-family-mulish">
               Welcome to The Philippines's newest, coolest<br />
@@ -131,11 +132,12 @@
               <div class="row g-3">
                 <div class="col-md-4">
                   <input type="text" name="full_name" id="full_name" class="form-control" placeholder="Full Name"
-                    pattern="[a-zA-Z\s]+" onblur="this.value = this.value.replace(/[^a-zA-Z\s]/g, ''); validateFullName();" required />
+                    pattern="[a-zA-Z\s]+"
+                    onblur="this.value = this.value.replace(/[^a-zA-Z\s]/g, ''); validateFullName();" required />
                 </div>
                 <div class="col-md-4">
-<input type="email" name="email" id="email" class="form-control" placeholder="Email"
-                    pattern="[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}" onblur="this.value = this.value.replace(/[^a-zA-Z0-9._%+-@]/g, ''); validateEmail();" required />
+                  <input type="email" name="email" id="email" class="form-control" placeholder="Email"
+                    onblur="this.value = this.value.replace(/[^a-zA-Z0-9._%+-@]/g, ''); validateEmail();" required />
                 </div>
                 <div class="col-md-4">
                   <input type="date" name="date_of_birth" id="date_of_birth" class="form-control"
@@ -154,25 +156,29 @@
                     rows="1" onblur="validateAddress();"></textarea>
                 </div>
                 <div class="col-md-4">
-<input type="text" name="barangay" id="barangay" class="form-control" placeholder="Barangay"
-                    pattern="[a-zA-Z\s]+" onblur="this.value = this.value.replace(/[^a-zA-Z\s]/g, ''); validateBarangay();" required />
+                  <input type="text" name="barangay" id="barangay" class="form-control" placeholder="Barangay"
+                    pattern="[a-zA-Z\s]+"
+                    onblur="this.value = this.value.replace(/[^a-zA-Z\s]/g, ''); validateBarangay();" required />
                 </div>
                 <div class="col-md-4">
-<input type="text" name="city" id="city" class="form-control" placeholder="City / Municipality"
-                    pattern="[a-zA-Z\s]+" onblur="this.value = this.value.replace(/[^a-zA-Z\s]/g, ''); validateCity();" required />
+                  <input type="text" name="city" id="city" class="form-control" placeholder="City / Municipality"
+                    pattern="[a-zA-Z\s]+" onblur="this.value = this.value.replace(/[^a-zA-Z\s]/g, ''); validateCity();"
+                    required />
                 </div>
                 <div class="col-md-4">
-                <input type="text" name="country" id="country" readonly value="Philippines" class="form-control" placeholder="Province"
-                    pattern="[a-zA-Z\s]+" onblur="this.value = this.value.replace(/[^a-zA-Z\s]/g, ''); checkFormCompletion();" required />
+                  <input type="text" name="country" id="country" readonly value="Philippines" class="form-control"
+                    placeholder="Province" pattern="[a-zA-Z\s]+"
+                    onblur="this.value = this.value.replace(/[^a-zA-Z\s]/g, ''); checkFormCompletion();" required />
                 </div>
                 <div class="col-md-4">
-                  <input type="text" name="postcode" id="postcode" class="form-control" placeholder="Postcode" oninput="validatePostcode();" onblur="validatePostcode();" required />
+                  <input type="text" name="postcode" id="postcode" class="form-control" placeholder="Postcode"
+                    oninput="validatePostcode();" onblur="validatePostcode();" required />
                 </div>
-              </div>            
+              </div>
           </form>
 
           <!-- OTP Section (hidden initially) -->
-          <div class="row mt-4 align-items-center" id="otpRow" >
+          <div class="row mt-4 align-items-center" id="otpRow">
             <div class="col-md-auto">
               <small class="text-muted font-family-mulish">*Please ENTER the OTP sent to your Email and Submit</small>
             </div>
