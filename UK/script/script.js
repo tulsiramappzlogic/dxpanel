@@ -144,7 +144,7 @@ $(document).ready(function () {
 
           // Clear form and reset
           $('#ukPollsForm')[0].reset();
-          $('#otpRow').slideUp();
+          // $('#otpRow').slideUp();
           $('#otpTimerContainer').slideUp();
           $('#otp').val('');
 
