@@ -130,7 +130,7 @@ $(document).ready(function () {
     var city = $("#city").val().trim();
     var country = $("#country").val().trim();
     var postcode = $("#postcode").val().trim();
-
+    $("#messageContainer").html("");
     // Validate full name (min 3 characters)
     if (full_name.length < 3) {
       return;
@@ -146,9 +146,9 @@ $(document).ready(function () {
       return;
     }
 
-    if (postcode.length < 5) {
-      return;
-    }
+    // if (postcode.length < 5) {
+    //   return;
+    // }
 
     // Check all fields are filled
     var allFilled =
