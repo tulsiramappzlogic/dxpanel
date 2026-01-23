@@ -113,6 +113,11 @@ $(document).ready(function () {
       return;
     }
 
+    if (postcode.length < 5) {
+      return;
+    }
+
+
     // Check all fields are filled
     var allFilled =
       full_name &&
