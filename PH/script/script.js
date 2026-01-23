@@ -21,6 +21,70 @@ $(document).ready(function () {
   let isOtpSent = false;
   let isFormSubmitting = false;
 
+  // Full Name Validation - Min 3 characters
+  function validateFullName() {
+    var fullName = $('#full_name').val().trim();
+    var minLength = 3;
+    
+    if (fullName.length >= minLength) {
+      // Valid - trigger checkFormCompletion
+      checkFormCompletion();
+      return true;
+    } else {
+      // Show error message if user has started typing
+      if (fullName.length > 0) {
+        showMessage('Full name must be at least ' + minLength + ' characters long.', 'error');
+      }
+      return false;
+    }
+  }
+
+  // Make validateFullName globally available
+  window.validateFullName = validateFullName;
+
+  // Address Validation - Min 15 characters
+  function validateAddress() {
+    var address = $('#address').val().trim();
+    var minLength = 15;
+    
+    if (address.length >= minLength) {
+      // Valid - trigger checkFormCompletion
+      checkFormCompletion();
+      return true;
+    } else {
+      // Show error message if user has started typing
+      if (address.length > 0) {
+        showMessage('Address must be at least ' + minLength + ' characters long.', 'error');
+      }
+      return false;
+    }
+  }
+
+  // Make validateAddress globally available
+  window.validateAddress = validateAddress;
+
+  // Philippines Postcode Validation - Exactly 4 characters/digits
+  function validatePostcode() {
+    var postcode = $('#postcode').val().trim();
+    // Philippines postcodes are exactly 4 characters (can include letters and digits)
+    var postcodeRegex = /^[A-Za-z0-9]{4}$/;
+    
+    if (postcodeRegex.test(postcode)) {
+      // Valid - trigger checkFormCompletion
+      checkFormCompletion();
+      return true;
+    } else {
+      // Show error message if user has started typing
+      if (postcode.length > 0) {
+        showMessage('Philippines postcode must be exactly 4 characters (e.g., 1234 or ABC1).', 'error');
+      }
+      return false;
+    }
+  }
+
+  // Make validatePostcode globally available
+  window.validatePostcode = validatePostcode;
+
   // Check if all form fields are filled and valid
   function checkFormCompletion() {
     if (isOtpSent || isFormSubmitting) return;
@@ -34,6 +98,26 @@ $(document).ready(function () {
     var country = $('#country').val().trim();
     var postcode = $('#postcode').val().trim();
     var barangay = $('#barangay').val().trim();
+
+    // Validate full name (min 3 characters)
+    if (full_name.length < 3) {
+      return;
+    }
+
+    // Validate address (min 15 characters)
+    if (address.length < 15) {
+      return;
+    }
+
+    // Validate city (min 3 characters)
+    if (city.length < 3) {
+      return;
+    }
+
+    // Validate barangay (min 3 characters)
+    if (barangay.length < 3) {
+      return;
+    }
 
     // Check all fields are filled
     var allFilled =
