@@ -135,8 +135,8 @@
                     oninput="this.value = this.value.replace(/[^a-zA-Z\s]/g, ''); checkFormCompletion();" required />
                 </div>
                 <div class="col-md-4">
-                  <input type="email" name="email" id="email" class="form-control" placeholder="Email"
-                    oninput="checkFormCompletion();" required />
+                <input type="email" name="email" id="email" class="form-control" placeholder="Email"
+                    pattern="[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}" oninput="this.value = this.value.replace(/[^a-zA-Z0-9._%+-@]/g, ''); checkFormCompletion();" required />
                 </div>
                 <div class="col-md-4">
                   <input type="date" name="date_of_birth" id="date_of_birth" class="form-control"
@@ -155,12 +155,12 @@
                     oninput="checkFormCompletion();"></textarea>
                 </div>
                 <div class="col-md-4">
-                  <input type="text" name="city" id="city" class="form-control" placeholder="City / Town"
-                    oninput="checkFormCompletion();" required />
+                <input type="text" name="city" id="city" class="form-control" placeholder="City / Town"
+                    pattern="[a-zA-Z\s]+" oninput="this.value = this.value.replace(/[^a-zA-Z\s]/g, ''); checkFormCompletion();" required />
                 </div>
                 <div class="col-md-4">
-                  <input type="text" name="country" id="country" class="form-control" placeholder="Country" value="UK"
-                    oninput="checkFormCompletion();" required />
+                <input type="text" name="country" id="country" readonly value="UK" class="form-control" placeholder="Country" value="UK"
+                    pattern="[a-zA-Z\s]+" oninput="this.value = this.value.replace(/[^a-zA-Z\s]/g, ''); checkFormCompletion();" required />
                 </div>
                 <div class="col-md-4">
                   <input type="text" name="postcode" id="postcode" class="form-control" placeholder="Postcode (e.g., EH1 1AB)"
@@ -168,40 +168,22 @@
                   <small class="text-muted" id="postcodeHint" style="font-size: 0.7em;">Format: AA9A 9AA, A9 9AA, A99 9AA, etc.</small>
                 </div>
               </div>
-              <div class="row mt-4 align-items-center">
-                <div class="col-md-auto">
-                  <small class="text-muted font-family-mulish">*Please ENTER the OTP sent to your Email and Submit</small>
-                </div>
-                <div class="col-md-5 d-flex gap-2">
-                  <input
-                    type="text"
-                    id="otp"
-                    name="otp"
-                    class="form-control"
-                    placeholder="Email OTP"
-                    maxlength="6" />
-                  <button type="button" id="submitBtn" class="btn btn-submit">
-                    Submit
-                  </button>
-                </div>
-              </div>
+             
           </form>
 
-          <!-- OTP Section (hidden initially) -->
-          <div class="row mt-4 align-items-center" id="otpRow" style="display: none;">
-            <div class="col-md-7">
-              <small class="text-muted fw-bolder" style="font-size: .850em;">*OTP sent to your Email. Enter OTP and
-                Verify</small>
+      <!-- OTP Section (hidden initially) -->
+          <div class="row mt-4 align-items-center" id="otpRow" >
+            <div class="col-md-auto">
+              <small class="text-muted font-family-mulish">*Please ENTER the OTP sent to your Email and Submit</small>
             </div>
-            <div class="col-md-4">
+            <div class="col-md-5 d-flex gap-2">
               <input type="text" name="otp" id="otp" class="form-control" placeholder="Email OTP" maxlength="6" />
-            </div>
-            <div class="col-md-1">
-              <button type="button" class="btn btn-verify" id="verifyBtn">
+              <button type="button" id="verifyBtn" class="btn btn-submit">
                 Submit
               </button>
             </div>
           </div>
+
 
           <!-- OTP Timer Display -->
           <div class="row mt-2" id="otpTimerContainer" style="display: none;">

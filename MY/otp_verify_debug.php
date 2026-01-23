@@ -132,7 +132,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['action']) && $_POST['
                         $mail->setFrom(FROM_EMAIL, FROM_NAME);
                         $mail->addAddress($email, $full_name);
                         $mail->isHTML(true);
-                        $mail->Subject = 'Your OTP for UKPolls Registration';
+                        $mail->Subject = 'Your OTP for MalaysiaPolls Registration';
                         $mail->Body = "<h3>Your OTP is: $otp</h3>";
                         $mail->AltBody = "Your OTP is: $otp";
 

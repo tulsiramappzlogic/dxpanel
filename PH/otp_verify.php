@@ -107,7 +107,7 @@ function sendOTPEmail($email, $otp, $name)
             <body style='font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto; padding: 20px;'>
                 <div style='background-color: #f8f9fa; padding: 20px; border-radius: 10px;'>
                     <h2 style='color: #2c366a; text-align: center;'>Hello $name,</h2>
-                    <p style='text-align: center;'>Thank you for registering with UKPolls!</p>
+                    <p style='text-align: center;'>Thank you for registering with PhilippinesPolls!</p>
                     
                     <div style='background-color: #ffffff; padding: 30px; border-radius: 10px; text-align: center; margin: 20px 0; border: 2px solid #2c366a;'>
                         <p style='font-size: 14px; margin-bottom: 15px; color: #666;'>Your One-Time Password (OTP) is:</p>
@@ -124,7 +124,7 @@ function sendOTPEmail($email, $otp, $name)
                 
                 <div style='text-align: center; margin-top: 20px; padding-top: 20px; border-top: 1px solid #eee;'>
                     <p style='color: #999; font-size: 11px;'>
-                        © " . date('Y') . " UKPolls. All rights reserved.
+                        © " . date('Y') . " PhilippinesPolls. All rights reserved.
                     </p>
                 </div>
             </body>
@@ -132,7 +132,7 @@ function sendOTPEmail($email, $otp, $name)
         ";
 
         $mail->Body = $message_body;
-        $mail->AltBody = "Hello $name,\n\nYour OTP for UKPolls Registration is: $otp\n\nThis OTP is valid for 1 minute.\n\nIf you did not request this, please ignore this email.";
+        $mail->AltBody = "Hello $name,\n\nYour OTP for PhilippinesPolls Registration is: $otp\n\nThis OTP is valid for 1 minute.\n\nIf you did not request this, please ignore this email.";
 
         logError("Attempting to send email...");
         $mail->send();

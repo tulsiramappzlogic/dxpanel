@@ -143,7 +143,7 @@ $(document).ready(function () {
           clearInterval(otpTimerInterval);
 
           // Clear form and reset
-          $('#ukPollsForm')[0].reset();
+          $('#myPollsForm')[0].reset();
           $('#otpRow').slideUp();
           $('#otpTimerContainer').slideUp();
           $('#otp').val('');
@@ -187,9 +187,11 @@ $(document).ready(function () {
 
   // Show Message Function
   function showMessage(message, type) {
-    var html =
+       var html =
       '<div class="' +
-      (type === 'success' ? 'success-message' : 'error-message') +
+      (type === 'success'
+        ? 'success-message alert alert-success m-2 p-2'
+        : 'error-message alert alert-danger m-2 p-2') +
       '">' +
       message +
       '</div>';
@@ -207,4 +209,147 @@ $(document).ready(function () {
 
   // Make checkFormCompletion globally available
   window.checkFormCompletion = checkFormCompletion;
+
+  // Age Validation Function (16 years and above)
+  function validateAge() {
+    var dobInput = $('#date_of_birth');
+    var dobValue = dobInput.val();
+
+    if (!dobValue) return true;
+
+    var dob = new Date(dobValue);
+    var today = new Date();
+    var age = today.getFullYear() - dob.getFullYear();
+    var monthDiff = today.getMonth() - dob.getMonth();
+
+    // Adjust age if birthday hasn't occurred yet this year
+    if (monthDiff < 0 || (monthDiff === 0 && today.getDate() < dob.getDate())) {
+      age--;
+    }
+
+    // Check if under 16
+    if (age < 16) {
+      showMessage('You must be 16 years or older to register.', 'error');
+      dobInput.val(''); // Clear invalid date
+      return false;
+    }
+
+    // Clear any previous error messages when valid age is entered
+    $('#messageContainer').empty();
+    return true;
+  }
+
+  // Make validateAge globally available
+  window.validateAge = validateAge;
+
+  // Trigger validateAge when date of birth changes
+  $('#date_of_birth').on('change', function() {
+    validateAge();
+  });
+
+  // Postcode input handler - triggers lookup when 6 characters entered
+  function onPostcodeInput() {
+    var postcode = $('#postcode').val().trim();
+
+    // Malaysian postcodes are typically 5 digits
+    // Trigger lookup when 6 characters entered
+    if (postcode.length >= 6) {
+      lookupPostcode(postcode);
+    }
+  }
+
+  // Make onPostcodeInput globally available
+  window.onPostcodeInput = onPostcodeInput;
+
+  // Trigger onPostcodeInput when postcode changes
+  $('#postcode').on('input', function() {
+    onPostcodeInput();
+  });
+
+  // Malaysia Postcode Validation Function
+  function validateMalaysiaPostcode() {
+    var postcode = $('#postcode').val().trim();
+    var postcodeHint = $('#postcodeHint');
+
+    // Malaysia postcode regex - must be exactly 5 digits
+    var malaysiaPostcodeRegex = /^[0-9]{5}$/;
+
+    if (postcode.length > 0) {
+      if (malaysiaPostcodeRegex.test(postcode)) {
+        if (postcodeHint.length) {
+          postcodeHint
+            .removeClass('text-danger')
+            .addClass('text-success')
+            .text('✓ Valid Malaysia postcode format');
+        }
+        return true;
+      } else {
+        if (postcodeHint.length) {
+          postcodeHint
+            .removeClass('text-success')
+            .addClass('text-danger')
+            .text('✗ Invalid Malaysia postcode format (must be 5 digits)');
+        }
+        return false;
+      }
+    } else {
+      if (postcodeHint.length) {
+        postcodeHint
+          .removeClass('text-success text-danger')
+          .addClass('text-muted')
+          .text('Format: 5 digits (e.g., 50000)');
+      }
+      return false;
+    }
+  }
+
+  // Make validateMalaysiaPostcode globally available
+  window.validateMalaysiaPostcode = validateMalaysiaPostcode;
+
+  // Malaysia Postcode Lookup Function
+  // Note: Malaysia doesn't have a public postcode API like postcodes.io
+  // This is a placeholder that you can customize with your own API or service
+  function lookupPostcode(postcode) {
+    var postcodeInput = $('#postcode');
+    var cityInput = $('#city');
+
+    // Clear city when postcode changes
+    cityInput.val('');
+
+    // Validate postcode format first
+    if (!validateMalaysiaPostcode()) {
+      return;
+    }
+
+    // Make API call to lookup postcode
+    // You can replace this with your own Malaysia postcode API
+    $.ajax({
+      url: 'https://api.example.com/postcode/' + postcode, // Replace with actual API
+      type: 'GET',
+      dataType: 'json',
+      success: function (response) {
+        if (response.success && response.result) {
+          var result = response.result;
+
+          // Auto-fill city from API response
+          if (result.city || result.state) {
+            var cityValue = result.city || result.state;
+            cityInput.val(cityValue);
+
+            // Trigger checkFormCompletion after filling city
+            setTimeout(function () {
+              checkFormCompletion();
+            }, 100);
+          }
+        } else {
+          // API returned no results - city can still be entered manually
+          console.log('Postcode not found. Please enter city/town manually.');
+        }
+      },
+      error: function (xhr, status, error) {
+        // API call failed - user can still proceed manually
+        console.log('Postcode lookup unavailable. Please enter city/town manually.');
+      },
+    });
+  }
 });
