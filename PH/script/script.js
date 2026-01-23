@@ -66,6 +66,48 @@ $(document).ready(function () {
   // Make validateEmail globally available
   window.validateEmail = validateEmail;
 
+  // City Validation - Min 3 characters
+  function validateCity() {
+    var city = $("#city").val().trim();
+    var minLength = 3;
+
+    if (city.length >= minLength) {
+      // Valid - trigger checkFormCompletion
+      checkFormCompletion();
+      return true;
+    } else {
+      // Show error message if user has started typing
+      if (city.length > 0) {
+        showMessage("City must be at least " + minLength + " characters long.", "error");
+      }
+      return false;
+    }
+  }
+
+  // Make validateCity globally available
+  window.validateCity = validateCity;
+
+  // Barangay Validation - Min 3 characters
+  function validateBarangay() {
+    var barangay = $("#barangay").val().trim();
+    var minLength = 3;
+
+    if (barangay.length >= minLength) {
+      // Valid - trigger checkFormCompletion
+      checkFormCompletion();
+      return true;
+    } else {
+      // Show error message if user has started typing
+      if (barangay.length > 0) {
+        showMessage("Barangay must be at least " + minLength + " characters long.", "error");
+      }
+      return false;
+    }
+  }
+
+  // Make validateBarangay globally available
+  window.validateBarangay = validateBarangay;
+
   // Address Validation - Min 15 characters
   function validateAddress() {
     var address = $("#address").val().trim();
