@@ -122,7 +122,7 @@ $(document).ready(function () {
     var gender = $("#gender").val();
     var address = $("#address").val().trim();
     var postcode = $("#postcode").val().trim();
-
+    $("#messageContainer").html("");
     // Validate full name (min 3 characters)
     if (full_name.length < 3) {
       return;

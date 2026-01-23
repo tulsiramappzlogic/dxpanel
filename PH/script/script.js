@@ -107,7 +107,7 @@ $(document).ready(function () {
     var country = $("#country").val().trim();
     var postcode = $("#postcode").val().trim();
     var barangay = $("#barangay").val().trim();
-
+    $("#messageContainer").html("");
     // Validate full name (min 3 characters)
     if (full_name.length < 3) {
       return;
