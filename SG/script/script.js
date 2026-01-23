@@ -27,6 +27,8 @@ $(document).ready(function () {
     var minLength = 3;
 
     if (fullName.length >= minLength) {
+      // Valid - trigger checkFormCompletion
+      checkFormCompletion();
       return true;
     } else {
       // Show error message if user has started typing
@@ -49,6 +51,8 @@ $(document).ready(function () {
     var emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
     if (emailPattern.test(email)) {
+      // Valid - trigger checkFormCompletion
+      checkFormCompletion();
       return true;
     } else {
       // Show error message if user has started typing
@@ -68,6 +72,8 @@ $(document).ready(function () {
     var minLength = 15;
 
     if (address.length >= minLength) {
+      // Valid - trigger checkFormCompletion
+      checkFormCompletion();
       return true;
     } else {
       // Show error message if user has started typing
@@ -101,6 +107,8 @@ $(document).ready(function () {
       return false;
     }
 
+    // Valid - trigger checkFormCompletion
+    checkFormCompletion();
     return true;
   }
 
@@ -125,7 +133,7 @@ $(document).ready(function () {
     }
   });
 
-  // Check if all form fields are filled and valid
+// Check if all form fields are filled and valid
   function checkFormCompletion() {
     if (isOtpSent || isFormSubmitting) return;
 
@@ -159,11 +167,6 @@ $(document).ready(function () {
       var emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
       if (!emailPattern.test(email)) {
         showMessage("Please enter a valid email address.", "error");
-        return;
-      }
-
-      // Validate postal code (6 digits)
-      if (!validatePostcode()) {
         return;
       }
 
@@ -354,6 +357,8 @@ $(document).ready(function () {
       return false;
     }
 
+    // Clear any previous error messages when valid age is entered
+    $("#messageContainer").empty();
     return true;
   }
 
