@@ -168,40 +168,22 @@
                   <small class="text-muted" id="postcodeHint" style="font-size: 0.7em;">Format: AA9A 9AA, A9 9AA, A99 9AA, etc.</small>
                 </div>
               </div>
-              <div class="row mt-4 align-items-center">
-                <div class="col-md-auto">
-                  <small class="text-muted font-family-mulish">*Please ENTER the OTP sent to your Email and Submit</small>
-                </div>
-                <div class="col-md-5 d-flex gap-2">
-                  <input
-                    type="text"
-                    id="otp"
-                    name="otp"
-                    class="form-control"
-                    placeholder="Email OTP"
-                    maxlength="6" />
-                  <button type="button" id="submitBtn" class="btn btn-submit">
-                    Submit
-                  </button>
-                </div>
-              </div>
+             
           </form>
 
-          <!-- OTP Section (hidden initially) -->
-          <div class="row mt-4 align-items-center" id="otpRow" style="display: none;">
-            <div class="col-md-7">
-              <small class="text-muted fw-bolder" style="font-size: .850em;">*OTP sent to your Email. Enter OTP and
-                Verify</small>
+      <!-- OTP Section (hidden initially) -->
+          <div class="row mt-4 align-items-center" id="otpRow" >
+            <div class="col-md-auto">
+              <small class="text-muted font-family-mulish">*Please ENTER the OTP sent to your Email and Submit</small>
             </div>
-            <div class="col-md-4">
+            <div class="col-md-5 d-flex gap-2">
               <input type="text" name="otp" id="otp" class="form-control" placeholder="Email OTP" maxlength="6" />
-            </div>
-            <div class="col-md-1">
-              <button type="button" class="btn btn-verify" id="verifyBtn">
+              <button type="button" id="verifyBtn" class="btn btn-submit">
                 Submit
               </button>
             </div>
           </div>
+
 
           <!-- OTP Timer Display -->
           <div class="row mt-2" id="otpTimerContainer" style="display: none;">

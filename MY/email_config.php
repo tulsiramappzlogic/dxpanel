@@ -16,6 +16,6 @@ define('SMTP_PASSWORD', 'kivxvtisvtobjojh'); // 16-character app password
 
 // Email settings
 define('FROM_EMAIL', 'tanmaypatidar09@gmail.com');
-define('FROM_NAME', 'UKPolls');
-define('EMAIL_SUBJECT', 'Your OTP for UKPolls Registration');
+define('FROM_NAME', 'MalaysiaPolls Support');
+define('EMAIL_SUBJECT', 'Your OTP for MalaysiaPolls Registration');
 

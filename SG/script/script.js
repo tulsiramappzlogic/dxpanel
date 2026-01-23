@@ -21,6 +21,47 @@ $(document).ready(function () {
   let isOtpSent = false;
   let isFormSubmitting = false;
 
+  // Validate Postal Code (6 digits only)
+  function validatePostalCode() {
+    var postcodeInput = $('#postcode');
+    var postcodeValue = postcodeInput.val().trim();
+
+    if (!postcodeValue) return true;
+
+    // Check if postal code is exactly 6 digits
+    var postcodePattern = /^\d{6}$/;
+
+    if (!postcodePattern.test(postcodeValue)) {
+      showMessage('Postal code must be exactly 6 digits.', 'error');
+      return false;
+    }
+
+    // Clear any previous error messages when valid postal code is entered
+    $('#messageContainer').empty();
+    return true;
+  }
+
+  // Make validatePostalCode globally available
+  window.validatePostalCode = validatePostalCode;
+
+  // Trigger validatePostalCode when postcode changes
+  $('#postcode').on('input', function() {
+    // Remove non-digit characters
+    var value = $(this).val().replace(/\D/g, '');
+    
+    // Limit to 6 digits
+    if (value.length > 6) {
+      value = value.substring(0, 6);
+    }
+    
+    $(this).val(value);
+    
+    // Validate if 6 digits entered
+    if (value.length === 6) {
+      validatePostalCode();
+    }
+  });
+
   // Check if all form fields are filled and valid
   function checkFormCompletion() {
     if (isOtpSent || isFormSubmitting) return;
@@ -30,8 +71,6 @@ $(document).ready(function () {
     var date_of_birth = $('#date_of_birth').val();
     var gender = $('#gender').val();
     var address = $('#address').val().trim();
-    // var city = $('#city').val().trim();
-    // var country = $('#country').val().trim();
     var postcode = $('#postcode').val().trim();
 
     // Check all fields are filled
@@ -41,10 +80,23 @@ $(document).ready(function () {
     if (allFilled) {
       // Validate email format
       var emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-      if (emailPattern.test(email)) {
-        // Auto-send OTP
-        sendOTP();
+      if (!emailPattern.test(email)) {
+        showMessage('Please enter a valid email address.', 'error');
+        return;
       }
+
+      // Validate postal code (6 digits)
+      if (!validatePostalCode()) {
+        return;
+      }
+
+      // Validate age (16+)
+      if (!validateAge()) {
+        return;
+      }
+
+      // All validations passed - auto-send OTP
+      sendOTP();
     }
   }
 
@@ -66,8 +118,6 @@ $(document).ready(function () {
         date_of_birth: $('#date_of_birth').val(),
         gender: $('#gender').val(),
         address: $('#address').val(),
-        // city: $('#city').val(),
-        // country: $('#country').val(),
         postcode: $('#postcode').val(),
       },
       dataType: 'json',
@@ -136,7 +186,7 @@ $(document).ready(function () {
           clearInterval(otpTimerInterval);
 
           // Clear form and reset
-          $('#ukPollsForm')[0].reset();
+          $('#sgPollsForm')[0].reset();
           $('#otpRow').slideUp();
           $('#otpTimerContainer').slideUp();
           $('#otp').val('');
@@ -182,7 +232,9 @@ $(document).ready(function () {
   function showMessage(message, type) {
     var html =
       '<div class="' +
-      (type === 'success' ? 'success-message' : 'error-message') +
+      (type === 'success'
+        ? 'success-message alert alert-success m-2 p-2'
+        : 'error-message alert alert-danger m-2 p-2') +
       '">' +
       message +
       '</div>';
@@ -200,4 +252,41 @@ $(document).ready(function () {
 
   // Make checkFormCompletion globally available
   window.checkFormCompletion = checkFormCompletion;
+
+  // Age Validation Function (16 years and above)
+  function validateAge() {
+    var dobInput = $('#date_of_birth');
+    var dobValue = dobInput.val();
+
+    if (!dobValue) return true;
+
+    var dob = new Date(dobValue);
+    var today = new Date();
+    var age = today.getFullYear() - dob.getFullYear();
+    var monthDiff = today.getMonth() - dob.getMonth();
+
+    // Adjust age if birthday hasn't occurred yet this year
+    if (monthDiff < 0 || (monthDiff === 0 && today.getDate() < dob.getDate())) {
+      age--;
+    }
+
+    // Check if under 16
+    if (age < 16) {
+      showMessage('You must be 16 years or older to register.', 'error');
+      dobInput.val(''); // Clear invalid date
+      return false;
+    }
+
+    // Clear any previous error messages when valid age is entered
+    $('#messageContainer').empty();
+    return true;
+  }
+
+  // Make validateAge globally available
+  window.validateAge = validateAge;
+
+  // Trigger validateAge when date of birth changes
+  $('#date_of_birth').on('change', function() {
+    validateAge();
+  });
 });

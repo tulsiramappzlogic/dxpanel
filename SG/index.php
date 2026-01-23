@@ -31,18 +31,17 @@
         <!-- Social Icons - Left Column -->
         <div class="col-4 col-lg-3 text-start">
           <div class="social-icons d-flex flex-wrap">
-            <a href="https://www.facebook.com/people/SingaporePolls/61586818442491/" class="me-2 me-md-3" title="Facebook"><i class="fab fa-facebook-f"></i></a>
-            <a href="https://in.linkedin.com/company/dataxing-digital" class="me-2 me-md-3" title="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+            <a href="https://www.facebook.com/people/SingaporePolls/61586818442491/" class="me-2 me-md-3"
+              title="Facebook"><i class="fab fa-facebook-f"></i></a>
+            <a href="https://in.linkedin.com/company/dataxing-digital" class="me-2 me-md-3" title="LinkedIn"><i
+                class="fab fa-linkedin-in"></i></a>
             <a href="#" title="Instagram"><i class="fab fa-instagram"></i></a>
           </div>
         </div>
 
         <!-- Logo - Center Column -->
         <div class="col-4 col-lg-6 text-center py-2 py-sm-0">
-          <img
-            src="./image/SingaporePolls Logo.png"
-            alt="SingaporePolls Logo"
-            class="brand-logo"
+          <img src="./image/SingaporePolls Logo.png" alt="SingaporePolls Logo" class="brand-logo"
             style="max-width: 100%; height: auto;" />
         </div>
 
@@ -66,7 +65,8 @@
 
         <!-- Mobile/Tablet Menu Button -->
         <div class="col-4 col-lg-3 text-center text-end d-md-none">
-          <button class="btn btn-outline-secondary rounded-pill" type="button" id="authMenuToggle" style="border: 1px solid rgba(88, 89, 91, 1); padding: 6px 16px;">
+          <button class="btn btn-outline-secondary rounded-pill" type="button" id="authMenuToggle"
+            style="border: 1px solid rgba(88, 89, 91, 1); padding: 6px 16px;">
             <i class="fas fa-bars"></i> Menu
           </button>
         </div>
@@ -115,7 +115,8 @@
           <div class="hero-text mb-4">
             <h1>
               <span class="font-family-expletus color-red-1 fw-400">Hello</span><br /><span
-                class="font-family-expletus color-black fw-400 d-flex align-items-center gap-3">Singapore<img src="./image/icons/curveIcon.png" alt="curve" /></span>
+                class="font-family-expletus color-black fw-400 d-flex align-items-center gap-3">Singapore<img
+                  src="./image/icons/curveIcon.png" alt="curve" /></span>
             </h1>
             <p class="lead fw-normal font-family-mulish">
               Welcome to Singapore's newest, coolest<br />
@@ -126,7 +127,7 @@
           <!-- Message Display -->
           <div id="messageContainer"></div>
 
-          <form id="ukPollsForm">
+          <form id="sgPollsForm">
             <!-- Form Fields Section -->
             <div class="form-section" id="formSection">
               <div class="row g-3">
@@ -152,44 +153,25 @@
                   </select>
                 </div>
                 <div class="col-md-4">
-                  <textarea name="address" id="address" class="form-control" placeholder="Address line" required rows="1"
-                    oninput="checkFormCompletion();"></textarea>
+                  <textarea name="address" id="address" class="form-control" placeholder="Address line" required
+                    rows="1" oninput="checkFormCompletion();"></textarea>
                 </div>
                 <div class="col-md-4">
                   <input type="text" name="postcode" id="postcode" class="form-control" placeholder="Postcode"
                     oninput="checkFormCompletion();" required />
                 </div>
               </div>
-              <div class="row mt-4 align-items-center">
-                <div class="col-md-auto">
-                  <small class="text-muted font-family-mulish">*Please ENTER the OTP sent to your Email and Submit</small>
-                </div>
-                <div class="col-md-5 d-flex gap-2">
-                  <input
-                    type="text"
-                    id="otp"
-                    name="otp"
-                    class="form-control"
-                    placeholder="Email OTP"
-                    maxlength="6" />
-                  <button type="button" id="submitBtn" class="btn btn-submit">
-                    Submit
-                  </button>
-                </div>
-              </div>
+          
           </form>
 
           <!-- OTP Section (hidden initially) -->
-          <div class="row mt-4 align-items-center" id="otpRow" style="display: none;">
-            <div class="col-md-7">
-              <small class="text-muted fw-bolder" style="font-size: .850em;">*OTP sent to your Email. Enter OTP and
-                Verify</small>
+          <div class="row mt-4 align-items-center" id="otpRow" >
+            <div class="col-md-auto">
+              <small class="text-muted font-family-mulish">*Please ENTER the OTP sent to your Email and Submit</small>
             </div>
-            <div class="col-md-4">
+            <div class="col-md-5 d-flex gap-2">
               <input type="text" name="otp" id="otp" class="form-control" placeholder="Email OTP" maxlength="6" />
-            </div>
-            <div class="col-md-1">
-              <button type="button" class="btn btn-verify" id="verifyBtn">
+              <button type="button" id="verifyBtn" class="btn btn-submit">
                 Submit
               </button>
             </div>

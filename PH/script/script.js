@@ -146,7 +146,7 @@ $(document).ready(function () {
           clearInterval(otpTimerInterval);
 
           // Clear form and reset
-          $('#ukPollsForm')[0].reset();
+          $('#phPollsForm')[0].reset();
           $('#otpRow').slideUp();
           $('#otpTimerContainer').slideUp();
           $('#otp').val('');
@@ -190,9 +190,11 @@ $(document).ready(function () {
 
   // Show Message Function
   function showMessage(message, type) {
-    var html =
+       var html =
       '<div class="' +
-      (type === 'success' ? 'success-message' : 'error-message') +
+      (type === 'success'
+        ? 'success-message alert alert-success m-2 p-2'
+        : 'error-message alert alert-danger m-2 p-2') +
       '">' +
       message +
       '</div>';
@@ -210,4 +212,41 @@ $(document).ready(function () {
 
   // Make checkFormCompletion globally available
   window.checkFormCompletion = checkFormCompletion;
+
+  // Age Validation Function (16 years and above)
+  function validateAge() {
+    var dobInput = $('#date_of_birth');
+    var dobValue = dobInput.val();
+
+    if (!dobValue) return true;
+
+    var dob = new Date(dobValue);
+    var today = new Date();
+    var age = today.getFullYear() - dob.getFullYear();
+    var monthDiff = today.getMonth() - dob.getMonth();
+
+    // Adjust age if birthday hasn't occurred yet this year
+    if (monthDiff < 0 || (monthDiff === 0 && today.getDate() < dob.getDate())) {
+      age--;
+    }
+
+    // Check if under 16
+    if (age < 16) {
+      showMessage('You must be 16 years or older to register.', 'error');
+      dobInput.val(''); // Clear invalid date
+      return false;
+    }
+
+    // Clear any previous error messages when valid age is entered
+    $('#messageContainer').empty();
+    return true;
+  }
+
+  // Make validateAge globally available
+  window.validateAge = validateAge;
+
+  // Trigger validateAge when date of birth changes
+  $('#date_of_birth').on('change', function() {
+    validateAge();
+  });
 });
