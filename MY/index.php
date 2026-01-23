@@ -135,8 +135,8 @@
                     oninput="this.value = this.value.replace(/[^a-zA-Z\s]/g, ''); checkFormCompletion();" required />
                 </div>
                 <div class="col-md-4">
-                  <input type="email" name="email" id="email" class="form-control" placeholder="Email"
-                    oninput="checkFormCompletion();" required />
+                <input type="email" name="email" id="email" class="form-control" placeholder="Email"
+                    pattern="[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}" oninput="this.value = this.value.replace(/[^a-zA-Z0-9._%+-@]/g, ''); checkFormCompletion();" required />
                 </div>
                 <div class="col-md-4">
                   <input type="date" name="date_of_birth" id="date_of_birth" class="form-control"
@@ -155,12 +155,12 @@
                     oninput="checkFormCompletion();"></textarea>
                 </div>
                 <div class="col-md-4">
-                  <input type="text" name="city" id="city" class="form-control" placeholder="City"
-                    oninput="checkFormCompletion();" required />
+                <input type="text" name="city" id="city" class="form-control" placeholder="City"
+                    pattern="[a-zA-Z\s]+" oninput="this.value = this.value.replace(/[^a-zA-Z\s]/g, ''); checkFormCompletion();" required />
                 </div>
                 <div class="col-md-4">
-                  <input type="text" name="country" id="country" class="form-control" placeholder="State / Province"
-                    oninput="checkFormCompletion();" required />
+                <input type="text" name="country" id="country" class="form-control" placeholder="State / Province"
+                    pattern="[a-zA-Z\s]+" oninput="this.value = this.value.replace(/[^a-zA-Z\s]/g, ''); checkFormCompletion();" required />
                 </div>
                 <div class="col-md-4">
                   <input type="text" name="postcode" id="postcode" class="form-control" placeholder="Postcode"
