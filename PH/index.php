@@ -162,7 +162,7 @@
                     pattern="[a-zA-Z\s]+" oninput="this.value = this.value.replace(/[^a-zA-Z\s]/g, ''); checkFormCompletion();" required />
                 </div>
                 <div class="col-md-4">
-                <input type="text" name="country" id="country" class="form-control" placeholder="Province"
+                <input type="text" name="country" id="country" readonly value="Philippines" class="form-control" placeholder="Province"
                     pattern="[a-zA-Z\s]+" oninput="this.value = this.value.replace(/[^a-zA-Z\s]/g, ''); checkFormCompletion();" required />
                 </div>
                 <div class="col-md-4">
