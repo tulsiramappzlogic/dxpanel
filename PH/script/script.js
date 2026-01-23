@@ -147,7 +147,7 @@ $(document).ready(function () {
 
           // Clear form and reset
           $('#phPollsForm')[0].reset();
-          $('#otpRow').slideUp();
+        //  $('#otpRow').slideUp();
           $('#otpTimerContainer').slideUp();
           $('#otp').val('');
 
