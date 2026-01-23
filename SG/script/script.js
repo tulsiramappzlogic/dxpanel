@@ -21,8 +21,50 @@ $(document).ready(function () {
   let isOtpSent = false;
   let isFormSubmitting = false;
 
-  // Validate Postal Code (6 digits only)
-  function validatePostalCode() {
+  // Full Name Validation - Min 3 characters
+  function validateFullName() {
+    var fullName = $('#full_name').val().trim();
+    var minLength = 3;
+    
+    if (fullName.length >= minLength) {
+      // Valid - trigger checkFormCompletion
+      checkFormCompletion();
+      return true;
+    } else {
+      // Show error message if user has started typing
+      if (fullName.length > 0) {
+        showMessage('Full name must be at least ' + minLength + ' characters long.', 'error');
+      }
+      return false;
+    }
+  }
+
+  // Make validateFullName globally available
+  window.validateFullName = validateFullName;
+
+  // Address Validation - Min 15 characters
+  function validateAddress() {
+    var address = $('#address').val().trim();
+    var minLength = 15;
+    
+    if (address.length >= minLength) {
+      // Valid - trigger checkFormCompletion
+      checkFormCompletion();
+      return true;
+    } else {
+      // Show error message if user has started typing
+      if (address.length > 0) {
+        showMessage('Address must be at least ' + minLength + ' characters long.', 'error');
+      }
+      return false;
+    }
+  }
+
+  // Make validateAddress globally available
+  window.validateAddress = validateAddress;
+
+  // Validate Postal Code (6 digits only) and trigger checkFormCompletion
+  function validatePostcode() {
     var postcodeInput = $('#postcode');
     var postcodeValue = postcodeInput.val().trim();
 
@@ -32,19 +74,21 @@ $(document).ready(function () {
     var postcodePattern = /^\d{6}$/;
 
     if (!postcodePattern.test(postcodeValue)) {
-      showMessage('Postal code must be exactly 6 digits.', 'error');
+      if (postcodeValue.length > 0) {
+        showMessage('Singapore postcode must be exactly 6 digits.', 'error');
+      }
       return false;
     }
 
-    // Clear any previous error messages when valid postal code is entered
-    $('#messageContainer').empty();
+    // Valid - trigger checkFormCompletion
+    checkFormCompletion();
     return true;
   }
 
-  // Make validatePostalCode globally available
-  window.validatePostalCode = validatePostalCode;
+  // Make validatePostcode globally available
+  window.validatePostcode = validatePostcode;
 
-  // Trigger validatePostalCode when postcode changes
+  // Trigger validatePostcode when postcode changes
   $('#postcode').on('input', function() {
     // Remove non-digit characters
     var value = $(this).val().replace(/\D/g, '');
@@ -73,6 +117,16 @@ $(document).ready(function () {
     var address = $('#address').val().trim();
     var postcode = $('#postcode').val().trim();
 
+    // Validate full name (min 3 characters)
+    if (full_name.length < 3) {
+      return;
+    }
+
+    // Validate address (min 15 characters)
+    if (address.length < 15) {
+      return;
+    }
+
     // Check all fields are filled
     var allFilled =
       full_name && email && date_of_birth && gender && address && postcode;
@@ -86,7 +140,7 @@ $(document).ready(function () {
       }
 
       // Validate postal code (6 digits)
-      if (!validatePostalCode()) {
+      if (!validatePostcode()) {
         return;
       }
 

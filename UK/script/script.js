@@ -21,6 +21,94 @@ $(document).ready(function () {
   let isOtpSent = false;
   let isFormSubmitting = false;
 
+  // Full Name Validation - Min 3 characters
+  function validateFullName() {
+    var fullName = $('#full_name').val().trim();
+    var minLength = 3;
+    
+    if (fullName.length >= minLength) {
+      // Valid - trigger checkFormCompletion
+      checkFormCompletion();
+      return true;
+    } else {
+      // Show error message if user has started typing
+      if (fullName.length > 0) {
+        showMessage('Full name must be at least ' + minLength + ' characters long.', 'error');
+      }
+      return false;
+    }
+  }
+
+  // Make validateFullName globally available
+  window.validateFullName = validateFullName;
+
+  // Address Validation - Min 15 characters
+  function validateAddress() {
+    var address = $('#address').val().trim();
+    var minLength = 15;
+    
+    if (address.length >= minLength) {
+      // Valid - trigger checkFormCompletion
+      checkFormCompletion();
+      return true;
+    } else {
+      // Show error message if user has started typing
+      if (address.length > 0) {
+        showMessage('Address must be at least ' + minLength + ' characters long.', 'error');
+      }
+      return false;
+    }
+  }
+
+  // Make validateAddress globally available
+  window.validateAddress = validateAddress;
+
+  // UK Postcode Validation - Min 5 characters
+  function validatePostcode() {
+    var postcode = $('#postcode').val().trim();
+    var postcodeHint = $('#postcodeHint');
+    var minLength = 5;
+    
+    if (postcode.length >= minLength) {
+      // Also validate UK postcode format
+      var ukPostcodeRegex = /^(?:[A-Z]{1,2}[0-9][0-9A-Z]?)[ ]?[0-9][A-Z]{2}$/i;
+      
+      if (ukPostcodeRegex.test(postcode)) {
+        if (postcodeHint.length) {
+          postcodeHint
+            .removeClass('text-danger')
+            .addClass('text-success')
+            .text('✓ Valid UK postcode format');
+        }
+        // Valid - trigger checkFormCompletion
+        checkFormCompletion();
+        return true;
+      } else {
+        if (postcodeHint.length) {
+          postcodeHint
+            .removeClass('text-success')
+            .addClass('text-danger')
+            .text('✗ Invalid UK postcode format');
+        }
+        if (postcode.length > 0) {
+          showMessage('Please enter a valid UK postcode format (e.g., EH1 1AA).', 'error');
+        }
+        return false;
+      }
+    } else {
+      if (postcodeHint.length) {
+        postcodeHint
+          .removeClass('text-success text-danger')
+          .addClass('text-muted')
+          .text('Format: AA9A 9AA, A9 9AA, A99 9AA, etc. (min 5 characters)');
+      }
+      return false;
+    }
+  }
+
+  // Make validatePostcode globally available
+  window.validatePostcode = validatePostcode;
+
   // Check if all form fields are filled and valid
   function checkFormCompletion() {
     if (isOtpSent || isFormSubmitting) return;
@@ -33,6 +121,21 @@ $(document).ready(function () {
     var city = $('#city').val().trim();
     var country = $('#country').val().trim();
     var postcode = $('#postcode').val().trim();
+
+    // Validate full name (min 3 characters)
+    if (full_name.length < 3) {
+      return;
+    }
+
+    // Validate address (min 15 characters)
+    if (address.length < 15) {
+      return;
+    }
+
+    // Validate city (min 3 characters)
+    if (city.length < 3) {
+      return;
+    }
 
     // Check all fields are filled
     var allFilled =

@@ -132,7 +132,7 @@
                 <div class="col-md-4">
                   <input type="text" name="full_name" id="full_name" class="form-control" placeholder="Full Name"
                     pattern="[a-zA-Z\s]+"
-                    onblur="this.value = this.value.replace(/[^a-zA-Z\s]/g, ''); checkFormCompletion();" required />
+                    onblur="this.value = this.value.replace(/[^a-zA-Z\s]/g, ''); validateFullName();" required />
                 </div>
                 <div class="col-md-4">
                 <input type="email" name="email" id="email" class="form-control" placeholder="Email"
@@ -152,7 +152,7 @@
                 </div>
                 <div class="col-md-4">
                   <textarea name="address" id="address" class="form-control" placeholder="Address line" required rows="1"
-                    onblur="checkFormCompletion();"></textarea>
+                    onblur="validateAddress();"></textarea>
                 </div>
                 <div class="col-md-4">
                 <input type="text" name="city" id="city" class="form-control" placeholder="City / Town"
@@ -164,8 +164,8 @@
                 </div>
                 <div class="col-md-4">
                   <input type="text" name="postcode" id="postcode" class="form-control" placeholder="Postcode (e.g., EH1 1AB)"
-                    onblur="onPostcodeInput(); validateUKPostcode(); checkFormCompletion();" required />
-                  <small class="text-muted" id="postcodeHint" style="font-size: 0.7em;">Format: AA9A 9AA, A9 9AA, A99 9AA, etc.</small>
+                    oninput="validatePostcode();" onblur="validatePostcode();" required />
+                  <small class="text-muted" id="postcodeHint" style="font-size: 0.7em;">Format: AA9A 9AA, A9 9AA, A99 9AA, etc. (min 5 characters)</small>
                 </div>
               </div>
              

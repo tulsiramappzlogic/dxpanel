@@ -134,7 +134,7 @@
                 <div class="col-md-4">
                   <input type="text" name="full_name" id="full_name" class="form-control" placeholder="Full Name"
                     pattern="[a-zA-Z\s]+"
-                    onblur="this.value = this.value.replace(/[^a-zA-Z\s]/g, ''); checkFormCompletion();" required />
+                    onblur="this.value = this.value.replace(/[^a-zA-Z\s]/g, ''); validateFullName();" required />
                 </div>
                 <div class="col-md-4">
                 <input type="email" name="email" id="email" class="form-control" placeholder="Email"
@@ -154,11 +154,11 @@
                 </div>
                 <div class="col-md-4">
                   <textarea name="address" id="address" class="form-control" placeholder="Address line" required
-                    rows="1" onblur="checkFormCompletion();"></textarea>
+                    rows="1" onblur="validateAddress();"></textarea>
                 </div>
                 <div class="col-md-4">
                   <input type="text" name="postcode" id="postcode" class="form-control" placeholder="Postcode"
-                    onblur="checkFormCompletion();" required />
+                    oninput="validatePostcode();" onblur="validatePostcode();" required />
                 </div>
               </div>
           
