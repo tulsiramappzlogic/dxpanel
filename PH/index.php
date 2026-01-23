@@ -154,12 +154,12 @@
                     rows="1" onblur="validateAddress();"></textarea>
                 </div>
                 <div class="col-md-4">
-                <input type="text" name="barangay" id="barangay" class="form-control" placeholder="Barangay"
-                    pattern="[a-zA-Z\s]+" onblur="this.value = this.value.replace(/[^a-zA-Z\s]/g, ''); checkFormCompletion();" required />
+<input type="text" name="barangay" id="barangay" class="form-control" placeholder="Barangay"
+                    pattern="[a-zA-Z\s]+" onblur="this.value = this.value.replace(/[^a-zA-Z\s]/g, ''); validateBarangay();" required />
                 </div>
                 <div class="col-md-4">
-                <input type="text" name="city" id="city" class="form-control" placeholder="City / Municipality"
-                    pattern="[a-zA-Z\s]+" onblur="this.value = this.value.replace(/[^a-zA-Z\s]/g, ''); checkFormCompletion();" required />
+<input type="text" name="city" id="city" class="form-control" placeholder="City / Municipality"
+                    pattern="[a-zA-Z\s]+" onblur="this.value = this.value.replace(/[^a-zA-Z\s]/g, ''); validateCity();" required />
                 </div>
                 <div class="col-md-4">
                 <input type="text" name="country" id="country" readonly value="Philippines" class="form-control" placeholder="Province"
