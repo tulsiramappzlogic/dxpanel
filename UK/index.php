@@ -135,8 +135,8 @@
                     onblur="this.value = this.value.replace(/[^a-zA-Z\s]/g, ''); validateFullName();" required />
                 </div>
                 <div class="col-md-4">
-                <input type="email" name="email" id="email" class="form-control" placeholder="Email"
-                    pattern="[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}" onblur="this.value = this.value.replace(/[^a-zA-Z0-9._%+-@]/g, ''); checkFormCompletion();" required />
+<input type="email" name="email" id="email" class="form-control" placeholder="Email"
+                    pattern="[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}" onblur="this.value = this.value.replace(/[^a-zA-Z0-9._%+-@]/g, ''); validateEmail();" required />
                 </div>
                 <div class="col-md-4">
                   <input type="date" name="date_of_birth" id="date_of_birth" class="form-control"
