@@ -36,28 +36,60 @@
       height: 50px;
     }
 
+    .brand-logo {
+      max-height: 60px;
+      width: auto;
+    }
+
+    @media (max-width: 576px) {
+      .brand-logo {
+        max-height: 45px;
+      }
+    }
+
     .social-icons a {
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      width: 40px;
-      height: 40px;
+      width: 36px;
+      height: 36px;
       border-radius: 50%;
       background-color: #010166;
-      margin-right: 10px;
       transition: all 0.3s ease;
       text-decoration: none;
+    }
+
+    .social-icons i {
+      font-size: 22px;
+      color: white;
+    }
+
+    @media (max-width: 576px) {
+      .social-icons a {
+        width: 32px;
+        height: 32px;
+      }
+
+      .social-icons i {
+        font-size: 16px;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .social-icons a {
+        width: 24px;
+        height: 24px;
+      }
+
+      .social-icons i {
+        font-size: 14px;
+      }
     }
 
     .social-icons a:hover {
       background-color: #010166;
       transform: translateY(-3px);
       box-shadow: 0 4px 8px rgba(214, 33, 40, 0.3);
-    }
-
-    .social-icons i {
-      font-size: 22px;
-      color: white;
     }
 
     /* .btn-auth {
@@ -75,10 +107,10 @@
       align-items: center;
       border-radius: 50px;
       /* Makes it pill-shaped */
-      padding: 2px 5px 2px 20px;
+      padding: 6px 12px 6px 16px;
       /* Extra padding on the left for text */
       border: 1px solid rgba(88, 89, 91, 1);
-      font-size: 1rem;
+      font-size: 0.9rem;
       font-weight: 500;
       color: #555;
       text-decoration: none;
@@ -87,6 +119,45 @@
       font-family: 'Mulish', sans-serif;
       font-optical-sizing: auto;
       font-style: normal;
+      white-space: nowrap;
+    }
+
+    @media (max-width: 576px) {
+      .btn-auth {
+        font-size: 0.85rem;
+        padding: 5px 10px 5px 14px;
+      }
+    }
+
+    /* Mobile menu button styling */
+    #authMenuToggle {
+      font-size: 0.9rem;
+      font-weight: 500;
+      color: #555;
+    }
+
+    #authMenuToggle:hover {
+      background-color: #f0f0f0;
+      color: #333;
+    }
+
+    /* Mobile menu dropdown styling */
+    #authMenuDropdown .btn-auth {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 8px 14px;
+      border: 1px solid rgba(88, 89, 91, 1);
+      border-radius: 50px;
+    }
+
+    #authMenuDropdown .btn-auth:hover {
+      background-color: #f9f9f9;
+    }
+
+    #authMenuDropdown .icon-circle {
+      margin-left: auto;
+      margin-right: 0;
     }
 
     .btn-auth:hover {
@@ -156,6 +227,23 @@
       line-height: 1;
     }
 
+    @media (max-width: 768px) {
+      .hero-text h1 {
+        font-size: 2rem;
+      }
+    }
+
+    .hero-text h1 img {
+      width: 40px;
+      height: auto;
+    }
+
+    @media (max-width: 768px) {
+      .hero-text h1 img {
+        width: 24px;
+      }
+    }
+
     .form-control {
       border-radius: 20px;
       border: 1px solid #000;
@@ -189,53 +277,80 @@
 </head>
 
 <body>
-  <header class="bg-white border-bottom py-3 box-shadow-1">
+  <header class="bg-white border-bottom py-2 py-md-3 box-shadow-1">
     <div class="container">
-      <div class="row align-items-center">
-        <div class="col text-start">
-          <div class="social-icons">
-            <a href="#"><i class="fab fa-facebook-f"></i></a>
-            <a href="#"><i class="fab fa-linkedin-in"></i></a>
-            <a href="#"><i class="fab fa-instagram"></i></a>
+      <!-- Top row: Social icons, Logo, Auth buttons -->
+      <div class="row align-items-center g-2 g-md-3">
+        <!-- Social Icons - Left Column -->
+        <div class="col-4 col-lg-3 text-start">
+          <div class="social-icons d-flex flex-wrap">
+            <a href="https://www.facebook.com/people/MalaysiaPolls/61586494846051/" class="me-2 me-md-3" title="Facebook"><i class="fab fa-facebook-f"></i></a>
+            <a href="https://in.linkedin.com/company/dataxing-digital" class="me-2 me-md-3" title="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+            <a href="#" title="Instagram"><i class="fab fa-instagram"></i></a>
           </div>
         </div>
-        <div class="col text-center">
+
+        <!-- Logo - Center Column -->
+        <div class="col-4 col-lg-6 text-center py-2 py-sm-0">
           <img
             src="./image/MalaysiaPolls Logo.png"
-            alt="UKPolls Logo"
-            class="brand-logo" />
+            alt="MalaysiaPolls Logo"
+            class="brand-logo"
+            style="max-width: 100%; height: auto;" />
         </div>
-        <div class="col text-end">
-          <div class="auth-buttons d-flex justify-content-end">
-            <div class="auth-buttons d-flex align-items-center">
-              <a href="#" class="btn-auth me-3">
-                Login
-                <span class="icon-circle bg-uk-red">
-                  <i class="fas fa-angle-double-right"></i>
-                </span>
-              </a>
 
-              <a href="#" class="btn-auth">
-                Sign Up
-                <span class="icon-circle bg-uk-blue">
-                  <i class="fas fa-angle-double-right"></i>
-                </span>
-              </a>
-            </div>
+        <!-- Auth Buttons - Right Column (Desktop) -->
+        <div class="col-4 col-lg-3 text-center text-end d-none d-md-block">
+          <div class="d-flex justify-content-end align-items-center gap-2">
+            <a href="#" class="btn-auth">
+              Login
+              <span class="icon-circle bg-uk-red">
+                <i class="fas fa-angle-double-right"></i>
+              </span>
+            </a>
+            <a href="#" class="btn-auth">
+              Sign Up
+              <span class="icon-circle bg-uk-blue">
+                <i class="fas fa-angle-double-right"></i>
+              </span>
+            </a>
           </div>
+        </div>
+
+        <!-- Mobile/Tablet Menu Button -->
+        <div class="col-4 col-lg-3 text-center text-end d-md-none">
+          <button class="btn btn-outline-secondary rounded-pill" type="button" id="authMenuToggle" style="border: 1px solid rgba(88, 89, 91, 1); padding: 6px 16px;">
+            <i class="fas fa-bars"></i> Menu
+          </button>
         </div>
       </div>
 
-      <div class="text-center">
-        <h2 class="mb-0 fw-bold"></h2>
+      <!-- Mobile/Tablet Menu (Hidden by default) -->
+      <div class="row d-md-none mt-2" id="authMenuDropdown" style="display: none;">
+        <div class="col-12">
+          <div class="bg-light rounded p-3 d-flex flex-column gap-2">
+            <a href="#" class="btn-auth w-100 text-start">
+              <i class="fas fa-sign-in-alt me-2"></i>Login
+              <span class="icon-circle bg-uk-red ms-auto">
+                <i class="fas fa-angle-double-right"></i>
+              </span>
+            </a>
+            <a href="#" class="btn-auth w-100 text-start">
+              <i class="fas fa-user-plus me-2"></i>Sign Up
+              <span class="icon-circle bg-uk-blue ms-auto">
+                <i class="fas fa-angle-double-right"></i>
+              </span>
+            </a>
+          </div>
+        </div>
       </div>
     </div>
   </header>
 
   <main class="my-5 mx-5">
     <div class="container-fluid">
-      <div class="row align-items-center">
-        <div class="col-lg-5">
+      <div class="row align-items-center g-3 g-lg-4">
+        <div class="col-12 col-lg-5">
           <div class="photo-grid">
             <div class="box red"></div>
             <div class="box"><img src="./image/1.png" alt="Worker" /></div>
@@ -249,11 +364,11 @@
           </div>
         </div>
 
-        <div class="col-lg-7 ps-lg-4">
+        <div class="col-12 col-lg-7 ps-0 ps-lg-4">
           <div class="hero-text mb-4">
             <h1>
               <span class="font-family-expletus color-red-1 fw-400">Salam</span><br /><span
-                class="font-family-expletus  color-blue-1 fw-400 d-flex align-items-center gap-3">Malaysia<img width="40px" src="./image/icons/curveIcon.png" /></span>
+                class="font-family-expletus  color-blue-1 fw-400 d-flex align-items-center gap-3">Malaysia<img src="./image/icons/curveIcon.png" alt="curve" /></span>
             </h1>
             <p class="lead fw-normal font-family-mulish">
               Welcome to Malaysia's newest, coolest<br />
@@ -366,7 +481,25 @@
 
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
   <script>
+    // Mobile menu toggle
     $(document).ready(function() {
+      $('#authMenuToggle').on('click', function(e) {
+        e.preventDefault();
+        $('#authMenuDropdown').slideToggle(300);
+      });
+
+      // Close menu when clicking on a link
+      $('#authMenuDropdown a').on('click', function() {
+        $('#authMenuDropdown').slideUp(300);
+      });
+
+      // Close menu when clicking outside
+      $(document).on('click', function(e) {
+        if (!$(e.target).closest('#authMenuToggle, #authMenuDropdown').length) {
+          $('#authMenuDropdown').slideUp(300);
+        }
+      });
+
       let otpTimerInterval;
       let isOtpSent = false;
       let isFormSubmitting = false;
