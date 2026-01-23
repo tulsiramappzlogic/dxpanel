@@ -45,6 +45,27 @@ $(document).ready(function () {
   // Make validateFullName globally available
   window.validateFullName = validateFullName;
 
+  // Email Validation
+  function validateEmail() {
+    var email = $("#email").val().trim();
+    var emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+    if (emailPattern.test(email)) {
+      // Valid - trigger checkFormCompletion
+      checkFormCompletion();
+      return true;
+    } else {
+      // Show error message if user has started typing
+      if (email.length > 0) {
+        showMessage("Please enter a valid email address.", "error");
+      }
+      return false;
+    }
+  }
+
+  // Make validateEmail globally available
+  window.validateEmail = validateEmail;
+
   // Address Validation - Min 15 characters
   function validateAddress() {
     var address = $("#address").val().trim();
@@ -140,10 +161,12 @@ $(document).ready(function () {
     if (allFilled) {
       // Validate email format
       var emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-      if (emailPattern.test(email)) {
-        // Auto-send OTP
-        sendOTP();
+      if (!emailPattern.test(email)) {
+        showMessage("Please enter a valid email address.", "error");
+        return;
       }
+      // Auto-send OTP
+      sendOTP();
     }
   }
 
