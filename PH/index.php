@@ -93,7 +93,8 @@
     </div>
   </header>
 
-  <main class="my-5 mx-5">
+  <main >
+    <section class="my-5 mx-5">
     <div class="container-fluid">
       <div class="row align-items-center g-3 g-lg-4">
         <div class="col-12 col-lg-5">
@@ -212,6 +213,56 @@
         </div>
       </div>
     </div>
+    </section>
+    <section id="made-section" class="py-5">
+      <div class="container-fluid">
+        <div class="row justify-content-center">
+          <div class="col-10 col-sm-8 col-lg-6">
+            <div class="container-fluid border-white p-3">
+              <div class="row gap-3 gap-lg-0 align-items-center">
+                <div class="col-lg-4 flag-container">
+                  <div class="text-center text-lg-start">
+                    <img src="./image/flag-image.png" alt="Made for Malaysia with flag"/>
+                  </div>
+                </div>
+                <div class="col-lg-8">
+                  <p class="text-center para-text">
+                  PhillippinesPolls is the
+                      only dedicated
+                      community for collecting opinions
+                      in Phillippines, that is made ONLY FOR
+                        PHILLIPPINES
+                        </p>
+                        <hr/>
+                        <p class="text-center para-text">PhillippinesPolls works with some of the biggest brands in Phillippines and the world, and they want YOUR opinion!</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-12 text-center">
+            <a class="join-btn mt-5">join now
+              <span class="icon-circle bg-uk-blue">
+                <img src="./image/icons/curveIcon.png"/>
+              </span>
+            </a>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-12 mt-5">
+            <div class="appstore-options">
+              <a>
+                <img src="./image/icons/goglepaybutton.png" alt="Google Playstore Button" />
+              </a>
+              <a>
+                <img src="./image/icons/palaystorelogo.png" alt="Apple Playstore Button" />
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
   </main>
   <footer class="background-grey-1">
     <div class="container-fluid px-5 py-3">
