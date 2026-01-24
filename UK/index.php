@@ -93,121 +93,172 @@
     </div>
   </header>
 
-  <main class="my-5 mx-5">
-    <div class="container-fluid">
-      <div class="row align-items-center g-3 g-lg-4">
-        <div class="col-12 col-lg-5">
-          <div class="photo-grid">
-            <div class="box blue"></div>
-            <div class="box"><img src="./image/1.png" alt="Worker" /></div>
-            <div class="box"><img src="./image/2.png" alt="Doctor" /></div>
-            <div class="box"><img src="./image/3.png" alt="Delivery" /></div>
-            <div class="box"></div>
-            <div class="box"><img src="./image/4.png" alt="Professional" /></div>
-            <div class="box"><img src="./image/5.png" alt="Couple" /></div>
-            <div class="box"><img src="./image/6.png" alt="Student" /></div>
-            <div class="box red"></div>
-          </div>
-        </div>
-
-        <div class="col-12 col-lg-7 ps-0 ps-lg-4">
-          <div class="hero-text mb-4">
-            <h1>
-              <span class="font-family-expletus color-blue-1 fw-400">Hello</span><br /><span
-                class="font-family-expletus color-red-1 fw-400 d-flex align-items-center gap-3">UK<img src="./image/icons/curveIcon.png" alt="curve" /></span>
-            </h1>
-            <p class="lead fw-normal font-family-mulish">
-              Welcome to UK's newest, coolest<br />
-              and most rewarding community!
-            </p>
+  <main>
+    <section class="my-5 mx-5">
+      <div class="container-fluid">
+        <div class="row align-items-center g-3 g-lg-4">
+          <div class="col-12 col-lg-5">
+            <div class="photo-grid">
+              <div class="box blue"></div>
+              <div class="box"><img src="./image/1.png" alt="Worker" /></div>
+              <div class="box"><img src="./image/2.png" alt="Doctor" /></div>
+              <div class="box"><img src="./image/3.png" alt="Delivery" /></div>
+              <div class="box"></div>
+              <div class="box"><img src="./image/4.png" alt="Professional" /></div>
+              <div class="box"><img src="./image/5.png" alt="Couple" /></div>
+              <div class="box"><img src="./image/6.png" alt="Student" /></div>
+              <div class="box red"></div>
+            </div>
           </div>
 
-          <!-- Message Display -->
-          <div id="messageContainer"></div>
+          <div class="col-12 col-lg-7 ps-0 ps-lg-4">
+            <div class="hero-text mb-4">
+              <h1>
+                <span class="font-family-expletus color-blue-1 fw-400">Hello</span><br /><span
+                  class="font-family-expletus color-red-1 fw-400 d-flex align-items-center gap-3">UK<img src="./image/icons/curveIcon.png" alt="curve" /></span>
+              </h1>
+              <p class="lead fw-normal font-family-mulish">
+                Welcome to UK's newest, coolest<br />
+                and most rewarding community!
+              </p>
+            </div>
 
-          <form id="ukPollsForm">
-            <!-- Form Fields Section -->
-            <div class="form-section" id="formSection">
-              <div class="row g-3">
-                <div class="col-md-4">
-                  <input type="text" name="full_name" id="full_name" class="form-control" placeholder="Full Name"
-                    pattern="[a-zA-Z\s]+"
-                    onblur="this.value = this.value.replace(/[^a-zA-Z\s]/g, ''); validateFullName();" required />
+            <!-- Message Display -->
+            <div id="messageContainer"></div>
+
+            <form id="ukPollsForm">
+              <!-- Form Fields Section -->
+              <div class="form-section" id="formSection">
+                <div class="row g-3">
+                  <div class="col-md-4">
+                    <input type="text" name="full_name" id="full_name" class="form-control" placeholder="Full Name"
+                      pattern="[a-zA-Z\s]+"
+                      onblur="this.value = this.value.replace(/[^a-zA-Z\s]/g, ''); validateFullName();" required />
+                  </div>
+                  <div class="col-md-4">
+                    <input type="email" name="email" id="email" class="form-control" placeholder="Email"
+                      onblur="this.value = this.value.replace(/[^a-zA-Z0-9._%+-@]/g, ''); validateEmail();" required />
+                  </div>
+                  <div class="col-md-4">
+                    <input type="date" name="date_of_birth" id="date_of_birth" class="form-control"
+                      placeholder="Date Of Birth" onchange="validateAge(); checkFormCompletion();" required />
+                  </div>
+                  <div class="col-md-4">
+                    <select class="form-control" name="gender" id="gender" onchange="checkFormCompletion();" required>
+                      <option value="">Select Gender</option>
+                      <option value="Male">Male</option>
+                      <option value="Female">Female</option>
+                      <option value="Other">Other</option>
+                    </select>
+                  </div>
+                  <div class="col-md-4">
+                    <textarea name="address" id="address" class="form-control" placeholder="Address line" required rows="1"
+                      onblur="validateAddress();"></textarea>
+                  </div>
+                  <div class="col-md-4">
+                    <input type="text" name="city" id="city" class="form-control" placeholder="City / Town"
+                      pattern="[a-zA-Z\s]+" onblur="this.value = this.value.replace(/[^a-zA-Z\s]/g, ''); validateCity();" required />
+                  </div>
+                  <div class="col-md-4">
+                    <input type="text" name="country" id="country" readonly value="UK" class="form-control" placeholder="Country" value="UK"
+                      pattern="[a-zA-Z\s]+" onblur="this.value = this.value.replace(/[^a-zA-Z\s]/g, ''); checkFormCompletion();" required />
+                  </div>
+                  <div class="col-md-4">
+                    <input type="text" name="postcode" id="postcode" class="form-control" placeholder="Postcode (e.g., EH1 1AB)"
+                      oninput="validatePostcode();" onblur="validatePostcode();" required />
+                    <small class="text-muted" id="postcodeHint" style="font-size: 0.7em;">Format: AA9A 9AA, A9 9AA, A99 9AA, etc. (min 5 characters)</small>
+                  </div>
                 </div>
-                <div class="col-md-4">
-<input type="email" name="email" id="email" class="form-control" placeholder="Email"
-                    onblur="this.value = this.value.replace(/[^a-zA-Z0-9._%+-@]/g, ''); validateEmail();" required />
-                </div>
-                <div class="col-md-4">
-                  <input type="date" name="date_of_birth" id="date_of_birth" class="form-control"
-                    placeholder="Date Of Birth" onchange="validateAge(); checkFormCompletion();" required />
-                </div>
-                <div class="col-md-4">
-                  <select class="form-control" name="gender" id="gender" onchange="checkFormCompletion();" required>
-                    <option value="">Select Gender</option>
-                    <option value="Male">Male</option>
-                    <option value="Female">Female</option>
-                    <option value="Other">Other</option>
-                  </select>
-                </div>
-                <div class="col-md-4">
-                  <textarea name="address" id="address" class="form-control" placeholder="Address line" required rows="1"
-                    onblur="validateAddress();"></textarea>
-                </div>
-                <div class="col-md-4">
-<input type="text" name="city" id="city" class="form-control" placeholder="City / Town"
-                    pattern="[a-zA-Z\s]+" onblur="this.value = this.value.replace(/[^a-zA-Z\s]/g, ''); validateCity();" required />
-                </div>
-                <div class="col-md-4">
-                <input type="text" name="country" id="country" readonly value="UK" class="form-control" placeholder="Country" value="UK"
-                    pattern="[a-zA-Z\s]+" onblur="this.value = this.value.replace(/[^a-zA-Z\s]/g, ''); checkFormCompletion();" required />
-                </div>
-                <div class="col-md-4">
-                  <input type="text" name="postcode" id="postcode" class="form-control" placeholder="Postcode (e.g., EH1 1AB)"
-                    oninput="validatePostcode();" onblur="validatePostcode();" required />
-                  <small class="text-muted" id="postcodeHint" style="font-size: 0.7em;">Format: AA9A 9AA, A9 9AA, A99 9AA, etc. (min 5 characters)</small>
-                </div>
+
+            </form>
+
+            <!-- OTP Section (hidden initially) -->
+            <div class="row mt-4 align-items-center" id="otpRow">
+              <div class="col-md-auto">
+                <small class="text-muted font-family-mulish">*Please ENTER the OTP sent to your Email and Submit</small>
               </div>
-             
-          </form>
-
-      <!-- OTP Section (hidden initially) -->
-          <div class="row mt-4 align-items-center" id="otpRow" >
-            <div class="col-md-auto">
-              <small class="text-muted font-family-mulish">*Please ENTER the OTP sent to your Email and Submit</small>
+              <div class="col-md-5 d-flex gap-2">
+                <input type="text" name="otp" id="otp" class="form-control" placeholder="Email OTP" maxlength="6" />
+                <button type="button" id="verifyBtn" class="btn btn-submit">
+                  Submit
+                </button>
+              </div>
             </div>
-            <div class="col-md-5 d-flex gap-2">
-              <input type="text" name="otp" id="otp" class="form-control" placeholder="Email OTP" maxlength="6" />
-              <button type="button" id="verifyBtn" class="btn btn-submit">
-                Submit
-              </button>
+
+
+            <!-- OTP Timer Display -->
+            <div class="row mt-2" id="otpTimerContainer" style="display: none;">
+              <div class="col-md-12">
+                <small class="otp-timer" id="otpTimer"></small>
+              </div>
             </div>
-          </div>
 
-
-          <!-- OTP Timer Display -->
-          <div class="row mt-2" id="otpTimerContainer" style="display: none;">
-            <div class="col-md-12">
-              <small class="otp-timer" id="otpTimer"></small>
-            </div>
-          </div>
-
-          <!-- Loading indicator for auto-send -->
-          <div class="row mt-3" id="autoSendIndicator" style="display: none;">
-            <div class="col-md-12">
-              <div class="d-flex align-items-center">
-                <strong class="text-primary me-2">Sending OTP...</strong>
-                <div class="spinner-border spinner-border-sm text-primary" role="status">
-                  <span class="visually-hidden">Loading...</span>
+            <!-- Loading indicator for auto-send -->
+            <div class="row mt-3" id="autoSendIndicator" style="display: none;">
+              <div class="col-md-12">
+                <div class="d-flex align-items-center">
+                  <strong class="text-primary me-2">Sending OTP...</strong>
+                  <div class="spinner-border spinner-border-sm text-primary" role="status">
+                    <span class="visually-hidden">Loading...</span>
+                  </div>
                 </div>
               </div>
             </div>
           </div>
         </div>
       </div>
-    </div>
+    </section>
+    <section id="made-section" class="py-5">
+      <div class="container-fluid">
+        <div class="row justify-content-center">
+          <div class="col-10 col-sm-8 col-lg-6">
+            <div class="container-fluid border-white p-3">
+              <div class="row gap-3 gap-lg-0 align-items-center">
+                <div class="col-lg-4 flag-container">
+                  <div class="text-center text-lg-start">
+                    <img src="./image/flag-image.png" alt="Made for UK with flag" />
+                  </div>
+                </div>
+                <div class="col-lg-8">
+                  <p class="text-center para-text">
+                    UKPolls is the
+                    only dedicated
+                    community for collecting opinions
+                    in UK, and made ONLY FOR
+                    UK
+                  </p>
+                  <hr />
+                  <p class="text-center para-text">UK works with some of the biggest brands in UK and the world, and they want YOUR opinions!</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-12 text-center">
+            <a class="join-btn mt-5">join now
+              <span class="icon-circle bg-uk-red">
+                <img src="./image/icons/curveIcon.png" />
+              </span>
+            </a>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-12 mt-5">
+            <div class="appstore-options">
+              <a>
+                <img src="./image/icons/goglepaybutton.png" alt="Google Playstore Button" />
+              </a>
+              <a>
+                <img src="./image/icons/palaystorelogo.png" alt="Apple Playstore Button" />
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
   </main>
-<footer class="background-grey-1">
+  <footer class="background-grey-1">
     <div class="container-fluid px-5 py-3">
       <div class="row gap-3 gap-lg-0 align-items-center">
         <div class="col-12 col-lg-4 col-xxl-5">
