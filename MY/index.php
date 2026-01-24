@@ -135,7 +135,7 @@
                     onblur="this.value = this.value.replace(/[^a-zA-Z\s]/g, ''); validateFullName();" minlength="3" required />
                 </div>
                 <div class="col-md-4">
-<input type="email" name="email" id="email" class="form-control" placeholder="Email"
+                  <input type="email" name="email" id="email" class="form-control" placeholder="Email"
                     onblur="this.value = this.value.replace(/[^a-zA-Z0-9._%+-@]/g, ''); validateEmail();" required />
                 </div>
                 <div class="col-md-4">
@@ -155,22 +155,22 @@
                     onblur="validateAddress();"></textarea>
                 </div>
                 <div class="col-md-4">
-<input type="text" name="city" id="city" class="form-control" placeholder="City"
+                  <input type="text" name="city" id="city" class="form-control" placeholder="City"
                     pattern="[a-zA-Z\s]+" onblur="this.value = this.value.replace(/[^a-zA-Z\s]/g, ''); validateCity();" required />
                 </div>
                 <div class="col-md-4">
-                <input type="text" name="country" id="country" readonly value="Malaysia" class="form-control" placeholder="State / Province"
+                  <input type="text" name="country" id="country" readonly value="Malaysia" class="form-control" placeholder="State / Province"
                     pattern="[a-zA-Z\s]+" onblur="this.value = this.value.replace(/[^a-zA-Z\s]/g, ''); checkFormCompletion();" required />
                 </div>
                 <div class="col-md-4">
                   <input type="text" name="postcode" id="postcode" class="form-control" placeholder="Postcode"
                     oninput="validatePostcode();" onblur="validatePostcode();" required />
                 </div>
-              </div>           
+              </div>
           </form>
 
-         <!-- OTP Section (hidden initially) -->
-          <div class="row mt-4 align-items-center" id="otpRow" >
+          <!-- OTP Section (hidden initially) -->
+          <div class="row mt-4 align-items-center" id="otpRow">
             <div class="col-md-auto">
               <small class="text-muted font-family-mulish">*Please ENTER the OTP sent to your Email and Submit</small>
             </div>
@@ -204,7 +204,38 @@
       </div>
     </div>
   </main>
-
+  <footer class="background-grey-1">
+    <div class="container-fluid px-5 py-3">
+      <div class="row gap-3 gap-lg-0 align-items-center">
+        <div class="col-12 col-lg-4 col-xxl-5">
+          <div class="text-center text-lg-start">
+            <a href="#" class="border-right-except-last footer-link px-2">About Us</a>
+            <a href="#" class="border-right-except-last footer-link px-2">Privacy Policy</a>
+            <a href="#" class="border-right-except-last footer-link px-2">Terms &
+              Conditions</a>
+            <a href="#"
+              class="border-right-except-last footer-link px-2">For
+              Clients</a>
+            <a href="contact-us.html" class="border-right-except-last footer-link px-2">Contact Us</a>
+          </div>
+        </div>
+        <div class="col-12 col-lg-4 col-xxl-2">
+          <div class="social-icons">
+            <a href="#"><i class="fab fa-facebook-f"></i></a>
+            <a href="#"><i class="fab fa-linkedin-in"></i></a>
+            <a href="#"><i class="fab fa-instagram"></i></a>
+          </div>
+        </div>
+        <div class="col-12 col-lg-4 col-xxl-5">
+          <div class="text-center text-lg-end">
+            <p style="font-size: 14px;" class="text-light">
+              @2026 MalaysiaPolls. All Rights Reserved.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </footer>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
   <script src="./script/script.js"></script>
 
