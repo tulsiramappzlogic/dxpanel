@@ -293,3 +293,79 @@ footer .social-icons i {
 }
 
 /* Footer properties */
+
+/* made section */
+#made-section{
+    background-image: url('../image/background-image-1.png');
+    background-size: cover;
+    background-position: center center;
+}
+
+#made-section .para-text{
+    color: rgb(255, 255, 255);
+    font-family: "Mulish", sans-serif;
+    font-optical-sizing: auto;
+    font-style: normal;
+
+}
+
+#made-section hr{
+    border-width: 1px;
+    background-color: rgb(255, 255, 255);
+    border-color: rgb(255, 255, 255);
+    margin: 10px 0px;
+    opacity: 1;
+}
+
+#made-section a.join-btn{
+    border-radius: 25px;
+    text-decoration: none;
+    cursor: pointer;
+    background-color: rgba(94, 100, 115, 1);
+    padding: 5px 12px;
+    display: inline-flex;
+    align-items: center;
+    text-transform: capitalize;
+    color: rgb(255, 255, 255);
+}
+
+#made-section a.join-btn img{
+    width: 8px;
+}
+
+#made-section a.join-btn:hover{
+    text-decoration: underline;
+}
+
+#made-section div.appstore-options{
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+#made-section div.appstore-options a{
+    text-decoration: none;
+    cursor: pointer;
+}
+
+#made-section div.appstore-options a img{
+    width: 150px;
+}
+
+#made-section div.flag-container img{
+    width: 75%;
+}
+@media screen and (min-width:992px){
+    #made-section div.flag-container{
+    border-right: 1px solid rgba(255, 255, 255, 0.3);
+    border-bottom: none;
+}
+#made-section div.flag-container img{
+    width: 100%;
+}
+}
+
+
+/* made section */
