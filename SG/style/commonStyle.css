@@ -39,3 +39,22 @@ div.social-icons img {
 .color-red-1 {
     color: rgba(210, 29, 44, 1);
 }
+
+/* background colors */
+.background-grey-1 {
+    background-color: rgba(94, 100, 115, 1) !important;
+}
+
+/* background colors */
+
+/* border properties */
+.border-width-2 {
+    border-width: 2px !important;
+    border-style: solid !important;
+}
+
+.border-right-except-last:not(:last-of-type) {
+    border-right: 2px solid rgb(210, 29, 44) !important;
+}
+
+/* border properties */
