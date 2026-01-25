@@ -200,6 +200,38 @@
       </div>
     </div>
     </section>
+    <section id="redemption-section" class="py-5">
+      <div class="container">
+        <div class="row">
+          <div class="col-12 text-center">
+            <div id="heading-container">
+              <p id="heading" class="text-center">Many options to redeem points </p>
+              <img src="./image/icons/curveIcon-blue.png"/>
+            </div>
+          </div>
+        </div>
+        <div class="row mt-5">
+          <div class="col-12 col-sm-6 col-md-4 text-center">
+            <img src="./image/redemption-option-1.png" alt="redemption option 1"/>
+          </div>
+          <div class="col-12 col-sm-6 col-md-4 text-center">
+            <img src="./image/redemption-option-2.png" alt="redemption option 2"/>
+          </div>
+          <div class="col-12 col-sm-6 col-md-4 text-center">
+            <img src="./image/redemption-option-3.png" alt="redemption option 3"/>
+          </div>
+          <div class="col-12 col-sm-6 col-md-4 text-center">
+            <img src="./image/redemption-option-4.png" alt="redemption option 4"/>
+          </div>
+          <div class="col-12 col-sm-6 col-md-4 text-center">
+            <img src="./image/redemption-option-5.png" alt="redemption option 5"/>
+          </div>
+          <div class="col-12 col-sm-6 col-md-4 text-center">
+            <img src="./image/redemption-option-6.png" alt="redemption option 6"/>
+          </div>
+        </div>
+      </div>
+    </section>
     <section id="made-section" class="py-5">
       <div class="container-fluid">
         <div class="row justify-content-center">
