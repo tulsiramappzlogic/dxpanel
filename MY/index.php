@@ -205,34 +205,76 @@
         </div>
       </div>
     </section>
+    <section id="activity-container" class="py-4">
+      <div class="container">
+        <div class="row">
+          <div class="col-12 text-center">
+            <div id="heading-container">
+              <h2 id="heading" class="text-center">Fun and interesting activities!</h2>
+              <img src="./image/icons/curveIcon-white.png" />
+            </div>
+          </div>
+        </div>
+        <div class="row mt-3">
+          <div class="col-12 col-md-6">
+            <div class="activity-option red p-4 text-start">
+              <!-- <img src="./image/activity-images/activity-image-1" alt="activity image 1"/> -->
+              <h3>Online surveys</h3>
+              <p>on shopping, sports, food, technology and more!</p>
+            </div>
+          </div>
+          <div class="col-12 col-md-6">
+            <div class="activity-option white p-4 text-end">
+              <!-- <img src="./image/activity-images/activity-image-2" alt="activity image 2"/> -->
+              <h3>Watch ads and movies</h3>
+              <p>and give feedback before they are launched!</p>
+            </div>
+          </div>
+          <div class="col-12 col-md-6">
+            <div class="activity-option white p-4 text-start">
+              <!-- <img src="./image/activity-images/activity-image-3" alt="activity image 3"/> -->
+              <h3>Video call/ group discussions</h3>
+              <p>with other interesting members!</p>
+            </div>
+          </div>
+          <div class="col-12 col-md-6">
+            <div class="activity-option red p-4 text-end">
+              <!-- <img src="./image/activity-images/activity-image-4" alt="activity image 4"/> -->
+              <h3>Receive free samples</h3>
+              <p>at home to test and give feedback!</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
     <section id="redemption-section" class="py-5">
       <div class="container">
         <div class="row">
           <div class="col-12 text-center">
             <div id="heading-container">
               <p id="heading" class="text-center">Many options to redeem points </p>
-              <img src="./image/icons/curveIcon-red.png"/>
+              <img src="./image/icons/curveIcon-red.png" />
             </div>
           </div>
         </div>
         <div class="row mt-5">
           <div class="col-12 col-sm-6 col-md-4 text-center">
-            <img src="./image/redemptionOptions/redemption-option-1.png" alt="redemption option 1"/>
+            <img src="./image/redemptionOptions/redemption-option-1.png" alt="redemption option 1" />
           </div>
           <div class="col-12 col-sm-6 col-md-4 text-center">
-            <img src="./image/redemptionOptions/redemption-option-2.png" alt="redemption option 2"/>
+            <img src="./image/redemptionOptions/redemption-option-2.png" alt="redemption option 2" />
           </div>
           <div class="col-12 col-sm-6 col-md-4 text-center">
-            <img src="./image/redemptionOptions/redemption-option-3.png" alt="redemption option 3"/>
+            <img src="./image/redemptionOptions/redemption-option-3.png" alt="redemption option 3" />
           </div>
           <div class="col-12 col-sm-6 col-md-4 text-center">
-            <img src="./image/redemptionOptions/redemption-option-4.png" alt="redemption option 4"/>
+            <img src="./image/redemptionOptions/redemption-option-4.png" alt="redemption option 4" />
           </div>
           <div class="col-12 col-sm-6 col-md-4 text-center">
-            <img src="./image/redemptionOptions/redemption-option-5.png" alt="redemption option 5"/>
+            <img src="./image/redemptionOptions/redemption-option-5.png" alt="redemption option 5" />
           </div>
           <div class="col-12 col-sm-6 col-md-4 text-center">
-            <img src="./image/redemptionOptions/redemption-option-6.png" alt="redemption option 6"/>
+            <img src="./image/redemptionOptions/redemption-option-6.png" alt="redemption option 6" />
           </div>
         </div>
       </div>
@@ -245,19 +287,19 @@
               <div class="row gap-3 gap-lg-0 align-items-center">
                 <div class="col-lg-4 flag-container">
                   <div class="text-center text-lg-start">
-                    <img src="./image/flag-image.png" alt="Made for Malaysia with flag"/>
+                    <img src="./image/flag-image.png" alt="Made for Malaysia with flag" />
                   </div>
                 </div>
                 <div class="col-lg-8">
                   <p class="text-center para-text">
-                  MalaysiaPolls is the
-                      only dedicated
-                      community for collecting opinions
-                      in Malaysia, that is made ONLY FOR
-                        MALAYSIA
-                        </p>
-                        <hr/>
-                        <p class="text-center para-text">MalaysiaPolls works with some of the biggest brands in Malaysia and the world, and they want YOUR opinion!</p>
+                    MalaysiaPolls is the
+                    only dedicated
+                    community for collecting opinions
+                    in Malaysia, that is made ONLY FOR
+                    MALAYSIA
+                  </p>
+                  <hr />
+                  <p class="text-center para-text">MalaysiaPolls works with some of the biggest brands in Malaysia and the world, and they want YOUR opinion!</p>
                 </div>
               </div>
             </div>
@@ -267,7 +309,7 @@
           <div class="col-12 text-center">
             <a class="join-btn mt-5">join now
               <span class="icon-circle bg-uk-red">
-                <img src="./image/icons/curveIcon.png"/>
+                <img src="./image/icons/curveIcon.png" />
               </span>
             </a>
           </div>
