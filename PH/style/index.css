@@ -295,13 +295,13 @@ footer .social-icons i {
 /* Footer properties */
 
 /* made section */
-#made-section{
+#made-section {
     background-image: url('../image/background-image-1.png');
     background-size: cover;
     background-position: center center;
 }
 
-#made-section .para-text{
+#made-section .para-text {
     color: rgb(255, 255, 255);
     font-family: "Mulish", sans-serif;
     font-optical-sizing: auto;
@@ -309,7 +309,7 @@ footer .social-icons i {
 
 }
 
-#made-section hr{
+#made-section hr {
     border-width: 1px;
     background-color: rgb(255, 255, 255);
     border-color: rgb(255, 255, 255);
@@ -317,7 +317,7 @@ footer .social-icons i {
     opacity: 1;
 }
 
-#made-section a.join-btn{
+#made-section a.join-btn {
     border-radius: 25px;
     text-decoration: none;
     cursor: pointer;
@@ -329,15 +329,15 @@ footer .social-icons i {
     color: rgb(255, 255, 255);
 }
 
-#made-section a.join-btn img{
+#made-section a.join-btn img {
     width: 8px;
 }
 
-#made-section a.join-btn:hover{
+#made-section a.join-btn:hover {
     text-decoration: underline;
 }
 
-#made-section div.appstore-options{
+#made-section div.appstore-options {
     display: flex;
     align-items: center;
     gap: 20px;
@@ -345,42 +345,44 @@ footer .social-icons i {
     flex-wrap: wrap;
 }
 
-#made-section div.appstore-options a{
+#made-section div.appstore-options a {
     text-decoration: none;
     cursor: pointer;
 }
 
-#made-section div.appstore-options a img{
+#made-section div.appstore-options a img {
     width: 150px;
 }
 
-#made-section div.flag-container img{
+#made-section div.flag-container img {
     width: 75%;
 }
-@media screen and (min-width:992px){
-    #made-section div.flag-container{
-    border-right: 1px solid rgba(255, 255, 255, 0.3);
-    border-bottom: none;
-}
-#made-section div.flag-container img{
-    width: 100%;
-}
+
+@media screen and (min-width:992px) {
+    #made-section div.flag-container {
+        border-right: 1px solid rgba(255, 255, 255, 0.3);
+        border-bottom: none;
+    }
+
+    #made-section div.flag-container img {
+        width: 100%;
+    }
 }
 
 
 /* made section */
 
 /* redemption section */
-#redemption-section p#heading{
+#redemption-section p#heading {
     font-family: "Expletus Sans", sans-serif;
     font-optical-sizing: auto;
     font-style: normal;
-    color:rgb(0, 56, 169);
+    color: rgb(0, 56, 169);
     font-size: 1.5rem;
     margin: 0;
 }
 
-#redemption-section #heading-container{
+#redemption-section #heading-container {
     border: 2px solid #d62128;
     border-radius: 50px;
     display: inline-flex;
@@ -389,35 +391,39 @@ footer .social-icons i {
     padding: 0.5rem;
 }
 
-#redemption-section img{
+#redemption-section img {
     width: 75%;
     margin-bottom: 20px;
 }
 
-#redemption-section #heading-container img{
+#redemption-section #heading-container img {
     height: 35px;
     width: auto;
     margin-bottom: 0px;
 }
 
 @media screen and (max-width:575px) {
-    #redemption-section p#heading{
+    #redemption-section p#heading {
         font-size: 1rem;
     }
-    #redemption-section img{
+
+    #redemption-section img {
         width: 100%;
         margin-bottom: 20px;
     }
 }
+
 @media screen and (min-width:576px) and (max-width:1200px) {
-    #redemption-section p#heading{
+    #redemption-section p#heading {
         font-size: 2rem;
     }
-    #redemption-section img{
+
+    #redemption-section img {
         width: 100%;
         margin-bottom: 20px;
     }
 }
+
 /* redemption section */
 
 /* activities section */
@@ -443,7 +449,7 @@ footer .social-icons i {
     width: 75%;
     margin-bottom: 20px;
 } */
-#activity-container{
+#activity-container {
     background-color: rgb(94, 100, 115);
 }
 
@@ -533,7 +539,7 @@ footer .social-icons i {
     justify-content: center;
 }
 
-#earning-container{
+#earning-container {
     background-color: rgb(0, 56, 169);
 }
 
@@ -543,7 +549,7 @@ footer .social-icons i {
     margin-bottom: 0px;
 }
 
-#earning-container div.earning-option img{
+#earning-container div.earning-option img {
     width: 100%;
 }
 
@@ -599,7 +605,7 @@ footer .social-icons i {
     justify-content: center;
 }
 
-#benefit-container{
+#benefit-container {
     background-image: url('../image/benefit-images/benefit-background.svg');
     background-size: cover;
     background-position: center;
@@ -611,7 +617,7 @@ footer .social-icons i {
     margin-bottom: 0px;
 }
 
-#benefit-container div.benefit-option img{
+#benefit-container div.benefit-option img {
     width: 75%;
 }
 
@@ -626,7 +632,7 @@ footer .social-icons i {
     font-size: 1.4rem;
 }
 
-#benefit-container a#join-now-btn{
+#benefit-container a#join-now-btn {
     text-decoration: none;
     cursor: pointer;
     background-color: rgb(207, 16, 38);
@@ -642,7 +648,8 @@ footer .social-icons i {
     padding: 7px 18px;
     border-radius: 24px;
 }
-#benefit-container a#join-now-btn img{
+
+#benefit-container a#join-now-btn img {
     width: 30px;
 }
 
@@ -656,4 +663,113 @@ footer .social-icons i {
     #benefit-container h2#heading {
         font-size: 2rem;
     }
+}
+
+/* steps container */
+#steps-container #heading {
+    font-family: "Expletus Sans", sans-serif;
+    font-optical-sizing: auto;
+    font-style: normal;
+    color: rgb(204, 0, 0);
+    font-size: 1.5rem;
+    margin: 0;
+}
+
+#steps-container #heading-container {
+    border: 2px solid rgb(204, 0, 0);
+    border-radius: 50px;
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    padding: 0.5rem;
+    justify-content: center;
+}
+
+#steps-container #heading-container img {
+    height: 35px;
+    width: auto;
+    margin-bottom: 0px;
+}
+
+#steps-container div.step-content-container {
+    text-align: center;
+}
+
+#steps-container div.step-content-container h3 {
+    font-family: "Expletus Sans", sans-serif;
+    font-optical-sizing: auto;
+    font-style: normal;
+    font-size: 1.25rem;
+    color: rgb(0, 56, 169);
+}
+
+#steps-container div.step-content-container p {
+    font-family: "Mulish", sans-serif;
+    font-optical-sizing: auto;
+    font-style: normal;
+    font-size: 1rem;
+    color: rgba(88, 89, 91, 1);
+}
+
+#steps-container #steps-container-desktop {
+    position: relative;
+}
+
+#steps-container #steps-container-desktop img {
+    width: 100%;
+}
+
+#steps-container #steps-container-desktop div.step-content-container {
+    position: absolute;
+    width: 14%;
+}
+
+#steps-container #steps-container-desktop div#step-container-1 {
+    top: -10%;
+    left: 10%;
+}
+
+#steps-container #steps-container-desktop div#step-container-2 {
+    bottom: -10%;
+    left: 43%;
+}
+
+#steps-container #steps-container-desktop div#step-container-3 {
+    top: -10%;
+    right: 14%;
+}
+
+@media screen and (max-width:575px) {
+    #steps-container h2#heading {
+        font-size: 1rem;
+    }
+}
+
+@media screen and (min-width:576px) and (max-width:1200px) {
+    #steps-container h2#heading {
+        font-size: 2rem;
+    }
+}
+
+@media screen and (min-width:768px) and (max-width:1200px) {
+    #steps-container #steps-container-desktop div.step-content-container {
+        position: absolute;
+        width: 25%;
+    }
+
+    #steps-container #steps-container-desktop div#step-container-1 {
+        top: -20%;
+        left: 5%;
+    }
+
+    #steps-container #steps-container-desktop div#step-container-2 {
+        bottom: -24%;
+        left: 36%;
+    }
+
+    #steps-container #steps-container-desktop div#step-container-3 {
+        top: -20%;
+        right: 7%;
+    }
+
 }
