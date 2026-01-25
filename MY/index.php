@@ -218,27 +218,89 @@
         <div class="row mt-5">
           <div class="col-12 col-md-4">
             <div class="benefit-option text-center">
-              <img src="./image/benefit-images/benefit-image-1.svg" alt="benefit image 1"/>
+              <img src="./image/benefit-images/benefit-image-1.svg" alt="benefit image 1" />
               <p class="mt-3">Earn money!</p>
             </div>
           </div>
           <div class="col-12 col-md-4">
             <div class="benefit-option text-center">
-              <img src="./image/benefit-images/benefit-image-2.svg" alt="benefit image 2"/>
+              <img src="./image/benefit-images/benefit-image-2.svg" alt="benefit image 2" />
               <p class="mt-3">Inﬂuence decisions about brands and policies!</p>
             </div>
           </div>
           <div class="col-12 col-md-4">
             <div class="benefit-option text-center">
-              <img src="./image/benefit-images/benefit-image-3.svg" alt="benefit image 3"/>
+              <img src="./image/benefit-images/benefit-image-3.svg" alt="benefit image 3" />
               <p class="mt-3">Have fun online!</p>
             </div>
           </div>
-          
+
         </div>
         <div class="row mt-3">
           <div class="col-12 text-center">
-            <a id="join-now-btn">Join Now <img src="./image/icons/join-icon.svg" alt="Join now icon"/></a>
+            <a id="join-now-btn">Join Now <img src="./image/icons/join-icon.svg" alt="Join now icon" /></a>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section id="steps-container" class="py-5">
+      <div class="container">
+        <div class="row">
+          <div class="col-12 text-center">
+            <div id="heading-container">
+              <h2 id="heading" class="text-center">3 simple steps</h2>
+              <img src="./image/icons/curveIcon-grey.png" />
+            </div>
+          </div>
+        </div>
+        <!-- for tablet and above -->
+        <div class="row mt-5 d-none d-md-flex">
+          <div class="col-12">
+            <div id="steps-container-desktop" class="mb-3">
+              <img src="./image/step-images/step-image-desktop.svg" alt="step illustration desktop" />
+              <div id="step-container-1" class="step-content-container">
+                <h3>Sign Up</h3>
+                <p>and complete your proﬁle for free</p>
+              </div>
+              <div id="step-container-2" class="step-content-container">
+                <h3>Take Surveys</h3>
+                <p>and earn i-Points while having fun</p>
+              </div>
+              <div id="step-container-3" class="step-content-container">
+                <h3>Get Paid</h3>
+                <p>use i-Points to shop or put in wallet</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- for mobile -->
+        <div class="row mt-5 d-flex d-md-none">
+          <div class="col-12 col-sm-4">
+            <div class="step-container text-center mb-5">
+              <img class="w-75" src="./image/step-images/step-image-1.svg" alt="step 1 image" />
+              <div class="step-content-container text-center">
+                <h3 class="mt-3">Sign Up</h3>
+                <p>and complete your proﬁle for free</p>
+              </div>
+            </div>
+          </div>
+          <div class="col-12 col-sm-4">
+            <div class="step-container text-center mb-5">
+              <div class="step-content-container text-center">
+                <img class="w-75" src="./image/step-images/step-image-2.svg" alt="step 2 image" />
+                <h3 class="mt-3">Take Surveys</h3>
+                <p>and earn i-Points while having fun</p>
+              </div>
+            </div>
+          </div>
+          <div class="col-12 col-sm-4">
+            <div class="step-container text-center mb-5">
+              <div class="step-content-container text-center">
+                <img class="w-75" src="./image/step-images/step-image-3.svg" alt="step 3 image" />
+                <h3 class="mt-3">Get Paid</h3>
+                <p>use i-Points to shop or put in wallet</p>
+              </div>
+            </div>
           </div>
         </div>
       </div>
@@ -256,26 +318,26 @@
         <div class="row mt-5">
           <div class="col-12 col-md-4">
             <div class="earning-option text-center">
-              <img src="./image/earning-images/earning-image-1.png" alt="earning image 1"/>
+              <img src="./image/earning-images/earning-image-1.png" alt="earning image 1" />
               <h3 class="mt-3">Take Surveys</h3>
               <p>Earn i-Points for each survey you complete</p>
             </div>
           </div>
           <div class="col-12 col-md-4">
             <div class="earning-option text-center">
-              <img src="./image/earning-images/earning-image-2.png" alt="earning image 2"/>
+              <img src="./image/earning-images/earning-image-2.png" alt="earning image 2" />
               <h3 class="mt-3">SCREENSENSE Weekly Poll</h3>
               <p>Answer just one question each week for a chance to win MYR 250</p>
             </div>
           </div>
           <div class="col-12 col-md-4">
             <div class="earning-option text-center">
-              <img src="./image/earning-images/earning-image-3.png" alt="earning image 3"/>
+              <img src="./image/earning-images/earning-image-3.png" alt="earning image 3" />
               <h3 class="mt-3">Send-a-friend!</h3>
               <p>Earn i-Points for each referral who joins MalaysiaPolls</p>
             </div>
           </div>
-          
+
         </div>
       </div>
     </section>
