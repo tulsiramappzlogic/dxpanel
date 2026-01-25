@@ -214,6 +214,44 @@
       </div>
     </div>
     </section>
+    <section id="benefit-container" class="py-5">
+      <div class="container">
+        <div class="row">
+          <div class="col-12 text-center">
+            <div id="heading-container">
+              <h2 id="heading" class="text-center">We want to know what you think, so that you can</h2>
+              <img src="./image/icons/curveIcon-white.png" />
+            </div>
+          </div>
+        </div>
+        <div class="row mt-5">
+          <div class="col-12 col-md-4">
+            <div class="benefit-option text-center">
+              <img src="./image/benefit-images/benefit-image-1.svg" alt="benefit image 1"/>
+              <p class="mt-3">Earn money!</p>
+            </div>
+          </div>
+          <div class="col-12 col-md-4">
+            <div class="benefit-option text-center">
+              <img src="./image/benefit-images/benefit-image-2.svg" alt="benefit image 2"/>
+              <p class="mt-3">Inﬂuence decisions about brands and policies!</p>
+            </div>
+          </div>
+          <div class="col-12 col-md-4">
+            <div class="benefit-option text-center">
+              <img src="./image/benefit-images/benefit-image-3.svg" alt="benefit image 3"/>
+              <p class="mt-3">Have fun online!</p>
+            </div>
+          </div>
+          
+        </div>
+        <div class="row mt-3">
+          <div class="col-12 text-center">
+            <a id="join-now-btn">Join Now <img src="./image/icons/join-icon.svg" alt="Join now icon"/></a>
+          </div>
+        </div>
+      </div>
+    </section>
     <section id="earning-container" class="py-4">
       <div class="container">
         <div class="row">
