@@ -205,6 +205,42 @@
         </div>
       </div>
     </section>
+    <section id="earning-container" class="py-4">
+      <div class="container">
+        <div class="row">
+          <div class="col-12 text-center">
+            <div id="heading-container">
+              <h2 id="heading" class="text-center">3 ways to earn!</h2>
+              <img src="./image/icons/curveIcon-white.png" />
+            </div>
+          </div>
+        </div>
+        <div class="row mt-5">
+          <div class="col-12 col-md-4">
+            <div class="earning-option text-center">
+              <img src="./image/earning-images/earning-image-1.png" alt="earning image 1"/>
+              <h3 class="mt-3">Take Surveys</h3>
+              <p>Earn i-Points for each survey you complete</p>
+            </div>
+          </div>
+          <div class="col-12 col-md-4">
+            <div class="earning-option text-center">
+              <img src="./image/earning-images/earning-image-2.png" alt="earning image 2"/>
+              <h3 class="mt-3">SCREENSENSE Weekly Poll</h3>
+              <p>Answer just one question each week for a chance to win MYR 250</p>
+            </div>
+          </div>
+          <div class="col-12 col-md-4">
+            <div class="earning-option text-center">
+              <img src="./image/earning-images/earning-image-3.png" alt="earning image 3"/>
+              <h3 class="mt-3">Send-a-friend!</h3>
+              <p>Earn i-Points for each referral who joins MalaysiaPolls</p>
+            </div>
+          </div>
+          
+        </div>
+      </div>
+    </section>
     <section id="activity-container" class="py-4">
       <div class="container">
         <div class="row">
