@@ -383,13 +383,13 @@ $(document).ready(function () {
     validateAge();
   });
 
-  // Postcode input handler - triggers lookup when 6 characters entered
+  // Postcode input handler - triggers lookup when 5 characters entered
   function onPostcodeInput() {
     var postcode = $("#postcode").val().trim();
 
-    // Malaysian postcodes are typically 5 digits
-    // Trigger lookup when 6 characters entered
-    if (postcode.length >= 6) {
+    // Malaysian postcodes are exactly 5 digits
+    // Trigger lookup when 5 characters entered
+    if (postcode.length === 5) {
       lookupPostcode(postcode);
     }
   }
@@ -443,51 +443,46 @@ $(document).ready(function () {
   window.validateMalaysiaPostcode = validateMalaysiaPostcode;
 
   // Malaysia Postcode Lookup Function
-  // Note: Malaysia doesn't have a public postcode API like postcodes.io
-  // This is a placeholder that you can customize with your own API or service
+  // Uses local postcode database via get_city_by_postcode.php
   function lookupPostcode(postcode) {
-    var postcodeInput = $("#postcode");
     var cityInput = $("#city");
-
-    // Clear city when postcode changes
+    var stateInput = $("#province");
+    
+    // Clear city and state when postcode changes
     cityInput.val("");
-
-    // Validate postcode format first
-    if (!validateMalaysiaPostcode()) {
-      return;
-    }
+    stateInput.val("");
 
     // Make API call to lookup postcode
-    // You can replace this with your own Malaysia postcode API
     $.ajax({
-      url: "https://api.example.com/postcode/" + postcode, // Replace with actual API
+      url: "get_city_by_postcode.php",
       type: "GET",
+      data: {
+        postcode: postcode
+      },
       dataType: "json",
       success: function (response) {
-        if (response.success && response.result) {
-          var result = response.result;
-
-          // Auto-fill city from API response
-          if (result.city || result.state) {
-            var cityValue = result.city || result.state;
-            cityInput.val(cityValue);
-
-            // Trigger checkFormCompletion after filling city
-            setTimeout(function () {
-              checkFormCompletion();
-            }, 100);
+        if (response.success && response.city) {
+          // Auto-fill city from response
+          cityInput.val(response.city).trigger("change");
+          
+          // Auto-fill state from response if available
+          if (response.state) {
+            stateInput.val(response.state).trigger("change");
           }
+          
+          // Trigger checkFormCompletion after filling fields
+          setTimeout(function () {
+            checkFormCompletion();
+          }, 100);
         } else {
-          // API returned no results - city can still be entered manually
-          console.log("Postcode not found. Please enter city/town manually.");
+          // Postcode not found in database - user can still proceed manually
+          console.log("Postcode not found. Please enter city and state manually.");
         }
       },
       error: function (xhr, status, error) {
         // API call failed - user can still proceed manually
-        console.log(
-          "Postcode lookup unavailable. Please enter city/town manually.",
-        );
-      },
+        console.log("Postcode lookup unavailable. Please enter city and state manually.");
+      }
     });
   }
 });
