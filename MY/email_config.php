@@ -12,7 +12,7 @@ define('SMTP_AUTH', true);
 
 // Gmail credentials
 define('SMTP_USERNAME', 'panel.malaysiapolls@gmail.com');
-define('SMTP_PASSWORD', 'DXpanels08@#$'); // 16-character app password
+define('SMTP_PASSWORD', 'aeav rdtw xyhk ibqu'); // 16-character app password
 
 // Email settings
 define('FROM_EMAIL', 'panel.malaysiapolls@gmail.com');

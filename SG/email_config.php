@@ -12,7 +12,7 @@ define('SMTP_AUTH', true);
 
 // Gmail credentials
 define('SMTP_USERNAME', 'panel.singaporepolls@gmail.com');
-define('SMTP_PASSWORD', 'DXpanels08@#$'); // 16-character app password
+define('SMTP_PASSWORD', 'alot phft dwcj ttjn'); // 16-character app password
 
 // Email settings
 define('FROM_EMAIL', 'panel.singaporepolls@gmail.com');
