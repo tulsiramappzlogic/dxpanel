@@ -23,7 +23,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-12">
-                    <div id="tc-container" class="mt-5">
+                    <div id="tc-container" class="my-5">
                         <h1 class="text-center">Terms and Conditions</h1>
 
                         <section class="terms-intro">
@@ -206,6 +206,12 @@
             </div>
         </div>
     </main>
+    <?php
+    include 'footer.php';
+    ?>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="./script/script.js"></script>
+
 </body>
 
 </html>
