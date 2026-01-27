@@ -128,6 +128,9 @@ $(document).ready(function () {
             .addClass("text-success")
             .text("✓ Valid UK postcode format");
         }
+        // Lookup postcode to auto-fill city
+        var postcodeClean = postcode.replace(/\s+/g, "");
+        lookupPostcode(postcodeClean);
         // Valid - trigger checkFormCompletion
         checkFormCompletion();
         return true;
@@ -474,7 +477,7 @@ $(document).ready(function () {
           // Auto-fill city/town from API response
           if (result.admin_district || result.postcode_town) {
             var cityValue = result.admin_district || result.postcode_town;
-            cityInput.val(cityValue);
+            cityInput.val(cityValue).trigger("change");
 
             // Trigger checkFormCompletion after filling city
             setTimeout(function () {
@@ -496,4 +499,18 @@ $(document).ready(function () {
       },
     });
   }
+
+  // Direct event listener for postcode input to trigger lookup
+  $("#postcode").on("input", function () {
+    var postcode = $(this).val().trim();
+    var postcodeClean = postcode.replace(/\s+/g, "");
+
+    // UK postcodes are 5-8 characters without spaces
+    if (postcodeClean.length >= 5 && postcodeClean.length <= 8) {
+      var ukPostcodeRegex = /^(?:[A-Z]{1,2}[0-9][0-9A-Z]?)[0-9][A-Z]{2}$/i;
+      if (ukPostcodeRegex.test(postcode)) {
+        lookupPostcode(postcodeClean);
+      }
+    }
+  });
 });

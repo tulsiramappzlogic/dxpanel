@@ -391,7 +391,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['action']) && $_POST['
             $response['message'] = "OTP has expired. Please request a new OTP.";
         } elseif ($result === true) {
             $response['success'] = true;
-            $response['message'] = "Thank you for your kind interest Some one from our team will reach out to you for next steps and onboarding. ";
+            $response['message'] = "Welcome aboard! 🚀 You've successfully joined our early access waitlist. We’ll notify you as soon as onboarding opens for you. Thanks for showing interest in being part of our panel community!";
 
             // Clear session
             unset($_SESSION['user_id'], $_SESSION['otp_email'], $_SESSION['otp_time']);
