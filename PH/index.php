@@ -296,29 +296,37 @@
         </div>
         <div class="row mt-3">
           <div class="col-12 col-md-6">
-            <div class="activity-option red p-4 text-start">
-              <!-- <img src="./image/activity-images/activity-image-1" alt="activity image 1"/> -->
+            <div class="activity-option left red p-4 text-start">
+              <div class="image-container left">
+                <img src="./image/activity-images/activity-image-1.svg" alt="activity image 1" />
+              </div>
               <h3>Online surveys</h3>
               <p>on shopping, sports, food, technology and more!</p>
             </div>
           </div>
           <div class="col-12 col-md-6">
-            <div class="activity-option white p-4 text-end">
-              <!-- <img src="./image/activity-images/activity-image-2" alt="activity image 2"/> -->
+            <div class="activity-option right white p-4 text-end">
+              <div class="image-container right">
+                <img src="./image/activity-images/activity-image-2.svg" alt="activity image 2" />
+              </div>
               <h3>Watch ads and movies</h3>
               <p>and give feedback before they are launched!</p>
             </div>
           </div>
           <div class="col-12 col-md-6">
-            <div class="activity-option white p-4 text-start">
-              <!-- <img src="./image/activity-images/activity-image-3" alt="activity image 3"/> -->
+            <div class="activity-option left white p-4 text-start">
+              <div class="image-container left">
+                <img src="./image/activity-images/activity-image-3.svg" alt="activity image 3" />
+              </div>
               <h3>Video call/ group discussions</h3>
               <p>with other interesting members!</p>
             </div>
           </div>
           <div class="col-12 col-md-6">
-            <div class="activity-option red p-4 text-end">
-              <!-- <img src="./image/activity-images/activity-image-4" alt="activity image 4"/> -->
+            <div class="activity-option right red p-4 text-end">
+              <div class="image-container right">
+                <img src="./image/activity-images/activity-image-4.svg" alt="activity image 4" />
+              </div>
               <h3>Receive free samples</h3>
               <p>at home to test and give feedback!</p>
             </div>
