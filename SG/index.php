@@ -172,6 +172,69 @@
         </div>
       </div>
     </section>
+    <section id="quiz-container" class="py-5">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-6">
+            <div id="quiz-banner">
+              <img id="quiz-logo" src="./image/quiz-images/quiz-logo.svg" alt="quiz logo" />
+              <div id="banner-content">
+                <h2>screensense<br><span>audience pulse</span></h2>
+              </div>
+              <img class="w-100" src="./image/quiz-images/quiz-image-1.svg" alt="quiz image" />
+              <p class="text-center">
+                Question of the week for chance to win<br>SGD 70
+              </p>
+            </div>
+          </div>
+          <div class="col-lg-6">
+            <div id="quiz-block">
+              <div class="container-fluid">
+                <div class="row">
+                  <div class="col-lg-6">
+                    <img class="w-100" src="./image/quiz-images/movie-image.svg" alt="movie image" />
+                  </div>
+                  <div class="col-lg-6">
+                    <form>
+                      <p>Coda is a ___</p>
+                      <div>
+                        <label class="custom-radio">
+                          <input type="radio" name="answer-option" value="hit">
+                          <span class="radio-mark"></span>
+                          <span class="radio-label">Hit</span>
+                        </label>
+                      </div>
+                      <div>
+                        <label class="custom-radio">
+                          <input type="radio" name="answer-option" value="average">
+                          <span class="radio-mark"></span>
+                          <span class="radio-label">Average</span>
+                        </label>
+                      </div>
+                      <div>
+                        <label class="custom-radio">
+                          <input type="radio" name="answer-option" value="flop">
+                          <span class="radio-mark"></span>
+                          <span class="radio-label">Flop</span>
+                        </label>
+                      </div>
+                      <div>
+                        <label class="custom-radio">
+                          <input type="radio" name="answer-option" value="dont-know">
+                          <span class="radio-mark"></span>
+                          <span class="radio-label">Don't Know</span>
+                        </label>
+                      </div>
+                      <button type="submit">Submit <span><img src="./image/icons/curveIcon-white.png" alt="submit icon" /></span></button>
+                    </form>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
     <section id="steps-container" class="py-5">
       <div class="container">
         <div class="row">
