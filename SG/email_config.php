@@ -1,21 +1,27 @@
 <?php
 /**
- * Email Configuration for UK Module
+ * Email Configuration for Singapore Module
  * SMTP Settings for Gmail
  */
 
+// Load central configuration
+require_once __DIR__ . '/../config.php';
+
+// Get email configuration from environment variables
+$emailConfig = getEmailConfig('SG');
+
 // SMTP Configuration
-define('SMTP_HOST', 'smtp.gmail.com');
-define('SMTP_PORT', 587); // TLS port
-define('SMTP_ENCRYPTION', 'tls');
-define('SMTP_AUTH', true);
+define('SMTP_HOST', $emailConfig['host']);
+define('SMTP_PORT', $emailConfig['port']); // TLS port
+define('SMTP_ENCRYPTION', $emailConfig['encryption']);
+define('SMTP_AUTH', $emailConfig['auth']);
 
 // Gmail credentials
-define('SMTP_USERNAME', 'panel.singaporepolls@gmail.com');
-define('SMTP_PASSWORD', 'alot phft dwcj ttjn'); // 16-character app password
+define('SMTP_USERNAME', $emailConfig['username']);
+define('SMTP_PASSWORD', $emailConfig['password']);
 
 // Email settings
-define('FROM_EMAIL', 'panel.singaporepolls@gmail.com');
-define('FROM_NAME', 'SGPolls');
-define('EMAIL_SUBJECT', 'Your OTP for SingaporePolls Registration');
+define('FROM_EMAIL', $emailConfig['from_email']);
+define('FROM_NAME', $emailConfig['from_name']);
+define('EMAIL_SUBJECT', $emailConfig['subject']);
 
