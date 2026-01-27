@@ -51,7 +51,7 @@
                   class="font-family-expletus color-red-1 fw-400 d-flex align-items-center gap-3">UK<img src="./image/icons/curveIcon.png" alt="curve" /></span>
               </h1>
               <p class="lead fw-normal font-family-mulish">
-                Welcome to UK's newest, coolest<br />
+                Welcome to the UK's newest, coolest<br />
                 and most rewarding community!
               </p>
             </div>
