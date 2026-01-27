@@ -768,3 +768,20 @@ footer .social-icons i {
     }
 
 }
+/* terms and conditions */
+#tc-container * {
+    font-family: 'Mulish', sans-serif;
+    font-optical-sizing: auto;
+    font-style: normal;
+    font-size: 1rem;
+}
+
+#tc-container h1{
+    font-size: 2rem;
+    font-weight: 700;
+    margin-bottom: 3rem;
+}
+
+#tc-container h2, #tc-container h3 {
+font-weight: 700;
+}
