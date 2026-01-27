@@ -12,7 +12,7 @@ define('SMTP_AUTH', true);
 
 // Gmail credentials
 define('SMTP_USERNAME', 'panel.ukpolls@gmail.com');
-define('SMTP_PASSWORD', 'DXpanels08@#$'); // 16-character app password
+define('SMTP_PASSWORD', 'fycz zuex imps jsks'); // 16-character app password
 
 // Email settings
 define('FROM_EMAIL', 'panel.ukpolls@gmail.com');
