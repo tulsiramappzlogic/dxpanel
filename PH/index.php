@@ -23,75 +23,9 @@
 </head>
 
 <body>
-  <header class="bg-white border-bottom py-2 py-md-3 box-shadow-1">
-    <div class="container">
-      <!-- Top row: Social icons, Logo, Auth buttons -->
-      <div class="row align-items-center g-2 g-md-3">
-        <!-- Social Icons - Left Column -->
-        <div class="col-4 col-lg-3 text-start">
-          <div class="social-icons d-flex flex-wrap">
-            <a href="https://www.facebook.com/people/PhilippinesPolls/61586548725477/" class="me-2 me-md-3"
-              title="Facebook"><i class="fab fa-facebook-f"></i></a>
-            <a href="https://in.linkedin.com/company/dataxing-digital" class="me-2 me-md-3" title="LinkedIn"><i
-                class="fab fa-linkedin-in"></i></a>
-            <a href="#" title="Instagram"><i class="fab fa-instagram"></i></a>
-          </div>
-        </div>
-
-        <!-- Logo - Center Column -->
-        <div class="col-4 col-lg-6 text-center py-2 py-sm-0">
-          <img src="./image/PhilippinesPolls Logo.png" alt="PhilippinesPolls Logo" class="brand-logo"
-            style="max-width: 100%; height: auto;" />
-        </div>
-
-        <!-- Auth Buttons - Right Column (Desktop) -->
-        <div class="col-4 col-lg-3 text-center text-end d-none d-md-block">
-          <div class="d-flex justify-content-end align-items-center gap-2">
-            <a href="#" class="btn-auth">
-              Login
-              <span class="icon-circle bg-uk-blue">
-                <i class="fas fa-angle-double-right"></i>
-              </span>
-            </a>
-            <a href="#" class="btn-auth">
-              Sign Up
-              <span class="icon-circle bg-uk-red">
-                <i class="fas fa-angle-double-right"></i>
-              </span>
-            </a>
-          </div>
-        </div>
-
-        <!-- Mobile/Tablet Menu Button -->
-        <div class="col-4 col-lg-3 text-center text-end d-md-none">
-          <button class="btn btn-outline-secondary rounded-pill" type="button" id="authMenuToggle"
-            style="border: 1px solid rgba(88, 89, 91, 1); padding: 6px 16px;">
-            <i class="fas fa-bars"></i> Menu
-          </button>
-        </div>
-      </div>
-
-      <!-- Mobile/Tablet Menu (Hidden by default) -->
-      <div class="row d-md-none mt-2" id="authMenuDropdown" style="display: none;">
-        <div class="col-12">
-          <div class="bg-light rounded p-3 d-flex flex-column gap-2">
-            <a href="#" class="btn-auth w-100 text-start">
-              <i class="fas fa-sign-in-alt me-2"></i>Login
-              <span class="icon-circle bg-uk-blue ms-auto">
-                <i class="fas fa-angle-double-right"></i>
-              </span>
-            </a>
-            <a href="#" class="btn-auth w-100 text-start">
-              <i class="fas fa-user-plus me-2"></i>Sign Up
-              <span class="icon-circle bg-uk-red ms-auto">
-                <i class="fas fa-angle-double-right"></i>
-              </span>
-            </a>
-          </div>
-        </div>
-      </div>
-    </div>
-  </header>
+  <?php
+    include 'header.php';
+    ?>
 
   <main>
     <section class="my-5 mx-5">
@@ -474,38 +408,9 @@
       </div>
     </section>
   </main>
-  <footer class="background-grey-1">
-    <div class="container-fluid px-5 py-3">
-      <div class="row gap-3 gap-lg-0 align-items-center">
-        <div class="col-12 col-lg-4 col-xxl-5">
-          <div class="text-center text-lg-start">
-            <a href="#" class="border-right-except-last footer-link px-2">About Us</a>
-            <a href="#" class="border-right-except-last footer-link px-2">Privacy Policy</a>
-            <a href="#" class="border-right-except-last footer-link px-2">Terms &
-              Conditions</a>
-            <a href="#"
-              class="border-right-except-last footer-link px-2">For
-              Clients</a>
-            <a href="contact-us.html" class="border-right-except-last footer-link px-2">Contact Us</a>
-          </div>
-        </div>
-        <div class="col-12 col-lg-4 col-xxl-2">
-          <div class="social-icons">
-            <a href="#"><i class="fab fa-facebook-f"></i></a>
-            <a href="#"><i class="fab fa-linkedin-in"></i></a>
-            <a href="#"><i class="fab fa-instagram"></i></a>
-          </div>
-        </div>
-        <div class="col-12 col-lg-4 col-xxl-5">
-          <div class="text-center text-lg-end">
-            <p style="font-size: 14px;" class="text-light">
-              @2026 PhillippinesPolls. All Rights Reserved.
-            </p>
-          </div>
-        </div>
-      </div>
-    </div>
-  </footer>
+  <?php
+    include 'footer.php';
+    ?>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
   <script src="./script/script.js"></script>
 
