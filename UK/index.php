@@ -317,21 +317,21 @@
         <div class="row mt-5">
           <div class="col-12 col-md-4">
             <div class="earning-option text-center">
-              <img src="./image/earning-images/earning-image-1.png" alt="earning image 1" />
+              <img src="./image/earning-images/earning-image-1.svg" alt="earning image 1" />
               <h3 class="mt-3">Take Surveys</h3>
               <p>Earn i-Points for each survey you complete</p>
             </div>
           </div>
           <div class="col-12 col-md-4">
             <div class="earning-option text-center">
-              <img src="./image/earning-images/earning-image-2.png" alt="earning image 2" />
+              <img src="./image/earning-images/earning-image-2.svg" alt="earning image 2" />
               <h3 class="mt-3">SCREENSENSE Weekly Poll</h3>
               <p>Answer just one question each week for a chance to win £50</p>
             </div>
           </div>
           <div class="col-12 col-md-4">
             <div class="earning-option text-center">
-              <img src="./image/earning-images/earning-image-3.png" alt="earning image 3" />
+              <img src="./image/earning-images/earning-image-3.svg" alt="earning image 3" />
               <h3 class="mt-3">Send-a-friend!</h3>
               <p>Earn i-Points for each referral who joins UKPolls</p>
             </div>
