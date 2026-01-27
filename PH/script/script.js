@@ -139,6 +139,8 @@ $(document).ready(function () {
     var postcodeRegex = /^[A-Za-z0-9]{4}$/;
 
     if (postcodeRegex.test(postcode)) {
+      // Valid - lookup city from postcode
+      lookupPostcode(postcode);
       // Valid - trigger checkFormCompletion
       checkFormCompletion();
       return true;
@@ -410,5 +412,65 @@ $(document).ready(function () {
   // Trigger validateAge when date of birth changes
   $("#date_of_birth").on("change", function () {
     validateAge();
+  });
+
+  // Philippines Postcode Lookup Function
+  function lookupPostcode(postcode) {
+    var cityInput = $("#city");
+    var barangayInput = $("#barangay");
+    
+    // Clear city and barangay when postcode changes
+    cityInput.val("");
+    barangayInput.val("");
+
+    // Make AJAX call to lookup city and barangay by postcode
+    $.ajax({
+      url: "get_city_by_postcode.php",
+      type: "GET",
+      data: {
+        postcode: postcode
+      },
+      dataType: "json",
+      success: function (response) {
+        if (response.success && response.city) {
+          // Auto-fill city from response
+          cityInput.val(response.city).trigger("change");
+          
+          // Auto-fill barangay from response if available
+          if (response.barangay) {
+            barangayInput.val(response.barangay).trigger("change");
+          }
+          
+          // Trigger checkFormCompletion after filling fields
+          setTimeout(function () {
+            checkFormCompletion();
+          }, 100);
+        } else {
+          // Postcode not found in database - user can still proceed manually
+          console.log("Postcode not found. Please enter city and barangay manually.");
+        }
+      },
+      error: function (xhr, status, error) {
+        // API call failed - user can still proceed manually
+        console.log("Postcode lookup unavailable. Please enter city and barangay manually.");
+      }
+    });
+  }
+
+  // Make lookupPostcode globally available
+  window.lookupPostcode = lookupPostcode;
+
+  // Direct event listener for postcode input to trigger lookup
+  $("#postcode").on("input", function () {
+    var postcode = $(this).val().trim();
+    var postcodeClean = postcode.replace(/[^A-Za-z0-9]/g, "");
+    
+    // Philippines postcodes are exactly 4 characters
+    if (postcodeClean.length === 4) {
+      var postcodeRegex = /^[A-Za-z0-9]{4}$/;
+      if (postcodeRegex.test(postcodeClean)) {
+        lookupPostcode(postcodeClean);
+      }
+    }
   });
 });
