@@ -444,10 +444,6 @@ footer .social-icons i {
     padding: 0.5rem;
 }
 
-/* #redemption-section img{
-    width: 75%;
-    margin-bottom: 20px;
-} */
 #activity-container {
     background-color: rgb(94, 100, 115);
 }
@@ -462,6 +458,40 @@ footer .social-icons i {
     min-height: 80px;
     border-radius: 10px;
     margin: 20px 5px;
+    position: relative;
+}
+
+#activity-container div.activity-option div.image-container {
+    position: absolute;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+}
+
+#activity-container div.activity-option.left {
+    padding-left: 10% !important;
+}
+
+#activity-container div.activity-option div.image-container.left img,
+#activity-container div.activity-option div.image-container.right img{
+    width: 80px;
+}
+#activity-container div.activity-option div.image-container.left {
+    left: -5%;
+    top: 0;
+    transform: translate(-15%);
+}
+
+#activity-container div.activity-option.right {
+    padding-right: 10% !important;
+}
+
+#activity-container div.activity-option div.image-container.right {
+    right: -8%;
+    transform: translate(0%);
+    top: 0;
+    height: 100%;
 }
 
 #activity-container div.activity-option.red {
@@ -501,10 +531,26 @@ footer .social-icons i {
         font-size: 1rem;
     }
 
-    /* #activity-container img{
-        width: 100%;
-        margin-bottom: 20px;
-    } */
+    #activity-container div.activity-option.left {
+        margin-left: 35px !important;
+        padding-left: 16% !important;
+        max-height: 150px;
+    }
+
+    #activity-container div.activity-option div.image-container.left {
+        left: -7%;
+        transform: translate(-13%);
+    }
+
+    #activity-container div.activity-option.right {
+        padding-right: 16% !important;
+        margin-right: 35px !important;
+    }
+
+    #activity-container div.activity-option div.image-container.right {
+        right: -11%;
+        transform: translate(-14%);
+    }
 }
 
 @media screen and (min-width:576px) and (max-width:1200px) {
@@ -784,12 +830,13 @@ footer .social-icons i {
     font-size: 1rem;
 }
 
-#tc-container h1{
+#tc-container h1 {
     font-size: 2rem;
     font-weight: 700;
     margin-bottom: 3rem;
 }
 
-#tc-container h2, #tc-container h3 {
-font-weight: 700;
+#tc-container h2,
+#tc-container h3 {
+    font-weight: 700;
 }

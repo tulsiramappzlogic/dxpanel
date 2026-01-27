@@ -24,8 +24,8 @@
 
 <body>
   <?php
-    include 'header.php';
-    ?>
+  include 'header.php';
+  ?>
   <main>
     <section class="my-5 mx-5">
       <div class="container-fluid">
@@ -251,21 +251,21 @@
         <div class="row mt-5">
           <div class="col-12 col-md-4">
             <div class="earning-option text-center">
-              <img src="./image/earning-images/earning-image-1.png" alt="earning image 1" />
+              <img src="./image/earning-images/earning-image-1.svg" alt="earning image 1" />
               <h3 class="mt-3">Take Surveys</h3>
               <p>Earn i-Points for each survey you complete</p>
             </div>
           </div>
           <div class="col-12 col-md-4">
             <div class="earning-option text-center">
-              <img src="./image/earning-images/earning-image-2.png" alt="earning image 2" />
+              <img src="./image/earning-images/earning-image-2.svg" alt="earning image 2" />
               <h3 class="mt-3">SCREENSENSE Weekly Poll</h3>
               <p>Answer just one question each week for a chance to win MYR 250</p>
             </div>
           </div>
           <div class="col-12 col-md-4">
             <div class="earning-option text-center">
-              <img src="./image/earning-images/earning-image-3.png" alt="earning image 3" />
+              <img src="./image/earning-images/earning-image-3.svg" alt="earning image 3" />
               <h3 class="mt-3">Send-a-friend!</h3>
               <p>Earn i-Points for each referral who joins MalaysiaPolls</p>
             </div>
@@ -286,29 +286,37 @@
         </div>
         <div class="row mt-3">
           <div class="col-12 col-md-6">
-            <div class="activity-option red p-4 text-start">
-              <!-- <img src="./image/activity-images/activity-image-1" alt="activity image 1"/> -->
+            <div class="activity-option left red p-4 text-start">
+              <div class="image-container left">
+                <img src="./image/activity-images/activity-image-1.svg" alt="activity image 1" />
+              </div>
               <h3>Online surveys</h3>
               <p>on shopping, sports, food, technology and more!</p>
             </div>
           </div>
           <div class="col-12 col-md-6">
-            <div class="activity-option white p-4 text-end">
-              <!-- <img src="./image/activity-images/activity-image-2" alt="activity image 2"/> -->
+            <div class="activity-option right white p-4 text-end">
+              <div class="image-container right">
+                <img src="./image/activity-images/activity-image-2.svg" alt="activity image 2" />
+              </div>
               <h3>Watch ads and movies</h3>
               <p>and give feedback before they are launched!</p>
             </div>
           </div>
           <div class="col-12 col-md-6">
-            <div class="activity-option white p-4 text-start">
-              <!-- <img src="./image/activity-images/activity-image-3" alt="activity image 3"/> -->
+            <div class="activity-option left white p-4 text-start">
+              <div class="image-container left">
+                <img src="./image/activity-images/activity-image-3.svg" alt="activity image 3" />
+              </div>
               <h3>Video call/ group discussions</h3>
               <p>with other interesting members!</p>
             </div>
           </div>
           <div class="col-12 col-md-6">
-            <div class="activity-option red p-4 text-end">
-              <!-- <img src="./image/activity-images/activity-image-4" alt="activity image 4"/> -->
+            <div class="activity-option right red p-4 text-end">
+              <div class="image-container right">
+                <img src="./image/activity-images/activity-image-4.svg" alt="activity image 4" />
+              </div>
               <h3>Receive free samples</h3>
               <p>at home to test and give feedback!</p>
             </div>
@@ -399,8 +407,8 @@
     </section>
   </main>
   <?php
-    include 'footer.php';
-    ?>
+  include 'footer.php';
+  ?>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
   <script src="./script/script.js"></script>
 
