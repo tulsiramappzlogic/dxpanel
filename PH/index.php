@@ -24,8 +24,8 @@
 
 <body>
   <?php
-    include 'header.php';
-    ?>
+  include 'header.php';
+  ?>
 
   <main>
     <section class="my-5 mx-5">
@@ -182,6 +182,69 @@
         <div class="row mt-3">
           <div class="col-12 text-center">
             <a id="join-now-btn">Join Now <img src="./image/icons/join-icon.svg" alt="Join now icon" /></a>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section id="quiz-container" class="py-5">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-6">
+            <div id="quiz-banner">
+              <img id="quiz-logo" src="./image/quiz-images/quiz-logo.svg" alt="quiz logo" />
+              <div id="banner-content">
+                <h2>screensense<br><span>audience pulse</span></h2>
+              </div>
+              <img class="w-100" src="./image/quiz-images/quiz-image-1.svg" alt="quiz image" />
+              <p class="text-center">
+                Question of the week for chance to win<br>₱3000
+              </p>
+            </div>
+          </div>
+          <div class="col-lg-6">
+            <div id="quiz-block">
+              <div class="container-fluid">
+                <div class="row">
+                  <div class="col-lg-6">
+                    <img class="w-100" src="./image/quiz-images/movie-image.svg" alt="movie image" />
+                  </div>
+                  <div class="col-lg-6">
+                    <form>
+                      <p>Shake, Rattle & Roll:<br />Evil Origins is a ___</p>
+                      <div>
+                        <label class="custom-radio">
+                          <input type="radio" name="answer-option" value="hit">
+                          <span class="radio-mark"></span>
+                          <span class="radio-label">Hit</span>
+                        </label>
+                      </div>
+                      <div>
+                        <label class="custom-radio">
+                          <input type="radio" name="answer-option" value="average">
+                          <span class="radio-mark"></span>
+                          <span class="radio-label">Average</span>
+                        </label>
+                      </div>
+                      <div>
+                        <label class="custom-radio">
+                          <input type="radio" name="answer-option" value="flop">
+                          <span class="radio-mark"></span>
+                          <span class="radio-label">Flop</span>
+                        </label>
+                      </div>
+                      <div>
+                        <label class="custom-radio">
+                          <input type="radio" name="answer-option" value="dont-know">
+                          <span class="radio-mark"></span>
+                          <span class="radio-label">Don't Know</span>
+                        </label>
+                      </div>
+                      <button type="submit">Submit <span><img src="./image/icons/curveIcon-white.png" alt="submit icon" /></span></button>
+                    </form>
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </div>
@@ -417,8 +480,8 @@
     </section>
   </main>
   <?php
-    include 'footer.php';
-    ?>
+  include 'footer.php';
+  ?>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
   <script src="./script/script.js"></script>
 
