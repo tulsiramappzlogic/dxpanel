@@ -15,8 +15,8 @@
         </div>
         <div class="col-12 col-lg-4 col-xxl-2">
           <div class="social-icons">
-            <a href="#"><i class="fab fa-facebook-f"></i></a>
-            <a href="#"><i class="fab fa-linkedin-in"></i></a>
+            <a href="https://www.facebook.com/people/SingaporePolls/61586818442491/"><i class="fab fa-facebook-f"></i></a>
+            <a href="https://in.linkedin.com/company/dataxing-digital"><i class="fab fa-linkedin-in"></i></a>
             <a href="#"><i class="fab fa-instagram"></i></a>
           </div>
         </div>
