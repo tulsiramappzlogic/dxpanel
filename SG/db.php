@@ -5,7 +5,7 @@
  */
 
 // Load central configuration
-require_once __DIR__ . '/../config.php';
+include '../config.php';
 
 // Get database configuration from environment variables
 $db_config = getDbConfig();

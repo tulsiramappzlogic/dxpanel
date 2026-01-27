@@ -5,7 +5,7 @@
  */
 
 // Define the path to the .env file
-$envFile = __DIR__ . '/.env';
+$envFile =  "../.env";
 
 // Check if .env file exists
 if (!file_exists($envFile)) {
