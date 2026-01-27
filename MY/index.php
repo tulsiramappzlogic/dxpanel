@@ -328,22 +328,22 @@
         </div>
         <div class="row mt-5">
           <div class="col-12 col-sm-6 col-md-4 text-center">
-            <img src="./image/redemptionOptions/redemption-option-1.png" alt="redemption option 1" />
+            <img src="./image/redemptionOptions/redemption-option-1.svg" alt="redemption option 1" />
           </div>
           <div class="col-12 col-sm-6 col-md-4 text-center">
-            <img src="./image/redemptionOptions/redemption-option-2.png" alt="redemption option 2" />
+            <img src="./image/redemptionOptions/redemption-option-2.svg" alt="redemption option 2" />
           </div>
           <div class="col-12 col-sm-6 col-md-4 text-center">
-            <img src="./image/redemptionOptions/redemption-option-3.png" alt="redemption option 3" />
+            <img src="./image/redemptionOptions/redemption-option-3.svg" alt="redemption option 3" />
           </div>
           <div class="col-12 col-sm-6 col-md-4 text-center">
-            <img src="./image/redemptionOptions/redemption-option-4.png" alt="redemption option 4" />
+            <img src="./image/redemptionOptions/redemption-option-4.svg" alt="redemption option 4" />
           </div>
           <div class="col-12 col-sm-6 col-md-4 text-center">
             <img src="./image/redemptionOptions/redemption-option-5.png" alt="redemption option 5" />
           </div>
           <div class="col-12 col-sm-6 col-md-4 text-center">
-            <img src="./image/redemptionOptions/redemption-option-6.png" alt="redemption option 6" />
+            <img src="./image/redemptionOptions/redemption-option-6.svg" alt="redemption option 6" />
           </div>
         </div>
       </div>
