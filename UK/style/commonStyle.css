@@ -39,3 +39,38 @@ div.social-icons img {
 .color-red-1 {
     color: rgba(210, 29, 44, 1);
 }
+
+/* background colors */
+.background-grey-1 {
+    background-color: rgba(39, 51, 118, 1) !important;
+}
+
+/* background colors */
+
+/* border properties */
+.border-width-2 {
+    border-width: 2px !important;
+    border-style: solid !important;
+}
+
+.border-right-except-last:not(:last-of-type) {
+    border-right: 2px solid rgb(210, 29, 44) !important;
+}
+
+
+.border-white{
+    border: 1px solid rgb(255, 255, 255) !important;
+}
+
+.border-right-1{
+    border-right: 1px solid rgba(255, 255, 255, 0.3) !important;
+}
+.border-white{
+    border: 1px solid rgb(255, 255, 255) !important;
+}
+
+.border-right-1{
+    border-right: 1px solid rgba(255, 255, 255, 0.3) !important;
+}
+
+/* border properties */
