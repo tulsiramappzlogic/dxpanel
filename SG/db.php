@@ -4,14 +4,11 @@
  * This file provides a unified database connection for all country forms
  */
 
-// Database configuration - Update these values for your environment
-$db_config = [
-    'host' => 'localhost',
-    'database' => 'dxpanel',
-    'username' => 'root',
-    'password' => '123456',
-    'charset' => 'utf8mb4'
-];
+// Load central configuration
+require_once __DIR__ . '/../config.php';
+
+// Get database configuration from environment variables
+$db_config = getDbConfig();
 
 // Create PDO connection with error handling
 try {
