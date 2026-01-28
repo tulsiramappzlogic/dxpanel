@@ -1008,7 +1008,7 @@ footer .social-icons i {
 @media screen and (max-width:576px) {
     #quiz-container {
         background: url('../image/quiz-images/background-image-1.svg') top 85% left -10% / 50px no-repeat, url('../image/quiz-images/background-image-2.svg') bottom 2% left 50% / 50px no-repeat, url('../image/quiz-images/background-image-3.svg') bottom -2% left 70% / 50px no-repeat, url('../image/quiz-images/background-image-4.svg') top 50% right -3% / 50px no-repeat, url('../image/quiz-images/background-image-2.svg') top 2% right 10% / 40px no-repeat;
-        background-color: rgb(94, 100, 115);
+        background-color: rgb(39, 51, 118);
     }
 
     #quiz-container #quiz-logo {
@@ -1036,9 +1036,10 @@ footer .social-icons i {
 /* quiz container */
 
 /* header properties */
-header{
+header {
     position: sticky;
     top: 0;
     z-index: 1;
 }
+
 /* header properties */
