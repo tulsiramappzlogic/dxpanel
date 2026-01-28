@@ -373,16 +373,32 @@ $(document).ready(function () {
 
 // To hide and show signup form on signup click
 $(document).ready(function () {
-  $('.btn-auth').click(function (e) {
-    e.preventDefault();
+  const $form = $('#sigup-form-container');
+  const $fullName = $('#full_name');
 
-    const $form = $('#sigup-form-container');
+  function showFormAndFocus() {
+    if ($form.hasClass('d-none')) {
+      $form.removeClass('d-none');
+    }
+    $fullName.trigger('focus');
+  }
 
+  function toggleForm() {
     $form.toggleClass('d-none');
 
-    // If form is now visible, focus the input
     if (!$form.hasClass('d-none')) {
-      $('#full_name').trigger('focus');
+      $fullName.trigger('focus');
     }
+  }
+
+  $('.btn-auth').on('click', function (e) {
+    e.preventDefault();
+    toggleForm();
+  });
+
+  $('#join-now-btn, .join-btn').on('click', function (e) {
+    e.preventDefault();
+    showFormAndFocus();
   });
 });
+
