@@ -200,20 +200,30 @@ body {
 
 /* Form Styling */
 .hero-text h1 {
-    font-size: 4rem;
+    font-size: 6.4rem;
     font-weight: bold;
     color: var(--uk-blue);
     line-height: 1;
+}
+
+.hero-text p {
+    font-size: 1.5rem;
+    margin-top: 2rem;
 }
 
 @media (max-width: 768px) {
     .hero-text h1 {
         font-size: 2rem;
     }
+
+    .hero-text p {
+        margin-top: 1rem;
+        font-size: 1rem;
+    }
 }
 
 .hero-text h1 img {
-    width: 40px;
+    width: 75px;
     height: auto;
 }
 
