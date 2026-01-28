@@ -297,7 +297,7 @@
         </div>
       </div>
     </section>
-    <section id="earning-container" class="py-4">
+    <section id="earning-container" class="py-5">
       <div class="container">
         <div class="row">
           <div class="col-12 text-center">
@@ -333,7 +333,7 @@
         </div>
       </div>
     </section>
-    <section id="activity-container" class="py-4">
+    <section id="activity-container" class="py-5">
       <div class="container">
         <div class="row">
           <div class="col-12 text-center">
