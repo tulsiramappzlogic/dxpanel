@@ -4,7 +4,7 @@
         <div class="col-12 col-lg-4 col-xxl-5">
           <div class="text-center text-lg-start">
             <a href="#" class="border-right-except-last footer-link px-2">About Us</a>
-            <a href="#" class="border-right-except-last footer-link px-2">Privacy Policy</a>
+            <a href="./privacyPolicy.php" class="border-right-except-last footer-link px-2">Privacy Policy</a>
             <a href="./termsConditions.php" class="border-right-except-last footer-link px-2">Terms &
               Conditions</a>
             <a href="#"
@@ -15,8 +15,8 @@
         </div>
         <div class="col-12 col-lg-4 col-xxl-2">
           <div class="social-icons">
-            <a href="#"><i class="fab fa-facebook-f"></i></a>
-            <a href="#"><i class="fab fa-linkedin-in"></i></a>
+            <a href="https://www.facebook.com/people/PhilippinesPolls/61586548725477/"><i class="fab fa-facebook-f"></i></a>
+            <a href="https://in.linkedin.com/company/dataxing-digital"><i class="fab fa-linkedin-in"></i></a>
             <a href="#"><i class="fab fa-instagram"></i></a>
           </div>
         </div>

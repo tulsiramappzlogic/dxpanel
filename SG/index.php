@@ -32,7 +32,7 @@
     <section class="my-5 mx-5">
       <div class="container-fluid">
         <div class="row align-items-center g-3 g-lg-4">
-          <div class="col-12 col-lg-5">
+          <div class="col-12 col-lg-6">
             <div class="photo-grid">
               <div class="box red"></div>
               <div class="box"><img src="./image/1.png" alt="Worker" /></div>
@@ -46,7 +46,7 @@
             </div>
           </div>
 
-          <div class="col-12 col-lg-7 ps-0 ps-lg-4">
+          <div class="col-12 col-lg-6 ps-0 ps-lg-4">
             <div class="hero-text mb-4">
               <h1>
                 <span class="font-family-expletus color-red-1 fw-400">Hello</span><br /><span
@@ -172,6 +172,69 @@
         </div>
       </div>
     </section>
+    <section id="quiz-container" class="py-5">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-6">
+            <div id="quiz-banner">
+              <img id="quiz-logo" src="./image/quiz-images/quiz-logo.svg" alt="quiz logo" />
+              <div id="banner-content">
+                <h2>screensense<br><span>audience pulse</span></h2>
+              </div>
+              <img class="w-100" src="./image/quiz-images/quiz-image-1.svg" alt="quiz image" />
+              <p class="text-center">
+                Question of the week for chance to win<br>SGD 70
+              </p>
+            </div>
+          </div>
+          <div class="col-lg-6">
+            <div id="quiz-block">
+              <div class="container-fluid">
+                <div class="row">
+                  <div class="col-lg-6">
+                    <img class="w-100" src="./image/quiz-images/movie-image.svg" alt="movie image" />
+                  </div>
+                  <div class="col-lg-6">
+                    <form>
+                      <p>Coda is a ___</p>
+                      <div>
+                        <label class="custom-radio">
+                          <input type="radio" name="answer-option" value="hit">
+                          <span class="radio-mark"></span>
+                          <span class="radio-label">Hit</span>
+                        </label>
+                      </div>
+                      <div>
+                        <label class="custom-radio">
+                          <input type="radio" name="answer-option" value="average">
+                          <span class="radio-mark"></span>
+                          <span class="radio-label">Average</span>
+                        </label>
+                      </div>
+                      <div>
+                        <label class="custom-radio">
+                          <input type="radio" name="answer-option" value="flop">
+                          <span class="radio-mark"></span>
+                          <span class="radio-label">Flop</span>
+                        </label>
+                      </div>
+                      <div>
+                        <label class="custom-radio">
+                          <input type="radio" name="answer-option" value="dont-know">
+                          <span class="radio-mark"></span>
+                          <span class="radio-label">Don't Know</span>
+                        </label>
+                      </div>
+                      <button type="submit">Submit <span><img src="./image/icons/curveIcon-white.png" alt="submit icon" /></span></button>
+                    </form>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
     <section id="steps-container" class="py-5">
       <div class="container">
         <div class="row">
@@ -234,7 +297,7 @@
         </div>
       </div>
     </section>
-    <section id="earning-container" class="py-4">
+    <section id="earning-container" class="py-5">
       <div class="container">
         <div class="row">
           <div class="col-12 text-center">
@@ -247,21 +310,21 @@
         <div class="row mt-5">
           <div class="col-12 col-md-4">
             <div class="earning-option text-center">
-              <img src="./image/earning-images/earning-image-1.png" alt="earning image 1" />
+              <img src="./image/earning-images/earning-image-1.svg" alt="earning image 1" />
               <h3 class="mt-3">Take Surveys</h3>
               <p>Earn i-Points for each survey you complete</p>
             </div>
           </div>
           <div class="col-12 col-md-4">
             <div class="earning-option text-center">
-              <img src="./image/earning-images/earning-image-2.png" alt="earning image 2" />
+              <img src="./image/earning-images/earning-image-2.svg" alt="earning image 2" />
               <h3 class="mt-3">SCREENSENSE Weekly Poll</h3>
               <p>Answer just one question each week for a chance to win SGD 70</p>
             </div>
           </div>
           <div class="col-12 col-md-4">
             <div class="earning-option text-center">
-              <img src="./image/earning-images/earning-image-3.png" alt="earning image 3" />
+              <img src="./image/earning-images/earning-image-3.svg" alt="earning image 3" />
               <h3 class="mt-3">Send-a-friend!</h3>
               <p>Earn i-Points for each referral who joins SingaporePolls</p>
             </div>
@@ -270,7 +333,7 @@
         </div>
       </div>
     </section>
-    <section id="activity-container" class="py-4">
+    <section id="activity-container" class="py-5">
       <div class="container">
         <div class="row">
           <div class="col-12 text-center">
@@ -282,29 +345,37 @@
         </div>
         <div class="row mt-3">
           <div class="col-12 col-md-6">
-            <div class="activity-option red p-4 text-start">
-              <!-- <img src="./image/activity-images/activity-image-1" alt="activity image 1"/> -->
+            <div class="activity-option left red p-4 text-start">
+              <div class="image-container left">
+                <img src="./image/activity-images/activity-image-1.svg" alt="activity image 1" />
+              </div>
               <h3>Online surveys</h3>
               <p>on shopping, sports, food, technology and more!</p>
             </div>
           </div>
           <div class="col-12 col-md-6">
-            <div class="activity-option white p-4 text-end">
-              <!-- <img src="./image/activity-images/activity-image-2" alt="activity image 2"/> -->
+            <div class="activity-option right white p-4 text-end">
+              <div class="image-container right">
+                <img src="./image/activity-images/activity-image-2.svg" alt="activity image 2" />
+              </div>
               <h3>Watch ads and movies</h3>
               <p>and give feedback before they are launched!</p>
             </div>
           </div>
           <div class="col-12 col-md-6">
-            <div class="activity-option white p-4 text-start">
-              <!-- <img src="./image/activity-images/activity-image-3" alt="activity image 3"/> -->
+            <div class="activity-option left white p-4 text-start">
+              <div class="image-container left">
+                <img src="./image/activity-images/activity-image-3.svg" alt="activity image 3" />
+              </div>
               <h3>Video call/ group discussions</h3>
               <p>with other interesting members!</p>
             </div>
           </div>
           <div class="col-12 col-md-6">
-            <div class="activity-option red p-4 text-end">
-              <!-- <img src="./image/activity-images/activity-image-4" alt="activity image 4"/> -->
+            <div class="activity-option right red p-4 text-end">
+              <div class="image-container right">
+                <img src="./image/activity-images/activity-image-4.svg" alt="activity image 4" />
+              </div>
               <h3>Receive free samples</h3>
               <p>at home to test and give feedback!</p>
             </div>
