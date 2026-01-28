@@ -24,7 +24,7 @@
             <div class="row">
                 <div class="col-12">
                     <div id="tc-container" class="my-5">
-                        <h1 class="text-center">UKPolls Privacy Policy</h1>
+                        <h1 class="text-center">Privacy Policy</h1>
 
                         <section class="terms-intro">
                             <h2>1. Introduction</h2>
