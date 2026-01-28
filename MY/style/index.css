@@ -479,7 +479,7 @@ footer .social-icons i {
 }
 
 #activity-container div.activity-option.left {
-    padding-left: 10% !important;
+    padding-left: 45px !important;
 }
 
 #activity-container div.activity-option div.image-container.left img,
@@ -488,18 +488,16 @@ footer .social-icons i {
 }
 
 #activity-container div.activity-option div.image-container.left {
-    left: -5%;
+    left: -40px;
     top: 0;
-    transform: translate(-15%);
 }
 
 #activity-container div.activity-option.right {
-    padding-right: 10% !important;
+    padding-right: 45px !important;
 }
 
 #activity-container div.activity-option div.image-container.right {
-    right: -8%;
-    transform: translate(0%);
+    right: -45px;
     top: 0;
     height: 100%;
 }
@@ -543,22 +541,22 @@ footer .social-icons i {
 
     #activity-container div.activity-option.left {
         margin-left: 35px !important;
-        padding-left: 16% !important;
+        padding-left: 45px !important;
         max-height: 150px;
     }
 
     #activity-container div.activity-option div.image-container.left {
-        left: -7%;
+        left: -32px;
         transform: translate(-13%);
     }
 
     #activity-container div.activity-option.right {
-        padding-right: 16% !important;
+        padding-right: 55px !important;
         margin-right: 35px !important;
     }
 
     #activity-container div.activity-option div.image-container.right {
-        right: -11%;
+        right: -45px;
         transform: translate(-14%);
     }
 }
