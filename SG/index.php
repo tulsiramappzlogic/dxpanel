@@ -32,7 +32,7 @@
     <section class="my-5 mx-5">
       <div class="container-fluid">
         <div class="row align-items-center g-3 g-lg-4">
-          <div class="col-12 col-lg-5">
+          <div class="col-12 col-lg-6">
             <div class="photo-grid">
               <div class="box red"></div>
               <div class="box"><img src="./image/1.png" alt="Worker" /></div>
@@ -46,7 +46,7 @@
             </div>
           </div>
 
-          <div class="col-12 col-lg-7 ps-0 ps-lg-4">
+          <div class="col-12 col-lg-6 ps-0 ps-lg-4">
             <div class="hero-text mb-4">
               <h1>
                 <span class="font-family-expletus color-red-1 fw-400">Hello</span><br /><span
