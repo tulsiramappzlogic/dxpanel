@@ -163,24 +163,24 @@
           <div class="col-12 col-md-4">
             <div class="benefit-option text-center">
               <img src="./image/benefit-images/benefit-image-1.svg" alt="benefit image 1" />
-              <p class="mt-3">Earn money!</p>
+              <p>Earn money!</p>
             </div>
           </div>
           <div class="col-12 col-md-4">
             <div class="benefit-option text-center">
               <img src="./image/benefit-images/benefit-image-2.svg" alt="benefit image 2" />
-              <p class="mt-3">Inﬂuence decisions about brands and policies!</p>
+              <p>Inﬂuence decisions about brands and policies!</p>
             </div>
           </div>
           <div class="col-12 col-md-4">
             <div class="benefit-option text-center">
               <img src="./image/benefit-images/benefit-image-3.svg" alt="benefit image 3" />
-              <p class="mt-3">Have fun online!</p>
+              <p>Have fun online!</p>
             </div>
           </div>
 
         </div>
-        <div class="row mt-3">
+        <div class="row mt-2">
           <div class="col-12 text-center">
             <a id="join-now-btn">Join Now <img src="./image/icons/join-icon.svg" alt="Join now icon" /></a>
           </div>
