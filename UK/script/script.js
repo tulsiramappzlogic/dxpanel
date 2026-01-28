@@ -514,3 +514,19 @@ $(document).ready(function () {
     }
   });
 });
+
+// To hide and show signup form on signup click
+$(document).ready(function () {
+  $('.btn-auth').click(function (e) {
+    e.preventDefault();
+
+    const $form = $('#sigup-form-container');
+
+    $form.toggleClass('d-none');
+
+    // If form is now visible, focus the input
+    if (!$form.hasClass('d-none')) {
+      $('#full_name').trigger('focus');
+    }
+  });
+});

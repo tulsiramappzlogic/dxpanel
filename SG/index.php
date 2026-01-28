@@ -58,74 +58,75 @@
                 and most rewarding community!
               </p>
             </div>
+            <div class="d-none" id="sigup-form-container">
+              <!-- Message Display -->
+              <div id="messageContainer"></div>
 
-            <!-- Message Display -->
-            <div id="messageContainer"></div>
+              <form id="sgPollsForm">
+                <!-- Form Fields Section -->
+                <div class="form-section" id="formSection">
+                  <div class="row g-3">
+                    <div class="col-md-4">
+                      <input type="text" name="full_name" id="full_name" class="form-control" placeholder="Full Name"
+                        pattern="[a-zA-Z\s]+"
+                        onblur="this.value = this.value.replace(/[^a-zA-Z\s]/g, ''); validateFullName();" required />
+                    </div>
+                    <div class="col-md-4">
+                      <input type="email" name="email" id="email" class="form-control" placeholder="Email"
+                        onblur="this.value = this.value.replace(/[^a-zA-Z0-9._%+-@]/g, ''); validateEmail();" required />
+                    </div>
+                    <div class="col-md-4">
+                      <input type="date" name="date_of_birth" id="date_of_birth" class="form-control"
+                        placeholder="Date Of Birth" onchange="checkFormCompletion();" required />
+                    </div>
+                    <div class="col-md-4">
+                      <select class="form-control" name="gender" id="gender" onchange="checkFormCompletion();" required>
+                        <option value="">Select Gender</option>
+                        <option value="Male">Male</option>
+                        <option value="Female">Female</option>
+                        <option value="Other">Other</option>
+                      </select>
+                    </div>
+                    <div class="col-md-4">
+                      <textarea name="address" id="address" class="form-control" placeholder="Address line" required
+                        rows="1" onblur="validateAddress();"></textarea>
+                    </div>
+                    <div class="col-md-4">
+                      <input type="text" name="postcode" id="postcode" class="form-control" placeholder="Postcode"
+                        pattern="[0-9]{6}" oninput="validatePostcode();" onblur="validatePostcode();" required />
+                    </div>
+                  </div>
 
-            <form id="sgPollsForm">
-              <!-- Form Fields Section -->
-              <div class="form-section" id="formSection">
-                <div class="row g-3">
-                  <div class="col-md-4">
-                    <input type="text" name="full_name" id="full_name" class="form-control" placeholder="Full Name"
-                      pattern="[a-zA-Z\s]+"
-                      onblur="this.value = this.value.replace(/[^a-zA-Z\s]/g, ''); validateFullName();" required />
-                  </div>
-                  <div class="col-md-4">
-                    <input type="email" name="email" id="email" class="form-control" placeholder="Email"
-                      onblur="this.value = this.value.replace(/[^a-zA-Z0-9._%+-@]/g, ''); validateEmail();" required />
-                  </div>
-                  <div class="col-md-4">
-                    <input type="date" name="date_of_birth" id="date_of_birth" class="form-control"
-                      placeholder="Date Of Birth" onchange="checkFormCompletion();" required />
-                  </div>
-                  <div class="col-md-4">
-                    <select class="form-control" name="gender" id="gender" onchange="checkFormCompletion();" required>
-                      <option value="">Select Gender</option>
-                      <option value="Male">Male</option>
-                      <option value="Female">Female</option>
-                      <option value="Other">Other</option>
-                    </select>
-                  </div>
-                  <div class="col-md-4">
-                    <textarea name="address" id="address" class="form-control" placeholder="Address line" required
-                      rows="1" onblur="validateAddress();"></textarea>
-                  </div>
-                  <div class="col-md-4">
-                    <input type="text" name="postcode" id="postcode" class="form-control" placeholder="Postcode"
-                      pattern="[0-9]{6}" oninput="validatePostcode();" onblur="validatePostcode();" required />
-                  </div>
+              </form>
+
+              <!-- OTP Section (hidden initially) -->
+              <div class="row mt-4 align-items-center" id="otpRow">
+                <div class="col-md-auto">
+                  <small class="text-muted font-family-mulish">*Please ENTER the OTP sent to your Email and Submit</small>
                 </div>
-
-            </form>
-
-            <!-- OTP Section (hidden initially) -->
-            <div class="row mt-4 align-items-center" id="otpRow">
-              <div class="col-md-auto">
-                <small class="text-muted font-family-mulish">*Please ENTER the OTP sent to your Email and Submit</small>
+                <div class="col-md-5 d-flex gap-2">
+                  <input type="text" name="otp" id="otp" class="form-control" placeholder="Email OTP" maxlength="6" />
+                  <button type="button" id="verifyBtn" class="btn btn-submit">
+                    Submit
+                  </button>
+                </div>
               </div>
-              <div class="col-md-5 d-flex gap-2">
-                <input type="text" name="otp" id="otp" class="form-control" placeholder="Email OTP" maxlength="6" />
-                <button type="button" id="verifyBtn" class="btn btn-submit">
-                  Submit
-                </button>
-              </div>
-            </div>
 
-            <!-- OTP Timer Display -->
-            <div class="row mt-2" id="otpTimerContainer" style="display: none;">
-              <div class="col-md-12">
-                <small class="otp-timer" id="otpTimer"></small>
+              <!-- OTP Timer Display -->
+              <div class="row mt-2" id="otpTimerContainer" style="display: none;">
+                <div class="col-md-12">
+                  <small class="otp-timer" id="otpTimer"></small>
+                </div>
               </div>
-            </div>
 
-            <!-- Loading indicator for auto-send -->
-            <div class="row mt-3" id="autoSendIndicator" style="display: none;">
-              <div class="col-md-12">
-                <div class="d-flex align-items-center">
-                  <strong class="text-danger me-2">Sending OTP...</strong>
-                  <div class="spinner-border spinner-border-sm text-danger" role="status">
-                    <span class="visually-hidden">Loading...</span>
+              <!-- Loading indicator for auto-send -->
+              <div class="row mt-3" id="autoSendIndicator" style="display: none;">
+                <div class="col-md-12">
+                  <div class="d-flex align-items-center">
+                    <strong class="text-danger me-2">Sending OTP...</strong>
+                    <div class="spinner-border spinner-border-sm text-danger" role="status">
+                      <span class="visually-hidden">Loading...</span>
+                    </div>
                   </div>
                 </div>
               </div>
