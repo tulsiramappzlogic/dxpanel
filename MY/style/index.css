@@ -466,8 +466,11 @@ footer .social-icons i {
 #activity-container div.activity-option {
     min-height: 80px;
     border-radius: 10px;
-    margin: 20px 5px;
+    margin: 0px 5px;
     position: relative;
+    height: 100%;
+    display: flex;
+    align-items: center;
 }
 
 #activity-container div.activity-option div.image-container {
@@ -480,6 +483,7 @@ footer .social-icons i {
 
 #activity-container div.activity-option.left {
     padding-left: 45px !important;
+    justify-content: start;
 }
 
 #activity-container div.activity-option div.image-container.left img,
@@ -494,6 +498,7 @@ footer .social-icons i {
 
 #activity-container div.activity-option.right {
     padding-right: 45px !important;
+    justify-content: end;
 }
 
 #activity-container div.activity-option div.image-container.right {
@@ -570,6 +575,12 @@ footer .social-icons i {
         width: 100%;
         margin-bottom: 20px;
     } */
+}
+
+@media screen and (min-width:1200px) {
+    #activity-container div.container{
+        max-width: 60% !important;
+    }
 }
 
 /* redemption section */
