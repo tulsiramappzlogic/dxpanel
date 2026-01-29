@@ -30,7 +30,7 @@
     <section class="my-5 mx-5">
       <div class="container-fluid">
         <div class="row align-items-center g-3 g-lg-4">
-          <div class="col-12 col-lg-6">
+          <div class="col-12 col-lg-5">
             <div class="photo-grid">
               <div class="box red"></div>
               <div class="box"><img src="./image/1.png" alt="Worker" /></div>
@@ -44,8 +44,8 @@
             </div>
           </div>
 
-          <div class="col-12 col-lg-6 ps-0 ps-lg-4">
-            <div class="hero-text mb-4">
+          <div class="col-12 col-lg-7 ps-0 ps-lg-4">
+            <div class="hero-text ms-lg-5">
               <h1>
                 <span class="font-family-expletus color-red-1 fw-400">Salam</span><br /><span
                   class="font-family-expletus  color-blue-1 fw-400 d-flex align-items-center gap-3">Malaysia<img src="./image/icons/curveIcon.png" alt="curve" /></span>
@@ -54,86 +54,6 @@
                 Welcome to Malaysia's newest, coolest<br />
                 and most rewarding community!
               </p>
-            </div>
-            <div class="d-none" id="sigup-form-container">
-              <!-- Message Display -->
-              <div id="messageContainer"></div>
-
-              <form id="myPollsForm">
-                <!-- Form Fields Section -->
-                <div class="form-section" id="formSection">
-                  <div class="row g-3">
-                    <div class="col-md-4">
-                      <input type="text" name="full_name" id="full_name" class="form-control" placeholder="Full Name"
-                        pattern="[a-zA-Z\s]+"
-                        onblur="this.value = this.value.replace(/[^a-zA-Z\s]/g, ''); validateFullName();" minlength="3" required />
-                    </div>
-                    <div class="col-md-4">
-                      <input type="email" name="email" id="email" class="form-control" placeholder="Email"
-                        onblur="this.value = this.value.replace(/[^a-zA-Z0-9._%+-@]/g, ''); validateEmail();" required />
-                    </div>
-                    <div class="col-md-4">
-                      <input type="date" name="date_of_birth" id="date_of_birth" class="form-control"
-                        placeholder="Date Of Birth" onchange="checkFormCompletion();" required />
-                    </div>
-                    <div class="col-md-4">
-                      <select class="form-control" name="gender" id="gender" onchange="checkFormCompletion();" required>
-                        <option value="">Select Gender</option>
-                        <option value="Male">Male</option>
-                        <option value="Female">Female</option>
-                        <option value="Other">Other</option>
-                      </select>
-                    </div>
-                    <div class="col-md-4">
-                      <textarea name="address" id="address" class="form-control" placeholder="Address line" required rows="1"
-                        onblur="validateAddress();"></textarea>
-                    </div>
-                    <div class="col-md-4">
-                      <input type="text" name="city" id="city" class="form-control" placeholder="City"
-                        pattern="[a-zA-Z\s]+" onblur="this.value = this.value.replace(/[^a-zA-Z\s]/g, ''); validateCity();" required />
-                    </div>
-                    <div class="col-md-4">
-                      <input type="text" name="country" id="country" readonly value="Malaysia" class="form-control" placeholder="State / Province"
-                        pattern="[a-zA-Z\s]+" onblur="this.value = this.value.replace(/[^a-zA-Z\s]/g, ''); checkFormCompletion();" required />
-                    </div>
-                    <div class="col-md-4">
-                      <input type="text" name="postcode" id="postcode" class="form-control" placeholder="Postcode"
-                        oninput="validatePostcode();" onblur="validatePostcode();" required />
-                    </div>
-                  </div>
-              </form>
-
-              <!-- OTP Section (hidden initially) -->
-              <div class="row mt-4 align-items-center" id="otpRow">
-                <div class="col-md-auto">
-                  <small class="text-muted font-family-mulish">*Please ENTER the OTP sent to your Email and Submit</small>
-                </div>
-                <div class="col-md-5 d-flex gap-2">
-                  <input type="text" name="otp" id="otp" class="form-control" placeholder="Email OTP" maxlength="6" />
-                  <button type="button" id="verifyBtn" class="btn btn-submit">
-                    Submit
-                  </button>
-                </div>
-              </div>
-
-              <!-- OTP Timer Display -->
-              <div class="row mt-2" id="otpTimerContainer" style="display: none;">
-                <div class="col-md-12">
-                  <small class="otp-timer" id="otpTimer"></small>
-                </div>
-              </div>
-
-              <!-- Loading indicator for auto-send -->
-              <div class="row mt-3" id="autoSendIndicator" style="display: none;">
-                <div class="col-md-12">
-                  <div class="d-flex align-items-center">
-                    <strong class="text-primary me-2">Sending OTP...</strong>
-                    <div class="spinner-border spinner-border-sm text-primary" role="status">
-                      <span class="visually-hidden">Loading...</span>
-                    </div>
-                  </div>
-                </div>
-              </div>
             </div>
           </div>
         </div>
@@ -172,7 +92,7 @@
         </div>
         <div class="row mt-2">
           <div class="col-12 text-center">
-            <a id="join-now-btn">Join Now <img src="./image/icons/join-icon.svg" alt="Join now icon" /></a>
+            <a href="./signup.php" id="join-now-btn">Join Now <img src="./image/icons/join-icon.svg" alt="Join now icon" /></a>
           </div>
         </div>
       </div>
@@ -456,7 +376,7 @@
         </div>
         <div class="row">
           <div class="col-12 text-center">
-            <a class="join-btn mt-5">join now
+            <a href="./signup.php" class="join-btn mt-5">join now
               <span class="icon-circle bg-uk-red">
                 <img src="./image/icons/curveIcon.png" />
               </span>
