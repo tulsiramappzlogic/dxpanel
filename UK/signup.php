@@ -65,7 +65,7 @@
                     </div>
                     <div class="col-md-4">
                       <select class="form-control" name="gender" id="gender" onchange="checkFormCompletion();" required>
-                        <option value="">Select Gender</option>
+                        <option value="">Gender</option>
                         <option value="Male">Male</option>
                         <option value="Female">Female</option>
                         <option value="Other">Other</option>
@@ -81,7 +81,7 @@
                     </div>
                     <div class="col-md-4">
                        <select class="form-control" name="country" id="country" onchange="checkFormCompletion();" required>
-                        <option value="">Select Country</option>
+                        <option value="">Country</option>
                         <option value="England">England</option>
                         <option value="Scotland">Scotland</option>
                         <option value="Wales">Wales</option>

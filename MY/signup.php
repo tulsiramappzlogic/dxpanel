@@ -67,7 +67,7 @@
                                         </div>
                                         <div class="col-md-4">
                                             <select class="form-control" name="gender" id="gender" onchange="checkFormCompletion();" required>
-                                                <option value="">Select Gender</option>
+                                                <option value="">Gender</option>
                                                 <option value="Male">Male</option>
                                                 <option value="Female">Female</option>
                                                 <option value="Other">Other</option>
@@ -78,7 +78,7 @@
                                                 onblur="validateAddress();"></textarea>
                                         </div>
                                         <div class="col-md-4">
-                                            <input type="text" name="city" id="city" class="form-control" placeholder="City"
+                                            <input type="text" name="city" id="city" class="form-control" placeholder="City/Town"
                                                 pattern="[a-zA-Z\s]+" onblur="this.value = this.value.replace(/[^a-zA-Z\s]/g, ''); validateCity();" required />
                                         </div>
                                         <div class="col-md-4">
