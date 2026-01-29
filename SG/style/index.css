@@ -179,7 +179,7 @@ body {
     aspect-ratio: 1 / 1;
     border-radius: 15px;
     overflow: hidden;
-    background-color: #eee;
+    background-color: #fff;
 }
 
 .box.blue {
@@ -305,7 +305,7 @@ footer .social-icons i {
 
 /* made section */
 #made-section {
-    background-image: url('../image/background-image-1.png');
+    background-image: url('../image/background-image-1.svg');
     background-size: cover;
     background-position: center center;
 }
