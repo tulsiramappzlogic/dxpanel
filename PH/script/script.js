@@ -330,6 +330,60 @@ $(document).ready(function () {
     });
   });
 
+  // Resend OTP Button Click
+  $("#resendBtn").on("click", function () {
+    var email = $("#email").val();
+
+    if (!email) {
+      showMessage("Email not found. Please refresh and try again.", "error");
+      return;
+    }
+
+    // Disable button and show loading
+    $("#resendBtn")
+      .prop("disabled", true)
+      .html(
+        '<span class="spinner-border spinner-border-sm"></span> Sending...',
+      );
+
+    // Make AJAX request to resend OTP
+    $.ajax({
+      url: "otp_verify.php",
+      type: "POST",
+      data: {
+        action: "resend_otp",
+        email: email,
+      },
+      dataType: "json",
+      success: function (response) {
+        showMessage(response.message, response.success ? "success" : "error");
+
+        if (response.success) {
+          // OTP resent successfully
+          $("#otp").val(""); // Clear OTP input
+          $("#otp").focus();
+
+          // Hide resend button, show verify button
+          $("#resendBtn").hide();
+          $("#verifyBtn").show();
+
+          // Restart timer
+          startOtpTimer();
+
+          // Remove any previous expiry styling
+          $("#otpTimer").removeClass("text-danger").addClass("text-muted");
+        }
+      },
+      error: function (xhr, status, error) {
+        showMessage("An error occurred. Please try again.", "error");
+        console.error("AJAX Error:", status, error);
+      },
+      complete: function () {
+        $("#resendBtn").prop("disabled", false).text("Resend OTP");
+      },
+    });
+  });
+
   // Start OTP Timer
   function startOtpTimer() {
     var duration = 60; // 1 minute in seconds
@@ -344,8 +398,13 @@ $(document).ready(function () {
 
       if (duration <= 0) {
         clearInterval(otpTimerInterval);
-        $("#otpTimer").text("OTP has expired. Please refresh and try again.");
-        $("#verifyBtn").prop("disabled", true);
+        $("#otpTimer").text("OTP has expired. Please click Resend OTP to get a new one.");
+        $("#otpTimer").addClass("text-danger");
+        
+        // Hide verify button and show resend button
+        $("#verifyBtn").hide();
+        $("#resendBtn").show();
+        $("#resendBtn").prop("disabled", false);
       }
 
       duration--;
@@ -446,8 +505,11 @@ $(document).ready(function () {
             checkFormCompletion();
           }, 100);
         } else {
-          // Postcode not found in database - user can still proceed manually
-          console.log("Postcode not found. Please enter city and barangay manually.");
+          // Postcode not found in database - show message to user
+          showMessage(
+            "City not found in our record, you need to add it manually",
+            "error"
+          );
         }
       },
       error: function (xhr, status, error) {

@@ -241,10 +241,11 @@ function verifyOTPFromDB($pdo, $email, $otp)
             
             if ($existingUser) {
                 logError("OTP mismatch for email $email. Stored: " . $existingUser['otp'] . ", Submitted: $otp");
+                return 'invalid'; // OTP doesn't match
             } else {
                 logError("No pending record found for email: $email");
+                return 'not_found'; // No pending record
             }
-            return 'not_found';
         }
         
         // Debug logging
@@ -410,6 +411,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['action']) && $_POST['
 
         if ($result === 'not_found') {
             $response['message'] = "No pending verification found. Please fill the form again.";
+        } elseif ($result === 'invalid') {
+            $response['message'] = "Incorrect OTP. Please try again.";
         } elseif ($result === 'expired') {
             $response['message'] = "OTP has expired. Please request a new OTP.";
         } elseif ($result === true) {
@@ -432,39 +435,71 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['action']) && $_POST['
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['action']) && $_POST['action'] === 'resend_otp') {
     if (!isset($_SESSION['otp_email'])) {
         $response['message'] = "Session expired. Please fill the form again.";
-    } elseif ($pdo === null) {
-        $response['message'] = "Database connection failed. Please try again later.";
-    } else {
-        // Check if 1 minute has passed since last OTP
-        if (isset($_SESSION['otp_time']) && (time() - $_SESSION['otp_time']) < 60) {
-            $remaining = 60 - (time() - $_SESSION['otp_time']);
-            $response['message'] = "Please wait $remaining seconds before requesting a new OTP.";
-        } else {
-            // Generate new OTP
-            $otp = generateOTP();
-            $email = $_SESSION['otp_email'];
-
-            // Update OTP in database
-            $otp_updated = updateOTPInDB($pdo, $email, $otp);
-
-            if ($otp_updated) {
-                // Send new OTP email
-                $email_sent = sendOTPEmail($email, $otp, '');
-
-                if ($email_sent) {
-                    $_SESSION['otp_time'] = time();
-
-                    $response['success'] = true;
-                    $response['message'] = "New OTP sent successfully to: " . $email;
-                } else {
-                    $response['message'] = "Failed to send OTP. Please try again.";
-                }
-            } else {
-                $response['message'] = "Failed to update OTP. Please try again.";
-            }
-        }
+        echo json_encode($response);
+        exit;
     }
     
+    if ($pdo === null) {
+        $response['message'] = "Database connection failed. Please try again later.";
+        echo json_encode($response);
+        exit;
+    }
+
+    // Get user's name from database for the email template
+    $email = $_SESSION['otp_email'];
+    $user_name = '';
+    
+    try {
+        $nameSql = "SELECT full_name FROM uk_polls WHERE email = :email AND status = 'pending' LIMIT 1";
+        $nameStmt = $pdo->prepare($nameSql);
+        $nameStmt->execute([':email' => $email]);
+        $userData = $nameStmt->fetch();
+        if ($userData) {
+            $user_name = $userData['full_name'];
+        }
+    } catch (PDOException $e) {
+        logError("Failed to get user name: " . $e->getMessage());
+    }
+
+    // Check if 30 seconds have passed since last OTP (cooldown period)
+    if (isset($_SESSION['otp_time']) && (time() - $_SESSION['otp_time']) < 30) {
+        $remaining = 30 - (time() - $_SESSION['otp_time']);
+        $response['message'] = "Please wait $remaining seconds before requesting a new OTP.";
+        echo json_encode($response);
+        exit;
+    }
+
+    // Generate new OTP
+    $otp = generateOTP();
+    
+    // Update OTP in database (allow even if expired)
+    try {
+        $sql = "UPDATE uk_polls SET otp = :otp, otp_created_at = NOW(), otp_verified = 0, status = 'pending' 
+                WHERE email = :email";
+        $stmt = $pdo->prepare($sql);
+        $otp_updated = $stmt->execute([':otp' => $otp, ':email' => $email]);
+    } catch (PDOException $e) {
+        logError("OTP update failed: " . $e->getMessage());
+        $otp_updated = false;
+    }
+
+    if ($otp_updated) {
+        // Send new OTP email
+        $email_sent = sendOTPEmail($email, $otp, $user_name);
+
+        if ($email_sent) {
+            $_SESSION['otp_time'] = time();
+
+            $response['success'] = true;
+            $response['message'] = "New OTP sent successfully to: " . $email;
+            $response['resent'] = true;
+        } else {
+            $response['message'] = "Failed to send OTP. Please try again.";
+        }
+    } else {
+        $response['message'] = "Failed to update OTP. Please try again.";
+    }
+
     echo json_encode($response);
     exit;
 }
