@@ -329,24 +329,29 @@ footer .social-icons i {
     opacity: 1;
 }
 
+#made-section a.join-btn:hover {
+    text-decoration: underline;
+}
+
 #made-section a.join-btn {
-    border-radius: 25px;
     text-decoration: none;
     cursor: pointer;
-    background-color: rgba(94, 100, 115, 1);
-    padding: 5px 12px;
-    display: inline-flex;
-    align-items: center;
-    text-transform: capitalize;
+    background-color: rgb(39, 51, 118);
+    font-family: "Mulish", sans-serif;
+    font-optical-sizing: auto;
+    font-style: normal;
+    font-size: 1.5rem;
     color: rgb(255, 255, 255);
+    display: inline-flex;
+    gap: 10px;
+    align-items: center;
+    justify-content: center;
+    padding: 7px 18px;
+    border-radius: 24px;
 }
 
 #made-section a.join-btn img {
-    width: 8px;
-}
-
-#made-section a.join-btn:hover {
-    text-decoration: underline;
+    width: 30px;
 }
 
 #made-section div.appstore-options {
@@ -724,6 +729,10 @@ footer .social-icons i {
 
 #benefit-container a#join-now-btn img {
     width: 30px;
+}
+
+#benefit-container a#join-now-btn:hover{
+    text-decoration: underline;
 }
 
 @media screen and (max-width:575px) {

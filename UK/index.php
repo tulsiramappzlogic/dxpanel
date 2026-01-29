@@ -376,10 +376,8 @@
         </div>
         <div class="row">
           <div class="col-12 text-center">
-            <a href="./signup.php" class="join-btn mt-5">join now
-              <span class="icon-circle bg-uk-red">
-                <img src="./image/icons/curveIcon.png" />
-              </span>
+            <a href="./signup.php" class="join-btn mt-5">Join Now
+              <img src="./image/icons/join-icon.svg" alt="Join now icon" />
             </a>
           </div>
         </div>
