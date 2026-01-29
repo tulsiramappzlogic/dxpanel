@@ -179,15 +179,15 @@ body {
     aspect-ratio: 1 / 1;
     border-radius: 15px;
     overflow: hidden;
-    background-color: #eee;
+    background-color: #ffffff;
 }
 
 .box.blue {
-    background-color: var(--uk-blue);
+    background-color: rgb(1, 1, 102);
 }
 
 .box.red {
-    background-color: var(--uk-red);
+    background-color: rgb(204, 0, 0);
 }
 
 .box img {
