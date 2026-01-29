@@ -294,7 +294,7 @@ if (isset($postcodeMap[$postcode])) {
 } else {
     echo json_encode([
         'success' => false,
-        'message' => 'Postcode not found in database'
+        'message' => 'City not found in our record, you need to add it manually'
     ]);
 }
 

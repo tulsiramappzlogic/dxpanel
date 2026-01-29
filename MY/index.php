@@ -113,6 +113,9 @@
                   <button type="button" id="verifyBtn" class="btn btn-submit">
                     Submit
                   </button>
+                  <button type="button" id="resendBtn" class="btn btn-submit" style="display: none;">
+                    Resend OTP
+                  </button>
                 </div>
               </div>
 

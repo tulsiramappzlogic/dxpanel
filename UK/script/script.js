@@ -326,6 +326,60 @@ $(document).ready(function () {
     });
   });
 
+  // Resend OTP Button Click
+  $("#resendBtn").on("click", function () {
+    var email = $("#email").val();
+
+    if (!email) {
+      showMessage("Email not found. Please refresh and try again.", "error");
+      return;
+    }
+
+    // Disable button and show loading
+    $("#resendBtn")
+      .prop("disabled", true)
+      .html(
+        '<span class="spinner-border spinner-border-sm"></span> Sending...',
+      );
+
+    // Make AJAX request to resend OTP
+    $.ajax({
+      url: "otp_verify.php",
+      type: "POST",
+      data: {
+        action: "resend_otp",
+        email: email,
+      },
+      dataType: "json",
+      success: function (response) {
+        showMessage(response.message, response.success ? "success" : "error");
+
+        if (response.success) {
+          // OTP resent successfully
+          $("#otp").val(""); // Clear OTP input
+          $("#otp").focus();
+
+          // Hide resend button, show verify button
+          $("#resendBtn").hide();
+          $("#verifyBtn").show();
+
+          // Restart timer
+          startOtpTimer();
+
+          // Remove any previous expiry styling
+          $("#otpTimer").removeClass("text-danger").addClass("text-muted");
+        }
+      },
+      error: function (xhr, status, error) {
+        showMessage("An error occurred. Please try again.", "error");
+        console.error("AJAX Error:", status, error);
+      },
+      complete: function () {
+        $("#resendBtn").prop("disabled", false).text("Resend OTP");
+      },
+    });
+  });
+
   // Start OTP Timer
   function startOtpTimer() {
     var duration = 60; // 1 minute in seconds
@@ -340,8 +394,13 @@ $(document).ready(function () {
 
       if (duration <= 0) {
         clearInterval(otpTimerInterval);
-        $("#otpTimer").text("OTP has expired. Please refresh and try again.");
-        $("#verifyBtn").prop("disabled", true);
+        $("#otpTimer").text("OTP has expired. Please click Resend OTP to get a new one.");
+        $("#otpTimer").addClass("text-danger");
+        
+        // Hide verify button and show resend button
+        $("#verifyBtn").hide();
+        $("#resendBtn").show();
+        $("#resendBtn").prop("disabled", false);
       }
 
       duration--;
@@ -465,37 +524,106 @@ $(document).ready(function () {
     // Clear city when postcode changes
     cityInput.val("");
 
+    // UK Postcode area codes mapped to cities (for terminated/old postcodes)
+    var postcodeAreaMap = {
+      'AB': 'Aberdeen', 'AL': 'St Albans', 'B': 'Birmingham', 'BA': 'Bath',
+      'BB': 'Blackburn', 'BD': 'Bradford', 'BH': 'Bournemouth', 'BL': 'Bolton',
+      'BN': 'Brighton', 'BR': 'Bromley', 'BS': 'Bristol', 'BT': 'Belfast',
+      'CA': 'Carlisle', 'CB': 'Cambridge', 'CF': 'Cardiff', 'CH': 'Chester',
+      'CM': 'Chelmsford', 'CO': 'Colchester', 'CR': 'Croydon', 'CT': 'Canterbury',
+      'CV': 'Coventry', 'CW': 'Crewe', 'DA': 'Dartford', 'DD': 'Dundee',
+      'DE': 'Derby', 'DG': 'Dumfries', 'DH': 'Durham', 'DL': 'Darlington',
+      'DN': 'Doncaster', 'DT': 'Dorchester', 'DY': 'Dudley', 'E': 'London',
+      'EC': 'London', 'EH': 'Edinburgh', 'EN': 'Enfield', 'EX': 'Exeter',
+      'FK': 'Falkirk', 'FY': 'Blackpool', 'G': 'Glasgow', 'GL': 'Gloucester',
+      'GU': 'Guildford', 'HA': 'Harrow', 'HD': 'Huddersfield', 'HG': 'Harrogate',
+      'HP': 'Hemel Hempstead', 'HR': 'Hereford', 'HS': 'Stornoway', 'HU': 'Hull',
+      'HX': 'Halifax', 'IG': 'Ilford', 'IP': 'Ipswich', 'IV': 'Inverness',
+      'KA': 'Kilmarnock', 'KT': 'Kingston upon Thames', 'KW': 'Kirkwall',
+      'KY': 'Kirkcaldy', 'L': 'Liverpool', 'LA': 'Lancaster', 'LD': 'Llandrindod Wells',
+      'LE': 'Leicester', 'LL': 'Llandudno', 'LN': 'Lincoln', 'LS': 'Leeds',
+      'LU': 'Luton', 'M': 'Manchester', 'ME': 'Medway', 'MG': 'Motherwell',
+      'MK': 'Milton Keynes', 'ML': 'Motherwell', 'N': 'London', 'NE': 'Newcastle upon Tyne',
+      'NG': 'Nottingham', 'NN': 'Northampton', 'NP': 'Newport', 'NR': 'Norwich',
+      'NW': 'London', 'OL': 'Oldham', 'OX': 'Oxford', 'PA': 'Paisley', 'PE': 'Peterborough',
+      'PH': 'Perth', 'PL': 'Plymouth', 'PO': 'Portsmouth', 'PR': 'Preston',
+      'RG': 'Reading', 'RH': 'Redhill', 'RM': 'Romford', 'S': 'Sheffield',
+      'SA': 'Swansea', 'SE': 'London', 'SG': 'Stevenage', 'SK': 'Stockport',
+      'SL': 'Slough', 'SM': 'Sutton', 'SN': 'Swindon', 'SO': 'Southampton',
+      'SP': 'Salisbury', 'SR': 'Sunderland', 'SS': 'Southend-on-Sea', 'ST': 'Stoke-on-Trent',
+      'SW': 'London', 'SY': 'Shrewsbury', 'TA': 'Taunton', 'TD': 'Galashiels',
+      'TF': 'Telford', 'TN': 'Tonbridge', 'TQ': 'Torquay', 'TR': 'Truro',
+      'TS': 'Cleveland', 'TW': 'Twickenham', 'UB': 'Uxbridge', 'W': 'London',
+      'WA': 'Warrington', 'WC': 'London', 'WD': 'Watford', 'WF': 'Wakefield',
+      'WN': 'Wigan', 'WR': 'Worcester', 'WS': 'Walsall', 'WV': 'Wolverhampton',
+      'YO': 'York', 'ZE': 'Lerwick'
+    };
+
     // Make API call to postcodes.io
     $.ajax({
       url: "https://api.postcodes.io/postcodes/" + postcode,
       type: "GET",
       dataType: "json",
       success: function (response) {
+        var cityValue = null;
+
         if (response.status === 200 && response.result) {
           var result = response.result;
 
-          // Auto-fill city/town from API response
-          if (result.admin_district || result.postcode_town) {
-            var cityValue = result.admin_district || result.postcode_town;
-            cityInput.val(cityValue).trigger("change");
-
-            // Trigger checkFormCompletion after filling city
-            setTimeout(function () {
-              checkFormCompletion();
-            }, 100);
+          // Try multiple fields to find city/town (in order of preference)
+          cityValue = 
+            result.admin_district ||      // Primary: admin district
+            result.postcode_town ||       // Secondary: postcode town
+            result.admin_ward ||          // Fallback: admin ward
+            result.region ||              // Fallback: region
+            null;
+        } else if (response.status === 404 && response.terminated) {
+          // Terminated postcode - try to extract city from area code
+          var areaCode = postcode.substring(0, 2).toUpperCase();
+          if (postcodeAreaMap[areaCode]) {
+            cityValue = postcodeAreaMap[areaCode];
+          } else {
+            // Try single letter area code
+            areaCode = postcode.substring(0, 1).toUpperCase();
+            if (postcodeAreaMap[areaCode]) {
+              cityValue = postcodeAreaMap[areaCode];
+            }
           }
+        }
+
+        if (cityValue) {
+          // Auto-fill city/town from API response
+          cityInput.val(cityValue).trigger("change");
+
+          // Trigger checkFormCompletion after filling city
+          setTimeout(function () {
+            checkFormCompletion();
+          }, 100);
         } else {
-          // API returned error - user can still proceed manually
-          console.log(
-            "Postcode not found in API. Please enter city/town manually.",
+          // No city/town found - show message to user
+          showMessage(
+            "City not found in our record, you need to add it manually",
+            "error"
           );
         }
       },
       error: function (xhr, status, error) {
-        // API call failed - user can still proceed manually
-        console.log(
-          "Postcode lookup API unavailable. Please enter city/town manually.",
-        );
+        // API call failed - try to extract city from postcode area code
+        var areaCode = postcode.substring(0, 2).toUpperCase();
+        var cityValue = postcodeAreaMap[areaCode] || null;
+        
+        if (cityValue) {
+          cityInput.val(cityValue).trigger("change");
+          setTimeout(function () {
+            checkFormCompletion();
+          }, 100);
+        } else {
+          // Show message to user
+          showMessage(
+            "City not found in our record, you need to add it manually",
+            "error"
+          );
+        }
       },
     });
   }
