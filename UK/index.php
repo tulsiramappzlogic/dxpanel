@@ -93,8 +93,13 @@
                         pattern="[a-zA-Z\s]+" onblur="this.value = this.value.replace(/[^a-zA-Z\s]/g, ''); validateCity();" required />
                     </div>
                     <div class="col-md-4">
-                      <input type="text" name="country" id="country" readonly value="UK" class="form-control" placeholder="Country" value="UK"
-                        pattern="[a-zA-Z\s]+" onblur="this.value = this.value.replace(/[^a-zA-Z\s]/g, ''); checkFormCompletion();" required />
+                       <select class="form-control" name="country" id="country" onchange="checkFormCompletion();" required>
+                        <option value="">Select Country</option>
+                        <option value="England">England</option>
+                        <option value="Scotland">Scotland</option>
+                        <option value="Wales">Wales</option>
+                        <option value="Northern Ireland">Northern Ireland</option>
+                      </select>                  
                     </div>
                     <div class="col-md-4">
                       <input type="text" name="postcode" id="postcode" class="form-control" placeholder="Postcode (e.g., EH1 1AB)"
