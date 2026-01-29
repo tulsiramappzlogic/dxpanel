@@ -469,10 +469,10 @@
           <div class="col-12 mt-5">
             <div class="appstore-options">
               <a>
-                <img src="./image/icons/goglepaybutton.png" alt="Google Playstore Button" />
+                <img src="./image/icons/goglepaybutton.svg" alt="Google Playstore Button" />
               </a>
               <a>
-                <img src="./image/icons/palaystorelogo.png" alt="Apple Playstore Button" />
+                <img src="./image/icons/palaystorelogo.svg" alt="Apple Playstore Button" />
               </a>
             </div>
           </div>
