@@ -333,7 +333,7 @@
             <img src="./image/redemption-option-1.svg" alt="redemption option 1" />
           </div>
           <div class="col-12 col-sm-6 col-md-4 text-center">
-            <img src="./image/redemption-option-2.png" alt="redemption option 2" />
+            <img src="./image/redemption-option-2.svg" alt="redemption option 2" />
           </div>
           <div class="col-12 col-sm-6 col-md-4 text-center">
             <img src="./image/redemption-option-3.svg" alt="redemption option 3" />
@@ -345,7 +345,7 @@
             <img src="./image/redemption-option-5.svg" alt="redemption option 5" />
           </div>
           <div class="col-12 col-sm-6 col-md-4 text-center">
-            <img src="./image/redemption-option-6.png" alt="redemption option 6" />
+            <img src="./image/redemption-option-6.svg" alt="redemption option 6" />
           </div>
         </div>
       </div>
@@ -366,11 +366,11 @@
                     PhillippinesPolls is the
                     only dedicated
                     community for collecting opinions
-                    in Phillippines, that is made ONLY FOR
+                    in Phillippines, and ONLY FOR
                     PHILLIPPINES
                   </p>
                   <hr />
-                  <p class="text-center para-text">PhillippinesPolls works with some of the biggest brands in Phillippines and the world, and they want YOUR opinion!</p>
+                  <p class="text-center para-text">PhillippinesPolls works with some of the biggest brands in the Phillippines and the world, and they want YOUR opinions!</p>
                 </div>
               </div>
             </div>
