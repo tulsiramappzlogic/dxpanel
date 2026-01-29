@@ -281,6 +281,10 @@ $(document).ready(function () {
           // Stop timer
           clearInterval(otpTimerInterval);
 
+          // Hide resend button
+          $('#resendBtn').hide();
+          $('#verifyBtn').show();
+
           // Clear form and reset
           $('#myPollsForm')[0].reset();
           // $('#otpRow').slideUp();
@@ -290,6 +294,10 @@ $(document).ready(function () {
           // Reset flags
           isOtpSent = false;
           isFormSubmitting = false;
+        } else if (response.message.indexOf('expired') !== -1) {
+          // OTP has expired, show resend button
+          $('#verifyBtn').hide();
+          $('#resendBtn').show();
         }
       },
       error: function (xhr, status, error) {
@@ -298,6 +306,60 @@ $(document).ready(function () {
       },
       complete: function () {
         $('#verifyBtn').prop('disabled', false).text('Submit');
+      },
+    });
+  });
+
+  // Resend OTP Button Click
+  $('#resendBtn').on('click', function () {
+    var email = $('#email').val();
+
+    if (!email) {
+      showMessage('Email not found. Please refresh and try again.', 'error');
+      return;
+    }
+
+    // Disable button and show loading
+    $('#resendBtn')
+      .prop('disabled', true)
+      .html(
+        '<span class="spinner-border spinner-border-sm"></span> Sending...',
+      );
+
+    // Make AJAX request to resend OTP
+    $.ajax({
+      url: 'otp_verify.php',
+      type: 'POST',
+      data: {
+        action: 'resend_otp',
+        email: email,
+      },
+      dataType: 'json',
+      success: function (response) {
+        showMessage(response.message, response.success ? 'success' : 'error');
+
+        if (response.success) {
+          // OTP resent successfully
+          $('#otp').val(''); // Clear OTP input
+          $('#otp').focus();
+
+          // Hide resend button, show verify button
+          $('#resendBtn').hide();
+          $('#verifyBtn').show();
+
+          // Restart timer
+          startOtpTimer();
+
+          // Hide any previous expiry message
+          $('#otpTimer').removeClass('text-danger').addClass('text-muted');
+        }
+      },
+      error: function (xhr, status, error) {
+        showMessage('An error occurred. Please try again.', 'error');
+        console.error('AJAX Error:', status, error);
+      },
+      complete: function () {
+        $('#resendBtn').prop('disabled', false).text('Resend OTP');
       },
     });
   });
@@ -316,8 +378,13 @@ $(document).ready(function () {
 
       if (duration <= 0) {
         clearInterval(otpTimerInterval);
-        $('#otpTimer').text('OTP has expired. Please refresh and try again.');
-        $('#verifyBtn').prop('disabled', true);
+        $('#otpTimer').text('OTP has expired. Please click Resend OTP to get a new one.');
+        $('#otpTimer').addClass('text-danger');
+        
+        // Disable verify button and show resend button
+        $('#verifyBtn').hide();
+        $('#resendBtn').show();
+        $('#resendBtn').prop('disabled', false);
       }
 
       duration--;
