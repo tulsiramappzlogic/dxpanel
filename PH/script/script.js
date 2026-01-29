@@ -505,8 +505,11 @@ $(document).ready(function () {
             checkFormCompletion();
           }, 100);
         } else {
-          // Postcode not found in database - user can still proceed manually
-          console.log("Postcode not found. Please enter city and barangay manually.");
+          // Postcode not found in database - show message to user
+          showMessage(
+            "City not found in our record, you need to add it manually",
+            "error"
+          );
         }
       },
       error: function (xhr, status, error) {
