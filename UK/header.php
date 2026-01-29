@@ -31,7 +31,7 @@
               <i class="fas fa-angle-double-right"></i>
             </span>
           </a>
-          <a href="#" class="btn-auth">
+          <a href="./signup.php" class="btn-auth">
             Sign Up
             <span class="icon-circle bg-uk-red">
               <i class="fas fa-angle-double-right"></i>
