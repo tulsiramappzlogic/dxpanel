@@ -4,6 +4,8 @@
  * Separate file for OTP verification to handle form submission and OTP verification
  */
 
+// Start session at the very beginning
+session_start();
 // Error reporting for debugging
 error_reporting(E_ALL);
 ini_set('display_errors', 1);
