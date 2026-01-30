@@ -563,33 +563,33 @@ $(document).ready(function () {
 });
 
 // To hide and show signup form on signup click
-$(document).ready(function () {
-  const $form = $('#sigup-form-container');
-  const $fullName = $('#full_name');
+// $(document).ready(function () {
+//   const $form = $('#sigup-form-container');
+//   const $fullName = $('#full_name');
 
-  function showFormAndFocus() {
-    if ($form.hasClass('d-none')) {
-      $form.removeClass('d-none');
-    }
-    $fullName.trigger('focus');
-  }
+//   function showFormAndFocus() {
+//     if ($form.hasClass('d-none')) {
+//       $form.removeClass('d-none');
+//     }
+//     $fullName.trigger('focus');
+//   }
 
-  function toggleForm() {
-    $form.toggleClass('d-none');
+//   function toggleForm() {
+//     $form.toggleClass('d-none');
 
-    if (!$form.hasClass('d-none')) {
-      $fullName.trigger('focus');
-    }
-  }
+//     if (!$form.hasClass('d-none')) {
+//       $fullName.trigger('focus');
+//     }
+//   }
 
-  $('.btn-auth').on('click', function (e) {
-    e.preventDefault();
-    toggleForm();
-  });
+//   $('.btn-auth').on('click', function (e) {
+//     e.preventDefault();
+//     toggleForm();
+//   });
 
-  $('#join-now-btn, .join-btn').on('click', function (e) {
-    e.preventDefault();
-    showFormAndFocus();
-  });
-});
+//   $('#join-now-btn, .join-btn').on('click', function (e) {
+//     e.preventDefault();
+//     showFormAndFocus();
+//   });
+// });
 

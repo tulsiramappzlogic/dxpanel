@@ -3,7 +3,7 @@
       <div class="row gap-3 gap-lg-0 align-items-center">
         <div class="col-12 col-lg-5">
           <div class="text-center text-lg-start">
-            <a href="#" class="border-right-except-last footer-link px-2">About Us</a>
+            <a href="./about-us.php" class="border-right-except-last footer-link px-2">About Us</a>
             <a href="./privacyPolicy.php" class="border-right-except-last footer-link px-2">Privacy Policy</a>
             <a href="./termsConditions.php" class="border-right-except-last footer-link px-2">Terms &
               Conditions</a>
