@@ -64,7 +64,7 @@
             </div>
             <div class="row mt-3 align-items-center">
                 <div class="col-md-2">
-                    <img class="w-100" src="./image/about-us-images/about-us-image-3.svg" alt="about us image 3" />
+                    <img class="w-100" src="./image/about-us-images/about-us-image-3.png" alt="about us image 3" />
                 </div>
                 <div class="col-md-10">
                     <div class="heading-container  mb-3">
