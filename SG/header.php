@@ -58,7 +58,7 @@
               <i class="fas fa-angle-double-right"></i>
             </span>
           </a>
-          <a href="#" class="btn-auth w-100 text-start">
+          <a href="./signup.php" class="btn-auth w-100 text-start">
             <i class="fas fa-user-plus me-2"></i>Sign Up
             <span class="icon-circle bg-uk-red ms-auto">
               <i class="fas fa-angle-double-right"></i>
