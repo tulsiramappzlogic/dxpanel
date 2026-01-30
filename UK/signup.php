@@ -80,7 +80,8 @@
                       <input type="text" name="city" id="city" class="form-control" placeholder="City / Town"
                         pattern="[a-zA-Z\s]+" onblur="this.value = this.value.replace(/[^a-zA-Z\s]/g, ''); validateCity();" required />
                     </div>
-                    <div class="col-md-4">
+                    <input type="hidden" name="country" id="country" value="UK" />
+                    <!-- <div class="col-md-4">
                        <select class="form-control" name="country" id="country" onchange="checkFormCompletion();" required>
                         <option value="">Country</option>
                         <option value="England">England</option>
@@ -88,7 +89,7 @@
                         <option value="Wales">Wales</option>
                         <option value="Northern Ireland">Northern Ireland</option>
                       </select>                  
-                    </div>
+                    </div> -->
                     <div class="col-md-4">
                       <input type="text" name="postcode" id="postcode" class="form-control" placeholder="Postcode (e.g., EH1 1AB)"
                         oninput="validatePostcode();" onblur="validatePostcode();" required />
