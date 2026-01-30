@@ -1056,6 +1056,9 @@ header{
 }
 
 #about-us-container h1 {
+    font-family: "Expletus Sans", sans-serif;
+    font-optical-sizing: auto;
+    font-style: normal;
     font-size: 2rem;
     font-weight: 700;
 }
