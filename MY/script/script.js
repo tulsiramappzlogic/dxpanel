@@ -93,7 +93,7 @@ $(document).ready(function () {
   // Address Validation - Min 15 characters
   function validateAddress() {
     var address = $('#address').val().trim();
-    var minLength = 15;
+    var minLength = 5;
 
     if (address.length >= minLength) {
       // Valid - trigger checkFormCompletion
@@ -561,35 +561,3 @@ $(document).ready(function () {
     });
   }
 });
-
-// To hide and show signup form on signup click
-// $(document).ready(function () {
-//   const $form = $('#sigup-form-container');
-//   const $fullName = $('#full_name');
-
-//   function showFormAndFocus() {
-//     if ($form.hasClass('d-none')) {
-//       $form.removeClass('d-none');
-//     }
-//     $fullName.trigger('focus');
-//   }
-
-//   function toggleForm() {
-//     $form.toggleClass('d-none');
-
-//     if (!$form.hasClass('d-none')) {
-//       $fullName.trigger('focus');
-//     }
-//   }
-
-//   $('.btn-auth').on('click', function (e) {
-//     e.preventDefault();
-//     toggleForm();
-//   });
-
-//   $('#join-now-btn, .join-btn').on('click', function (e) {
-//     e.preventDefault();
-//     showFormAndFocus();
-//   });
-// });
-

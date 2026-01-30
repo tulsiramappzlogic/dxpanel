@@ -69,7 +69,7 @@ $(document).ready(function () {
 // Address Validation - Min 15 characters
   function validateAddress() {
     var address = $("#address").val().trim();
-    var minLength = 15;
+    var minLength = 5;
 
     if (address.length >= minLength) {
       // Valid - trigger checkFormCompletion
