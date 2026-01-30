@@ -4,19 +4,6 @@
  * Separate file for OTP verification to handle form submission and OTP verification
  */
 
-// Configure session settings for better reliability across different server environments
-ini_set('session.save_path', sys_get_temp_dir());
-ini_set('session.gc_maxlifetime', 3600); // 1 hour
-ini_set('session.gc_probability', 1);
-ini_set('session.gc_divisor', 100);
-ini_set('session.cookie_lifetime', 3600); // 1 hour
-ini_set('session.cookie_secure', isset($_SERVER['HTTPS']) ? 1 : 0); // Secure only if HTTPS
-ini_set('session.cookie_httponly', 1); // Prevent JavaScript access
-ini_set('session.use_only_cookies', 1); // Only use cookies for session ID
-ini_set('session.cookie_samesite', 'Lax'); // CSRF protection
-
-// Start session at the very beginning
-session_start();
 
 // Error reporting for debugging
 error_reporting(E_ALL);
