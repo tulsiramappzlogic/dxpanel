@@ -4,6 +4,8 @@
  * Separate file for OTP verification to handle form submission and OTP verification
  */
 
+// Start session at the very beginning
+session_start();
 // Error reporting for debugging
 error_reporting(E_ALL);
 ini_set('display_errors', 1);
@@ -230,11 +232,11 @@ function verifyOTPFromDB($pdo, $email, $otp)
         // Debug logging
         logError("OTP verification successful for email: $email");
 
-        // Check if OTP is still valid (1 minute = 60 seconds)
+        // Check if OTP is still valid (30 seconds)
         $otpTime = strtotime($user['otp_created_at']);
         $timeDiff = time() - $otpTime;
-
-        if ($timeDiff > 60) {
+        
+        if ($timeDiff > 30) {
             return 'expired';
         }
 
@@ -393,8 +395,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['action']) && $_POST['
             $response['message'] = "OTP has expired. Please request a new OTP.";
         } elseif ($result === true) {
             $response['success'] = true;
-            $response['message'] = "Welcome aboard! 🚀 You've successfully joined our early access waitlist. We’ll notify you as soon as onboarding opens for you. Thanks for showing interest in being part of our panel community!";
-
+            $response['message'] = "Thank you for signing up! We'll notify you once your account is ready.";
 
             // Clear session
             unset($_SESSION['user_id'], $_SESSION['otp_email'], $_SESSION['otp_time']);
@@ -414,7 +415,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['action']) && $_POST['
         echo json_encode($response);
         exit;
     }
-    
+
     if ($pdo === null) {
         $response['message'] = "Database connection failed. Please try again later.";
         echo json_encode($response);
@@ -424,7 +425,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['action']) && $_POST['
     // Get user's name from database for the email template
     $email = $_SESSION['otp_email'];
     $user_name = '';
-    
+
     try {
         $nameSql = "SELECT full_name FROM my_polls WHERE email = :email AND status = 'pending' LIMIT 1";
         $nameStmt = $pdo->prepare($nameSql);
@@ -447,7 +448,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['action']) && $_POST['
 
     // Generate new OTP
     $otp = generateOTP();
-    
+
     // Update OTP in database (allow even if expired)
     try {
         $sql = "UPDATE my_polls SET otp = :otp, otp_created_at = NOW(), otp_verified = 0, status = 'pending' 

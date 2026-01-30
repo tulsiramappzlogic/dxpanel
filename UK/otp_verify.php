@@ -4,6 +4,10 @@
  * Separate file for OTP verification to handle form submission and OTP verification
  */
 
+
+// Start session at the very beginning
+session_start();
+
 // Error reporting for debugging
 error_reporting(E_ALL);
 ini_set('display_errors', 1);
@@ -111,7 +115,7 @@ function sendOTPEmail($email, $otp, $name)
                     </div>
                     
                     <p style='color: #666; font-size: 12px; text-align: center;'>
-                        This OTP is valid for <strong>1 minute</strong>. Please do not share this OTP with anyone.
+                        This OTP is valid for <strong>30 seconds</strong>. Please do not share this OTP with anyone.
                     </p>
                     <p style='color: #999; font-size: 11px; text-align: center; margin-top: 20px;'>
                         If you did not request this OTP, please ignore this email.
@@ -248,11 +252,11 @@ function verifyOTPFromDB($pdo, $email, $otp)
         // Debug logging
         logError("OTP verification successful for email: $email");
         
-        // Check if OTP is still valid (1 minute = 60 seconds)
+        // Check if OTP is still valid (30 seconds)
         $otpTime = strtotime($user['otp_created_at']);
         $timeDiff = time() - $otpTime;
         
-        if ($timeDiff > 60) {
+        if ($timeDiff > 30) {
             return 'expired';
         }
         
@@ -414,7 +418,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['action']) && $_POST['
             $response['message'] = "OTP has expired. Please request a new OTP.";
         } elseif ($result === true) {
             $response['success'] = true;
-            $response['message'] = "Welcome aboard! 🚀 You've successfully joined our early access waitlist. We’ll notify you as soon as onboarding opens for you. Thanks for showing interest in being part of our panel community!";
+            $response['message'] = "Thank you for signing up! We'll notify you once your account is ready.";
 
 
             // Clear session
