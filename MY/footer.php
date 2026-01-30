@@ -7,7 +7,7 @@
             <a href="./privacyPolicy.php" class="border-right-except-last footer-link px-2">Privacy Policy</a>
             <a href="./termsConditions.php" class="border-right-except-last footer-link px-2">Terms &
               Conditions</a>
-            <a href="#"
+            <a href="https://www.dataxing.com/"
               class="border-right-except-last footer-link px-2">For
               Clients</a>
             <a href="contact-us.html" class="border-right-except-last footer-link px-2">Contact Us</a>
