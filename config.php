@@ -37,8 +37,7 @@ foreach ($lines as $line) {
     }
 }
 
-// Include unified email helper functions (available globally)
-require_once __DIR__ . '/email_helper.php';
+
 
 /**
  * Get environment variable

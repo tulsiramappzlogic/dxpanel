@@ -18,6 +18,7 @@ ini_set('error_log', __DIR__ . '/error.log');
 require_once 'db.php';
 // Include email configuration (includes config.php which now has email_helper.php)
 require_once 'email_config.php';
+require_once  'email_helper.php';
 
 header('Content-Type: application/json');
 
