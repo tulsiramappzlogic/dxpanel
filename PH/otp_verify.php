@@ -16,6 +16,12 @@ ini_set('log_errors', 1);
 ini_set('error_log', __DIR__ . '/error.log');
 
 
+// Include common database connection
+require_once 'db.php';
+// Include email configuration
+require_once 'email_config.php';
+// Include unified email helper
+require_once  'email_helper.php';
 
 
 

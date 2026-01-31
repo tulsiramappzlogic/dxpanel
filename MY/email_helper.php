@@ -1,7 +1,7 @@
 <?php
 /**
- * Unified Email Helper Function
- * Sends emails for all countries (MY, PH, SG, UK) with country-specific configurations
+ * Unified Email Helper Function for All Countries (MY, PH, SG, UK)
+ * Sends emails using country-specific configurations
  * Supports both PHPMailer SMTP and Brevo API methods
  * 
  * Usage Examples:
@@ -9,7 +9,7 @@
  *   sendOTPEmail('MY', $email, $name, $otp);
  *   
  *   // Send custom email
- *   sendEmail('PH', $email, $name, $subject, $htmlBody);
+ *   sendEmail('MY', $email, $name, $subject, $htmlBody);
  *   
  *   // Generate OTP
  *   $otp = generateOTP();
@@ -67,8 +67,8 @@ function sendEmail($country, $toEmail, $toName, $subject, $htmlBody, $textBody =
     // Get country-specific email configuration
     $emailConfig = getEmailConfig(strtoupper($country));
     
-    // Load PHPMailer classes
-    $phpmailer_src = __DIR__ . '/' . strtoupper($country) . '/lib/PHPMailer/src';
+    // Load PHPMailer classes - use local path for current country
+    $phpmailer_src = __DIR__ . '/lib/PHPMailer/src';
     
     // Include Exception first
     $exceptionFile = $phpmailer_src . '/Exception.php';
@@ -135,7 +135,7 @@ function sendEmail($country, $toEmail, $toName, $subject, $htmlBody, $textBody =
  * 
  * Usage:
  *   $result = sendOTPEmail('MY', 'user@example.com', 'User Name', '123456');
- *   $result = sendOTPEmail('PH', 'user@example.com', 'User Name', '123456', 2); // 2 minutes expiry
+ *   $result = sendOTPEmail('MY', 'user@example.com', 'User Name', '123456', 2); // 2 minutes expiry
  * 
  * @param string $country Country code (MY, PH, SG, UK)
  * @param string $toEmail Recipient email address
@@ -229,7 +229,7 @@ function getBrevoConfig($country)
  * 
  * Usage:
  *   $result = sendBrevoEmail('MY', 'user@example.com', 'User Name', 'Subject', $htmlBody, $textBody);
- *   $result = sendBrevoEmail('PH', 'user@example.com', 'User Name', 'Subject', $htmlBody);
+ *   $result = sendBrevoEmail('MY', 'user@example.com', 'User Name', 'Subject', $htmlBody);
  * 
  * @param string $country Country code (MY, PH, SG, UK)
  * @param string $toEmail Recipient email address
@@ -335,7 +335,7 @@ function sendBrevoEmail($country, $toEmail, $toName, $subject, $htmlBody, $textB
  * 
  * Usage:
  *   $result = sendBrevoOTPEmail('MY', 'user@example.com', 'User Name', '123456');
- *   $result = sendBrevoOTPEmail('PH', 'user@example.com', 'User Name', '123456');
+ *   $result = sendBrevoOTPEmail('MY', 'user@example.com', 'User Name', '123456');
  * 
  * @param string $country Country code (MY, PH, SG, UK)
  * @param string $toEmail Recipient email address
