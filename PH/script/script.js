@@ -386,7 +386,7 @@ $(document).ready(function () {
 
   // Start OTP Timer
   function startOtpTimer() {
-    var duration = 30; // 30 seconds
+    var duration = 60; // 60 seconds
 
     clearInterval(otpTimerInterval);
 
