@@ -21,7 +21,7 @@ require_once 'db.php';
 // Include email configuration
 require_once 'email_config.php';
 // Include unified email helper
-require_once dirname(__DIR__) . '/lib/email_helper.php';
+require_once dirname(__DIR__) . '/email_helper.php';
 
 header('Content-Type: application/json');
 
