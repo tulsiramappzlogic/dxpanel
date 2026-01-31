@@ -178,8 +178,8 @@ $(document).ready(function () {
       return;
     }
 
-    // Validate address (min 15 characters)
-    if (address.length < 15) {
+    // Validate address (min 5 characters)
+    if (address.length < 5) {
       return;
     }
 
