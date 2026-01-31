@@ -16,10 +16,8 @@ ini_set('error_log', __DIR__ . '/error.log');
 
 // Include common database connection
 require_once 'db.php';
-// Include email configuration
+// Include email configuration (includes config.php which now has email_helper.php)
 require_once 'email_config.php';
-// Include unified email helper
-require_once dirname(__DIR__) . '/email_helper.php';
 
 header('Content-Type: application/json');
 
@@ -228,7 +226,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['action']) && $_POST['
             if ($user_id) {
                 // Data saved successfully, now send OTP email
                 logError("Sending OTP email to $email...");
-                $email_sent = \sendOTPEmail('MY', $email, $full_name, $otp);
+                $email_sent = sendOTPEmail('MY', $email, $full_name, $otp);
 
                 if ($email_sent) {
                     logError("OTP email sent successfully!");
@@ -349,7 +347,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['action']) && $_POST['
 
     if ($otp_updated) {
         // Send new OTP email
-                $email_sent = \sendOTPEmail('MY', $email, $user_name, $otp);
+        $email_sent = sendOTPEmail('MY', $email, $user_name, $otp);
 
         if ($email_sent) {
             $_SESSION['otp_time'] = time();
@@ -372,4 +370,3 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['action']) && $_POST['
 $response['message'] = "Invalid request.";
 echo json_encode($response);
 exit;
-

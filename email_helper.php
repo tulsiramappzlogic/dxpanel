@@ -20,6 +20,10 @@ if (!function_exists('getEmailConfig')) {
     require_once dirname(__DIR__) . '/config.php';
 }
 
+use PHPMailer\PHPMailer\PHPMailer;
+use PHPMailer\PHPMailer\Exception;
+use PHPMailer\PHPMailer\SMTP;
+
 /**
  * Generate a random 6-digit OTP
  * 
@@ -64,7 +68,7 @@ function sendEmail($country, $toEmail, $toName, $subject, $htmlBody, $textBody =
     $emailConfig = getEmailConfig(strtoupper($country));
     
     // Load PHPMailer classes
-    $phpmailer_src = dirname(__DIR__) . '/' . strtoupper($country) . '/lib/PHPMailer/src';
+    $phpmailer_src = __DIR__ . '/' . strtoupper($country) . '/lib/PHPMailer/src';
     
     // Include Exception first
     $exceptionFile = $phpmailer_src . '/Exception.php';
@@ -85,7 +89,7 @@ function sendEmail($country, $toEmail, $toName, $subject, $htmlBody, $textBody =
     }
     
     try {
-        $mail = new PHPMailer\PHPMailer\PHPMailer(true);
+        $mail = new PHPMailer(true);
         
         // Server settings
         $mail->isSMTP();

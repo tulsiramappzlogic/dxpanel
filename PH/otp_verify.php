@@ -15,12 +15,10 @@ ini_set('log_errors', 1);
 // Log all errors to a file for later review
 ini_set('error_log', __DIR__ . '/error.log');
 
-// Include common database connection
-require_once 'db.php';
-// Include email configuration
-require_once 'email_config.php';
-// Include unified email helper
-require_once dirname(__DIR__) . '/email_helper.php';
+
+
+
+
 
 header('Content-Type: application/json');
 
