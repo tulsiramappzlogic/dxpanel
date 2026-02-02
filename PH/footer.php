@@ -10,7 +10,7 @@
             <a href="https://www.dataxing.com/"
               class="border-right-except-last footer-link px-2">For
               Clients</a>
-            <a href="" class="border-right-except-last footer-link px-2">Contact Us</a>
+            <a href="#" class="border-right-except-last footer-link px-2">Contact Us</a>
           </div>
         </div>
         <div class="col-12 col-lg-2">
