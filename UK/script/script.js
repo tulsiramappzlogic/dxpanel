@@ -111,7 +111,7 @@ $(document).ready(function () {
   // Make validateCity globally available
   window.validateCity = validateCity;
 
-  // Address Validation - Min 15 characters
+  // Address Validation - Min 5 characters
   function validateAddress() {
     var address = $('#address').val().trim();
     var minLength = 5;
