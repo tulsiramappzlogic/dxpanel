@@ -1,19 +1,40 @@
 // Mobile menu toggle
 $(document).ready(function () {
-  $("#authMenuToggle").on("click", function (e) {
+  const $dob = $('#date_of_birth');
+
+  // FIRST touch: switch to date BEFORE focus happens
+  $dob.on('touchstart', function () {
+    if (this.type !== 'date') {
+      this.type = 'date';
+    }
+  });
+
+  // Desktop fallback
+  $dob.on('focus', function () {
+    this.type = 'date';
+  });
+
+  // When validation clears value, restore placeholder mode
+  $dob.on('blur', function () {
+    if (!this.value) {
+      this.type = 'text';
+    }
+  });
+
+  $('#authMenuToggle').on('click', function (e) {
     e.preventDefault();
-    $("#authMenuDropdown").slideToggle(300);
+    $('#authMenuDropdown').slideToggle(300);
   });
 
   // Close menu when clicking on a link
-  $("#authMenuDropdown a").on("click", function () {
-    $("#authMenuDropdown").slideUp(300);
+  $('#authMenuDropdown a').on('click', function () {
+    $('#authMenuDropdown').slideUp(300);
   });
 
   // Close menu when clicking outside
-  $(document).on("click", function (e) {
-    if (!$(e.target).closest("#authMenuToggle, #authMenuDropdown").length) {
-      $("#authMenuDropdown").slideUp(300);
+  $(document).on('click', function (e) {
+    if (!$(e.target).closest('#authMenuToggle, #authMenuDropdown').length) {
+      $('#authMenuDropdown').slideUp(300);
     }
   });
 
@@ -23,7 +44,7 @@ $(document).ready(function () {
 
   // Full Name Validation - Min 3 characters
   function validateFullName() {
-    var fullName = $("#full_name").val().trim();
+    var fullName = $('#full_name').val().trim();
     var minLength = 3;
 
     if (fullName.length >= minLength) {
@@ -34,8 +55,8 @@ $(document).ready(function () {
       // Show error message if user has started typing
       if (fullName.length > 0) {
         showMessage(
-          "Full name must be at least " + minLength + " characters long.",
-          "error",
+          'Full name must be at least ' + minLength + ' characters long.',
+          'error',
         );
       }
       return false;
@@ -47,7 +68,7 @@ $(document).ready(function () {
 
   // Email Validation
   function validateEmail() {
-    var email = $("#email").val().trim();
+    var email = $('#email').val().trim();
     var emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
     if (emailPattern.test(email)) {
@@ -57,7 +78,7 @@ $(document).ready(function () {
     } else {
       // Show error message if user has started typing
       if (email.length > 0) {
-        showMessage("Please enter a valid email address.", "error");
+        showMessage('Please enter a valid email address.', 'error');
       }
       return false;
     }
@@ -68,7 +89,7 @@ $(document).ready(function () {
 
   // City Validation - Min 3 characters
   function validateCity() {
-    var city = $("#city").val().trim();
+    var city = $('#city').val().trim();
     var minLength = 3;
 
     if (city.length >= minLength) {
@@ -78,7 +99,10 @@ $(document).ready(function () {
     } else {
       // Show error message if user has started typing
       if (city.length > 0) {
-        showMessage("City must be at least " + minLength + " characters long.", "error");
+        showMessage(
+          'City must be at least ' + minLength + ' characters long.',
+          'error',
+        );
       }
       return false;
     }
@@ -89,7 +113,7 @@ $(document).ready(function () {
 
   // Address Validation - Min 15 characters
   function validateAddress() {
-    var address = $("#address").val().trim();
+    var address = $('#address').val().trim();
     var minLength = 5;
 
     if (address.length >= minLength) {
@@ -100,8 +124,8 @@ $(document).ready(function () {
       // Show error message if user has started typing
       if (address.length > 0) {
         showMessage(
-          "Address must be at least " + minLength + " characters long.",
-          "error",
+          'Address must be at least ' + minLength + ' characters long.',
+          'error',
         );
       }
       return false;
@@ -113,8 +137,8 @@ $(document).ready(function () {
 
   // UK Postcode Validation - Min 5 characters
   function validatePostcode() {
-    var postcode = $("#postcode").val().trim();
-    var postcodeHint = $("#postcodeHint");
+    var postcode = $('#postcode').val().trim();
+    var postcodeHint = $('#postcodeHint');
     var minLength = 5;
 
     if (postcode.length >= minLength) {
@@ -124,12 +148,12 @@ $(document).ready(function () {
       if (ukPostcodeRegex.test(postcode)) {
         if (postcodeHint.length) {
           postcodeHint
-            .removeClass("text-danger")
-            .addClass("text-success")
-            .text("✓ Valid UK postcode format");
+            .removeClass('text-danger')
+            .addClass('text-success')
+            .text('✓ Valid UK postcode format');
         }
         // Lookup postcode to auto-fill city
-        var postcodeClean = postcode.replace(/\s+/g, "");
+        var postcodeClean = postcode.replace(/\s+/g, '');
         lookupPostcode(postcodeClean);
         // Valid - trigger checkFormCompletion
         checkFormCompletion();
@@ -137,14 +161,14 @@ $(document).ready(function () {
       } else {
         if (postcodeHint.length) {
           postcodeHint
-            .removeClass("text-success")
-            .addClass("text-danger")
-            .text("✗ Invalid UK postcode format");
+            .removeClass('text-success')
+            .addClass('text-danger')
+            .text('✗ Invalid UK postcode format');
         }
         if (postcode.length > 0) {
           showMessage(
-            "Please enter a valid UK postcode format (e.g., EH1 1AA).",
-            "error",
+            'Please enter a valid UK postcode format (e.g., EH1 1AA).',
+            'error',
           );
         }
         return false;
@@ -152,9 +176,9 @@ $(document).ready(function () {
     } else {
       if (postcodeHint.length) {
         postcodeHint
-          .removeClass("text-success text-danger")
-          .addClass("text-muted")
-          .text("Format: AA9A 9AA, A9 9AA, A99 9AA, etc. (min 5 characters)");
+          .removeClass('text-success text-danger')
+          .addClass('text-muted')
+          .text('Format: AA9A 9AA, A9 9AA, A99 9AA, etc. (min 5 characters)');
       }
       return false;
     }
@@ -167,15 +191,15 @@ $(document).ready(function () {
   function checkFormCompletion() {
     if (isOtpSent || isFormSubmitting) return;
 
-    var full_name = $("#full_name").val().trim();
-    var email = $("#email").val().trim();
-    var date_of_birth = $("#date_of_birth").val();
-    var gender = $("#gender").val();
-    var address = $("#address").val().trim();
-    var city = $("#city").val().trim();
-    var country = $("#country").val().trim();
-    var postcode = $("#postcode").val().trim();
-    $("#messageContainer").html("");
+    var full_name = $('#full_name').val().trim();
+    var email = $('#email').val().trim();
+    var date_of_birth = $('#date_of_birth').val();
+    var gender = $('#gender').val();
+    var address = $('#address').val().trim();
+    var city = $('#city').val().trim();
+    var country = $('#country').val().trim();
+    var postcode = $('#postcode').val().trim();
+    $('#messageContainer').html('');
     // Validate full name (min 3 characters)
     if (full_name.length < 3) {
       return;
@@ -210,7 +234,7 @@ $(document).ready(function () {
       // Validate email format
       var emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
       if (!emailPattern.test(email)) {
-        showMessage("Please enter a valid email address.", "error");
+        showMessage('Please enter a valid email address.', 'error');
         return;
       }
       // Auto-send OTP
@@ -223,38 +247,38 @@ $(document).ready(function () {
     isFormSubmitting = true;
 
     // Show loading indicator
-    $("#autoSendIndicator").fadeIn();
+    $('#autoSendIndicator').fadeIn();
 
     // Make AJAX request to send OTP
     $.ajax({
-      url: "otp_verify.php",
-      type: "POST",
+      url: 'otp_verify.php',
+      type: 'POST',
       data: {
-        action: "send_otp",
-        full_name: $("#full_name").val(),
-        email: $("#email").val(),
-        date_of_birth: $("#date_of_birth").val(),
-        gender: $("#gender").val(),
-        address: $("#address").val(),
-        city: $("#city").val(),
-        country: $("#country").val(),
-        postcode: $("#postcode").val(),
+        action: 'send_otp',
+        full_name: $('#full_name').val(),
+        email: $('#email').val(),
+        date_of_birth: $('#date_of_birth').val(),
+        gender: $('#gender').val(),
+        address: $('#address').val(),
+        city: $('#city').val(),
+        country: $('#country').val(),
+        postcode: $('#postcode').val(),
       },
-      dataType: "json",
+      dataType: 'json',
       success: function (response) {
-        $("#autoSendIndicator").fadeOut();
-        showMessage(response.message, response.success ? "success" : "error");
+        $('#autoSendIndicator').fadeOut();
+        showMessage(response.message, response.success ? 'success' : 'error');
 
         if (response.success) {
           isOtpSent = true;
           // Show OTP input row
-          $("#otpRow").slideDown();
+          $('#otpRow').slideDown();
 
           // Focus on OTP input
-          $("#otp").focus();
+          $('#otp').focus();
 
           // Show timer
-          $("#otpTimerContainer").slideDown();
+          $('#otpTimerContainer').slideDown();
 
           // Start OTP timer
           startOtpTimer();
@@ -263,53 +287,53 @@ $(document).ready(function () {
         }
       },
       error: function (xhr, status, error) {
-        $("#autoSendIndicator").fadeOut();
-        showMessage("An error occurred. Please try again.", "error");
-        console.error("AJAX Error:", status, error);
+        $('#autoSendIndicator').fadeOut();
+        showMessage('An error occurred. Please try again.', 'error');
+        console.error('AJAX Error:', status, error);
         isFormSubmitting = false;
       },
     });
   }
 
   // Verify OTP Button Click
-  $("#verifyBtn").on("click", function () {
-    var otp = $("#otp").val();
-    var email = $("#email").val();
+  $('#verifyBtn').on('click', function () {
+    var otp = $('#otp').val();
+    var email = $('#email').val();
 
     if (!otp || otp.length !== 6) {
-      showMessage("Please enter the 6-digit OTP sent to your email.", "error");
+      showMessage('Please enter the 6-digit OTP sent to your email.', 'error');
       return;
     }
 
     // Disable button and show loading
-    $("#verifyBtn")
-      .prop("disabled", true)
+    $('#verifyBtn')
+      .prop('disabled', true)
       .html(
         '<span class="spinner-border spinner-border-sm"></span> Verifying...',
       );
 
     // Make AJAX request to verify OTP
     $.ajax({
-      url: "otp_verify.php",
-      type: "POST",
+      url: 'otp_verify.php',
+      type: 'POST',
       data: {
-        action: "verify_otp",
+        action: 'verify_otp',
         otp: otp,
         email: email,
       },
-      dataType: "json",
+      dataType: 'json',
       success: function (response) {
-        showMessage(response.message, response.success ? "success" : "error");
+        showMessage(response.message, response.success ? 'success' : 'error');
 
         if (response.success) {
           // Stop timer
           clearInterval(otpTimerInterval);
 
           // Clear form and reset
-          $("#ukPollsForm")[0].reset();
+          $('#ukPollsForm')[0].reset();
           // $('#otpRow').slideUp();
-          $("#otpTimerContainer").slideUp();
-          $("#otp").val("");
+          $('#otpTimerContainer').slideUp();
+          $('#otp').val('');
 
           // Reset flags
           isOtpSent = false;
@@ -317,65 +341,65 @@ $(document).ready(function () {
         }
       },
       error: function (xhr, status, error) {
-        showMessage("An error occurred. Please try again.", "error");
-        console.error("AJAX Error:", status, error);
+        showMessage('An error occurred. Please try again.', 'error');
+        console.error('AJAX Error:', status, error);
       },
       complete: function () {
-        $("#verifyBtn").prop("disabled", false).text("Submit");
+        $('#verifyBtn').prop('disabled', false).text('Submit');
       },
     });
   });
 
   // Resend OTP Button Click
-  $("#resendBtn").on("click", function () {
-    var email = $("#email").val();
+  $('#resendBtn').on('click', function () {
+    var email = $('#email').val();
 
     if (!email) {
-      showMessage("Email not found. Please refresh and try again.", "error");
+      showMessage('Email not found. Please refresh and try again.', 'error');
       return;
     }
 
     // Disable button and show loading
-    $("#resendBtn")
-      .prop("disabled", true)
+    $('#resendBtn')
+      .prop('disabled', true)
       .html(
         '<span class="spinner-border spinner-border-sm"></span> Sending...',
       );
 
     // Make AJAX request to resend OTP
     $.ajax({
-      url: "otp_verify.php",
-      type: "POST",
+      url: 'otp_verify.php',
+      type: 'POST',
       data: {
-        action: "resend_otp",
+        action: 'resend_otp',
         email: email,
       },
-      dataType: "json",
+      dataType: 'json',
       success: function (response) {
-        showMessage(response.message, response.success ? "success" : "error");
+        showMessage(response.message, response.success ? 'success' : 'error');
 
         if (response.success) {
           // OTP resent successfully
-          $("#otp").val(""); // Clear OTP input
-          $("#otp").focus();
+          $('#otp').val(''); // Clear OTP input
+          $('#otp').focus();
 
           // Hide resend button, show verify button
-          $("#resendBtn").hide();
-          $("#verifyBtn").show();
+          $('#resendBtn').hide();
+          $('#verifyBtn').show();
 
           // Restart timer
           startOtpTimer();
 
           // Remove any previous expiry styling
-          $("#otpTimer").removeClass("text-danger").addClass("text-muted");
+          $('#otpTimer').removeClass('text-danger').addClass('text-muted');
         }
       },
       error: function (xhr, status, error) {
-        showMessage("An error occurred. Please try again.", "error");
-        console.error("AJAX Error:", status, error);
+        showMessage('An error occurred. Please try again.', 'error');
+        console.error('AJAX Error:', status, error);
       },
       complete: function () {
-        $("#resendBtn").prop("disabled", false).text("Resend OTP");
+        $('#resendBtn').prop('disabled', false).text('Resend OTP');
       },
     });
   });
@@ -390,17 +414,19 @@ $(document).ready(function () {
       var minutes = Math.floor(duration / 60);
       var seconds = duration % 60;
 
-      $("#otpTimer").text("OTP expires in: " + seconds + " seconds");
+      $('#otpTimer').text('OTP expires in: ' + seconds + ' seconds');
 
       if (duration <= 0) {
         clearInterval(otpTimerInterval);
-        $("#otpTimer").text("OTP has expired. Please click Resend OTP to get a new one.");
-        $("#otpTimer").addClass("text-danger");
-        
+        $('#otpTimer').text(
+          'OTP has expired. Please click Resend OTP to get a new one.',
+        );
+        $('#otpTimer').addClass('text-danger');
+
         // Hide verify button and show resend button
-        $("#verifyBtn").hide();
-        $("#resendBtn").show();
-        $("#resendBtn").prop("disabled", false);
+        $('#verifyBtn').hide();
+        $('#resendBtn').show();
+        $('#resendBtn').prop('disabled', false);
       }
 
       duration--;
@@ -411,18 +437,18 @@ $(document).ready(function () {
   function showMessage(message, type) {
     var html =
       '<div class="' +
-      (type === "success"
-        ? "success-message alert alert-success m-2 p-2"
-        : "error-message alert alert-danger m-2 p-2") +
+      (type === 'success'
+        ? 'success-message alert alert-success m-2 p-2'
+        : 'error-message alert alert-danger m-2 p-2') +
       '">' +
       message +
-      "</div>";
-    $("#messageContainer").html(html);
+      '</div>';
+    $('#messageContainer').html(html);
 
     // Auto-hide after 5 seconds for success messages
-    if (type === "success") {
+    if (type === 'success') {
       setTimeout(function () {
-        $("#messageContainer").fadeOut(function () {
+        $('#messageContainer').fadeOut(function () {
           $(this).empty().show();
         });
       }, 5000);
@@ -434,7 +460,7 @@ $(document).ready(function () {
 
   // Age Validation Function (16 years and above)
   function validateAge() {
-    var dobInput = $("#date_of_birth");
+    var dobInput = $('#date_of_birth');
     var dobValue = dobInput.val();
 
     if (!dobValue) return true;
@@ -451,13 +477,13 @@ $(document).ready(function () {
 
     // Check if under 16
     if (age < 16) {
-      showMessage("You must be 16 years or older to register.", "error");
-      dobInput.val(""); // Clear invalid date
+      showMessage('You must be 16 years or older to register.', 'error');
+      dobInput.val(''); // Clear invalid date
       return false;
     }
 
     // Clear any previous error messages when valid age is entered
-    $("#messageContainer").empty();
+    $('#messageContainer').empty();
     return true;
   }
 
@@ -466,11 +492,11 @@ $(document).ready(function () {
 
   // Postcode input handler - triggers lookup when 6-7 characters entered
   function onPostcodeInput() {
-    var postcode = $("#postcode").val().trim();
+    var postcode = $('#postcode').val().trim();
 
     // UK postcodes are typically 5-8 characters (with spaces)
     // Format: AN NAA, ANN NAA, AAN NAA, AANN NAA, ANA NAA, AANA NAA
-    var postcodeClean = postcode.replace(/\s+/g, "");
+    var postcodeClean = postcode.replace(/\s+/g, '');
 
     if (postcodeClean.length >= 5 && postcodeClean.length <= 8) {
       lookupPostcode(postcodeClean);
@@ -482,8 +508,8 @@ $(document).ready(function () {
 
   // UK Postcode Validation Function
   function validateUKPostcode() {
-    var postcode = $("#postcode").val().trim();
-    var postcodeHint = $("#postcodeHint");
+    var postcode = $('#postcode').val().trim();
+    var postcodeHint = $('#postcodeHint');
 
     // UK Postcode regex patterns
     // Outward code: 1 or 2 letters + 1 or 2 digits
@@ -493,22 +519,22 @@ $(document).ready(function () {
     if (postcode.length > 0) {
       if (ukPostcodeRegex.test(postcode)) {
         postcodeHint
-          .removeClass("text-danger")
-          .addClass("text-success")
-          .text("✓ Valid UK postcode format");
+          .removeClass('text-danger')
+          .addClass('text-success')
+          .text('✓ Valid UK postcode format');
         return true;
       } else {
         postcodeHint
-          .removeClass("text-success")
-          .addClass("text-danger")
-          .text("✗ Invalid UK postcode format");
+          .removeClass('text-success')
+          .addClass('text-danger')
+          .text('✗ Invalid UK postcode format');
         return false;
       }
     } else {
       postcodeHint
-        .removeClass("text-success text-danger")
-        .addClass("text-muted")
-        .text("Format: AA9A 9AA, A9 9AA, A99 9AA, etc.");
+        .removeClass('text-success text-danger')
+        .addClass('text-muted')
+        .text('Format: AA9A 9AA, A9 9AA, A99 9AA, etc.');
       return false;
     }
   }
@@ -518,52 +544,143 @@ $(document).ready(function () {
 
   // UK Postcode Lookup Function using postcodes.io API
   function lookupPostcode(postcode) {
-    var postcodeInput = $("#postcode");
-    var cityInput = $("#city");
+    var postcodeInput = $('#postcode');
+    var cityInput = $('#city');
 
     // Clear city when postcode changes
-    cityInput.val("");
+    cityInput.val('');
 
     // UK Postcode area codes mapped to cities (for terminated/old postcodes)
     var postcodeAreaMap = {
-      'AB': 'Aberdeen', 'AL': 'St Albans', 'B': 'Birmingham', 'BA': 'Bath',
-      'BB': 'Blackburn', 'BD': 'Bradford', 'BH': 'Bournemouth', 'BL': 'Bolton',
-      'BN': 'Brighton', 'BR': 'Bromley', 'BS': 'Bristol', 'BT': 'Belfast',
-      'CA': 'Carlisle', 'CB': 'Cambridge', 'CF': 'Cardiff', 'CH': 'Chester',
-      'CM': 'Chelmsford', 'CO': 'Colchester', 'CR': 'Croydon', 'CT': 'Canterbury',
-      'CV': 'Coventry', 'CW': 'Crewe', 'DA': 'Dartford', 'DD': 'Dundee',
-      'DE': 'Derby', 'DG': 'Dumfries', 'DH': 'Durham', 'DL': 'Darlington',
-      'DN': 'Doncaster', 'DT': 'Dorchester', 'DY': 'Dudley', 'E': 'London',
-      'EC': 'London', 'EH': 'Edinburgh', 'EN': 'Enfield', 'EX': 'Exeter',
-      'FK': 'Falkirk', 'FY': 'Blackpool', 'G': 'Glasgow', 'GL': 'Gloucester',
-      'GU': 'Guildford', 'HA': 'Harrow', 'HD': 'Huddersfield', 'HG': 'Harrogate',
-      'HP': 'Hemel Hempstead', 'HR': 'Hereford', 'HS': 'Stornoway', 'HU': 'Hull',
-      'HX': 'Halifax', 'IG': 'Ilford', 'IP': 'Ipswich', 'IV': 'Inverness',
-      'KA': 'Kilmarnock', 'KT': 'Kingston upon Thames', 'KW': 'Kirkwall',
-      'KY': 'Kirkcaldy', 'L': 'Liverpool', 'LA': 'Lancaster', 'LD': 'Llandrindod Wells',
-      'LE': 'Leicester', 'LL': 'Llandudno', 'LN': 'Lincoln', 'LS': 'Leeds',
-      'LU': 'Luton', 'M': 'Manchester', 'ME': 'Medway', 'MG': 'Motherwell',
-      'MK': 'Milton Keynes', 'ML': 'Motherwell', 'N': 'London', 'NE': 'Newcastle upon Tyne',
-      'NG': 'Nottingham', 'NN': 'Northampton', 'NP': 'Newport', 'NR': 'Norwich',
-      'NW': 'London', 'OL': 'Oldham', 'OX': 'Oxford', 'PA': 'Paisley', 'PE': 'Peterborough',
-      'PH': 'Perth', 'PL': 'Plymouth', 'PO': 'Portsmouth', 'PR': 'Preston',
-      'RG': 'Reading', 'RH': 'Redhill', 'RM': 'Romford', 'S': 'Sheffield',
-      'SA': 'Swansea', 'SE': 'London', 'SG': 'Stevenage', 'SK': 'Stockport',
-      'SL': 'Slough', 'SM': 'Sutton', 'SN': 'Swindon', 'SO': 'Southampton',
-      'SP': 'Salisbury', 'SR': 'Sunderland', 'SS': 'Southend-on-Sea', 'ST': 'Stoke-on-Trent',
-      'SW': 'London', 'SY': 'Shrewsbury', 'TA': 'Taunton', 'TD': 'Galashiels',
-      'TF': 'Telford', 'TN': 'Tonbridge', 'TQ': 'Torquay', 'TR': 'Truro',
-      'TS': 'Cleveland', 'TW': 'Twickenham', 'UB': 'Uxbridge', 'W': 'London',
-      'WA': 'Warrington', 'WC': 'London', 'WD': 'Watford', 'WF': 'Wakefield',
-      'WN': 'Wigan', 'WR': 'Worcester', 'WS': 'Walsall', 'WV': 'Wolverhampton',
-      'YO': 'York', 'ZE': 'Lerwick'
+      AB: 'Aberdeen',
+      AL: 'St Albans',
+      B: 'Birmingham',
+      BA: 'Bath',
+      BB: 'Blackburn',
+      BD: 'Bradford',
+      BH: 'Bournemouth',
+      BL: 'Bolton',
+      BN: 'Brighton',
+      BR: 'Bromley',
+      BS: 'Bristol',
+      BT: 'Belfast',
+      CA: 'Carlisle',
+      CB: 'Cambridge',
+      CF: 'Cardiff',
+      CH: 'Chester',
+      CM: 'Chelmsford',
+      CO: 'Colchester',
+      CR: 'Croydon',
+      CT: 'Canterbury',
+      CV: 'Coventry',
+      CW: 'Crewe',
+      DA: 'Dartford',
+      DD: 'Dundee',
+      DE: 'Derby',
+      DG: 'Dumfries',
+      DH: 'Durham',
+      DL: 'Darlington',
+      DN: 'Doncaster',
+      DT: 'Dorchester',
+      DY: 'Dudley',
+      E: 'London',
+      EC: 'London',
+      EH: 'Edinburgh',
+      EN: 'Enfield',
+      EX: 'Exeter',
+      FK: 'Falkirk',
+      FY: 'Blackpool',
+      G: 'Glasgow',
+      GL: 'Gloucester',
+      GU: 'Guildford',
+      HA: 'Harrow',
+      HD: 'Huddersfield',
+      HG: 'Harrogate',
+      HP: 'Hemel Hempstead',
+      HR: 'Hereford',
+      HS: 'Stornoway',
+      HU: 'Hull',
+      HX: 'Halifax',
+      IG: 'Ilford',
+      IP: 'Ipswich',
+      IV: 'Inverness',
+      KA: 'Kilmarnock',
+      KT: 'Kingston upon Thames',
+      KW: 'Kirkwall',
+      KY: 'Kirkcaldy',
+      L: 'Liverpool',
+      LA: 'Lancaster',
+      LD: 'Llandrindod Wells',
+      LE: 'Leicester',
+      LL: 'Llandudno',
+      LN: 'Lincoln',
+      LS: 'Leeds',
+      LU: 'Luton',
+      M: 'Manchester',
+      ME: 'Medway',
+      MG: 'Motherwell',
+      MK: 'Milton Keynes',
+      ML: 'Motherwell',
+      N: 'London',
+      NE: 'Newcastle upon Tyne',
+      NG: 'Nottingham',
+      NN: 'Northampton',
+      NP: 'Newport',
+      NR: 'Norwich',
+      NW: 'London',
+      OL: 'Oldham',
+      OX: 'Oxford',
+      PA: 'Paisley',
+      PE: 'Peterborough',
+      PH: 'Perth',
+      PL: 'Plymouth',
+      PO: 'Portsmouth',
+      PR: 'Preston',
+      RG: 'Reading',
+      RH: 'Redhill',
+      RM: 'Romford',
+      S: 'Sheffield',
+      SA: 'Swansea',
+      SE: 'London',
+      SG: 'Stevenage',
+      SK: 'Stockport',
+      SL: 'Slough',
+      SM: 'Sutton',
+      SN: 'Swindon',
+      SO: 'Southampton',
+      SP: 'Salisbury',
+      SR: 'Sunderland',
+      SS: 'Southend-on-Sea',
+      ST: 'Stoke-on-Trent',
+      SW: 'London',
+      SY: 'Shrewsbury',
+      TA: 'Taunton',
+      TD: 'Galashiels',
+      TF: 'Telford',
+      TN: 'Tonbridge',
+      TQ: 'Torquay',
+      TR: 'Truro',
+      TS: 'Cleveland',
+      TW: 'Twickenham',
+      UB: 'Uxbridge',
+      W: 'London',
+      WA: 'Warrington',
+      WC: 'London',
+      WD: 'Watford',
+      WF: 'Wakefield',
+      WN: 'Wigan',
+      WR: 'Worcester',
+      WS: 'Walsall',
+      WV: 'Wolverhampton',
+      YO: 'York',
+      ZE: 'Lerwick',
     };
 
     // Make API call to postcodes.io
     $.ajax({
-      url: "https://api.postcodes.io/postcodes/" + postcode,
-      type: "GET",
-      dataType: "json",
+      url: 'https://api.postcodes.io/postcodes/' + postcode,
+      type: 'GET',
+      dataType: 'json',
       success: function (response) {
         var cityValue = null;
 
@@ -571,11 +688,11 @@ $(document).ready(function () {
           var result = response.result;
 
           // Try multiple fields to find city/town (in order of preference)
-          cityValue = 
-            result.admin_district ||      // Primary: admin district
-            result.postcode_town ||       // Secondary: postcode town
-            result.admin_ward ||          // Fallback: admin ward
-            result.region ||              // Fallback: region
+          cityValue =
+            result.admin_district || // Primary: admin district
+            result.postcode_town || // Secondary: postcode town
+            result.admin_ward || // Fallback: admin ward
+            result.region || // Fallback: region
             null;
         } else if (response.status === 404 && response.terminated) {
           // Terminated postcode - try to extract city from area code
@@ -593,7 +710,7 @@ $(document).ready(function () {
 
         if (cityValue) {
           // Auto-fill city/town from API response
-          cityInput.val(cityValue).trigger("change");
+          cityInput.val(cityValue).trigger('change');
 
           // Trigger checkFormCompletion after filling city
           setTimeout(function () {
@@ -602,8 +719,8 @@ $(document).ready(function () {
         } else {
           // No city/town found - show message to user
           showMessage(
-            "City not found in our record, you need to add it manually",
-            "error"
+            'City not found in our record, you need to add it manually',
+            'error',
           );
         }
       },
@@ -611,17 +728,17 @@ $(document).ready(function () {
         // API call failed - try to extract city from postcode area code
         var areaCode = postcode.substring(0, 2).toUpperCase();
         var cityValue = postcodeAreaMap[areaCode] || null;
-        
+
         if (cityValue) {
-          cityInput.val(cityValue).trigger("change");
+          cityInput.val(cityValue).trigger('change');
           setTimeout(function () {
             checkFormCompletion();
           }, 100);
         } else {
           // Show message to user
           showMessage(
-            "City not found in our record, you need to add it manually",
-            "error"
+            'City not found in our record, you need to add it manually',
+            'error',
           );
         }
       },
@@ -629,9 +746,9 @@ $(document).ready(function () {
   }
 
   // Direct event listener for postcode input to trigger lookup
-  $("#postcode").on("input", function () {
+  $('#postcode').on('input', function () {
     var postcode = $(this).val().trim();
-    var postcodeClean = postcode.replace(/\s+/g, "");
+    var postcodeClean = postcode.replace(/\s+/g, '');
 
     // UK postcodes are 5-8 characters without spaces
     if (postcodeClean.length >= 5 && postcodeClean.length <= 8) {

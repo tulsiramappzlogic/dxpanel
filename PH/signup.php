@@ -63,7 +63,7 @@
                                                 onblur="this.value = this.value.replace(/[^a-zA-Z0-9._%+-@]/g, ''); validateEmail();" required />
                                         </div>
                                         <div class="col-md-4">
-                                            <input type="date" name="date_of_birth" id="date_of_birth" class="form-control"
+                                            <input type="text" name="date_of_birth" id="date_of_birth" class="form-control"
                                                 placeholder="Date Of Birth" onchange="checkFormCompletion();" required />
                                         </div>
                                         <div class="col-md-4">

@@ -1,19 +1,40 @@
 // Mobile menu toggle
 $(document).ready(function () {
-  $("#authMenuToggle").on("click", function (e) {
+  const $dob = $('#date_of_birth');
+
+  // FIRST touch: switch to date BEFORE focus happens
+  $dob.on('touchstart', function () {
+    if (this.type !== 'date') {
+      this.type = 'date';
+    }
+  });
+
+  // Desktop fallback
+  $dob.on('focus', function () {
+    this.type = 'date';
+  });
+
+  // When validation clears value, restore placeholder mode
+  $dob.on('blur', function () {
+    if (!this.value) {
+      this.type = 'text';
+    }
+  });
+
+  $('#authMenuToggle').on('click', function (e) {
     e.preventDefault();
-    $("#authMenuDropdown").slideToggle(300);
+    $('#authMenuDropdown').slideToggle(300);
   });
 
   // Close menu when clicking on a link
-  $("#authMenuDropdown a").on("click", function () {
-    $("#authMenuDropdown").slideUp(300);
+  $('#authMenuDropdown a').on('click', function () {
+    $('#authMenuDropdown').slideUp(300);
   });
 
   // Close menu when clicking outside
-  $(document).on("click", function (e) {
-    if (!$(e.target).closest("#authMenuToggle, #authMenuDropdown").length) {
-      $("#authMenuDropdown").slideUp(300);
+  $(document).on('click', function (e) {
+    if (!$(e.target).closest('#authMenuToggle, #authMenuDropdown').length) {
+      $('#authMenuDropdown').slideUp(300);
     }
   });
 
@@ -23,7 +44,7 @@ $(document).ready(function () {
 
   // Full Name Validation - Min 3 characters
   function validateFullName() {
-    var fullName = $("#full_name").val().trim();
+    var fullName = $('#full_name').val().trim();
     var minLength = 3;
 
     if (fullName.length >= minLength) {
@@ -34,8 +55,8 @@ $(document).ready(function () {
       // Show error message if user has started typing
       if (fullName.length > 0) {
         showMessage(
-          "Full name must be at least " + minLength + " characters long.",
-          "error",
+          'Full name must be at least ' + minLength + ' characters long.',
+          'error',
         );
       }
       return false;
@@ -47,7 +68,7 @@ $(document).ready(function () {
 
   // Email Validation
   function validateEmail() {
-    var email = $("#email").val().trim();
+    var email = $('#email').val().trim();
     var emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
     if (emailPattern.test(email)) {
@@ -57,7 +78,7 @@ $(document).ready(function () {
     } else {
       // Show error message if user has started typing
       if (email.length > 0) {
-        showMessage("Please enter a valid email address.", "error");
+        showMessage('Please enter a valid email address.', 'error');
       }
       return false;
     }
@@ -68,7 +89,7 @@ $(document).ready(function () {
 
   // City Validation - Min 3 characters
   function validateCity() {
-    var city = $("#city").val().trim();
+    var city = $('#city').val().trim();
     var minLength = 3;
 
     if (city.length >= minLength) {
@@ -78,7 +99,10 @@ $(document).ready(function () {
     } else {
       // Show error message if user has started typing
       if (city.length > 0) {
-        showMessage("City must be at least " + minLength + " characters long.", "error");
+        showMessage(
+          'City must be at least ' + minLength + ' characters long.',
+          'error',
+        );
       }
       return false;
     }
@@ -89,7 +113,7 @@ $(document).ready(function () {
 
   // Barangay Validation - Min 3 characters
   function validateBarangay() {
-    var barangay = $("#barangay").val().trim();
+    var barangay = $('#barangay').val().trim();
     var minLength = 3;
 
     if (barangay.length >= minLength) {
@@ -99,7 +123,10 @@ $(document).ready(function () {
     } else {
       // Show error message if user has started typing
       if (barangay.length > 0) {
-        showMessage("Barangay must be at least " + minLength + " characters long.", "error");
+        showMessage(
+          'Barangay must be at least ' + minLength + ' characters long.',
+          'error',
+        );
       }
       return false;
     }
@@ -110,7 +137,7 @@ $(document).ready(function () {
 
   // Address Validation - Min 15 characters
   function validateAddress() {
-    var address = $("#address").val().trim();
+    var address = $('#address').val().trim();
     var minLength = 5;
 
     if (address.length >= minLength) {
@@ -121,8 +148,8 @@ $(document).ready(function () {
       // Show error message if user has started typing
       if (address.length > 0) {
         showMessage(
-          "Address must be at least " + minLength + " characters long.",
-          "error",
+          'Address must be at least ' + minLength + ' characters long.',
+          'error',
         );
       }
       return false;
@@ -134,7 +161,7 @@ $(document).ready(function () {
 
   // Philippines Postcode Validation - Exactly 4 characters/digits
   function validatePostcode() {
-    var postcode = $("#postcode").val().trim();
+    var postcode = $('#postcode').val().trim();
     // Philippines postcodes are exactly 4 characters (can include letters and digits)
     var postcodeRegex = /^[A-Za-z0-9]{4}$/;
 
@@ -148,8 +175,8 @@ $(document).ready(function () {
       // Show error message if user has started typing
       if (postcode.length > 0) {
         showMessage(
-          "Philippines postcode must be exactly 4 characters (e.g., 1234 or ABC1).",
-          "error",
+          'Philippines postcode must be exactly 4 characters (e.g., 1234 or ABC1).',
+          'error',
         );
       }
       return false;
@@ -163,16 +190,16 @@ $(document).ready(function () {
   function checkFormCompletion() {
     if (isOtpSent || isFormSubmitting) return;
 
-    var full_name = $("#full_name").val().trim();
-    var email = $("#email").val().trim();
-    var date_of_birth = $("#date_of_birth").val();
-    var gender = $("#gender").val();
-    var address = $("#address").val().trim();
-    var city = $("#city").val().trim();
-    var country = $("#country").val().trim();
-    var postcode = $("#postcode").val().trim();
-    var barangay = $("#barangay").val().trim();
-    $("#messageContainer").html("");
+    var full_name = $('#full_name').val().trim();
+    var email = $('#email').val().trim();
+    var date_of_birth = $('#date_of_birth').val();
+    var gender = $('#gender').val();
+    var address = $('#address').val().trim();
+    var city = $('#city').val().trim();
+    var country = $('#country').val().trim();
+    var postcode = $('#postcode').val().trim();
+    var barangay = $('#barangay').val().trim();
+    $('#messageContainer').html('');
     // Validate full name (min 3 characters)
     if (full_name.length < 3) {
       return;
@@ -213,7 +240,7 @@ $(document).ready(function () {
       // Validate email format
       var emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
       if (!emailPattern.test(email)) {
-        showMessage("Please enter a valid email address.", "error");
+        showMessage('Please enter a valid email address.', 'error');
         return;
       }
       // Auto-send OTP
@@ -226,39 +253,39 @@ $(document).ready(function () {
     isFormSubmitting = true;
 
     // Show loading indicator
-    $("#autoSendIndicator").fadeIn();
+    $('#autoSendIndicator').fadeIn();
 
     // Make AJAX request to send OTP
     $.ajax({
-      url: "otp_verify.php",
-      type: "POST",
+      url: 'otp_verify.php',
+      type: 'POST',
       data: {
-        action: "send_otp",
-        full_name: $("#full_name").val(),
-        email: $("#email").val(),
-        date_of_birth: $("#date_of_birth").val(),
-        gender: $("#gender").val(),
-        address: $("#address").val(),
-        city: $("#city").val(),
-        country: $("#country").val(),
-        postcode: $("#postcode").val(),
-        barangay: $("#barangay").val(),
+        action: 'send_otp',
+        full_name: $('#full_name').val(),
+        email: $('#email').val(),
+        date_of_birth: $('#date_of_birth').val(),
+        gender: $('#gender').val(),
+        address: $('#address').val(),
+        city: $('#city').val(),
+        country: $('#country').val(),
+        postcode: $('#postcode').val(),
+        barangay: $('#barangay').val(),
       },
-      dataType: "json",
+      dataType: 'json',
       success: function (response) {
-        $("#autoSendIndicator").fadeOut();
-        showMessage(response.message, response.success ? "success" : "error");
+        $('#autoSendIndicator').fadeOut();
+        showMessage(response.message, response.success ? 'success' : 'error');
 
         if (response.success) {
           isOtpSent = true;
           // Show OTP input row
-          $("#otpRow").slideDown();
+          $('#otpRow').slideDown();
 
           // Focus on OTP input
-          $("#otp").focus();
+          $('#otp').focus();
 
           // Show timer
-          $("#otpTimerContainer").slideDown();
+          $('#otpTimerContainer').slideDown();
 
           // Start OTP timer
           startOtpTimer();
@@ -267,53 +294,53 @@ $(document).ready(function () {
         }
       },
       error: function (xhr, status, error) {
-        $("#autoSendIndicator").fadeOut();
-        showMessage("An error occurred. Please try again.", "error");
-        console.error("AJAX Error:", status, error);
+        $('#autoSendIndicator').fadeOut();
+        showMessage('An error occurred. Please try again.', 'error');
+        console.error('AJAX Error:', status, error);
         isFormSubmitting = false;
       },
     });
   }
 
   // Verify OTP Button Click
-  $("#verifyBtn").on("click", function () {
-    var otp = $("#otp").val();
-    var email = $("#email").val();
+  $('#verifyBtn').on('click', function () {
+    var otp = $('#otp').val();
+    var email = $('#email').val();
 
     if (!otp || otp.length !== 6) {
-      showMessage("Please enter the 6-digit OTP sent to your email.", "error");
+      showMessage('Please enter the 6-digit OTP sent to your email.', 'error');
       return;
     }
 
     // Disable button and show loading
-    $("#verifyBtn")
-      .prop("disabled", true)
+    $('#verifyBtn')
+      .prop('disabled', true)
       .html(
         '<span class="spinner-border spinner-border-sm"></span> Verifying...',
       );
 
     // Make AJAX request to verify OTP
     $.ajax({
-      url: "otp_verify.php",
-      type: "POST",
+      url: 'otp_verify.php',
+      type: 'POST',
       data: {
-        action: "verify_otp",
+        action: 'verify_otp',
         otp: otp,
         email: email,
       },
-      dataType: "json",
+      dataType: 'json',
       success: function (response) {
-        showMessage(response.message, response.success ? "success" : "error");
+        showMessage(response.message, response.success ? 'success' : 'error');
 
         if (response.success) {
           // Stop timer
           clearInterval(otpTimerInterval);
 
           // Clear form and reset
-          $("#phPollsForm")[0].reset();
+          $('#phPollsForm')[0].reset();
           //  $('#otpRow').slideUp();
-          $("#otpTimerContainer").slideUp();
-          $("#otp").val("");
+          $('#otpTimerContainer').slideUp();
+          $('#otp').val('');
 
           // Reset flags
           isOtpSent = false;
@@ -321,65 +348,65 @@ $(document).ready(function () {
         }
       },
       error: function (xhr, status, error) {
-        showMessage("An error occurred. Please try again.", "error");
-        console.error("AJAX Error:", status, error);
+        showMessage('An error occurred. Please try again.', 'error');
+        console.error('AJAX Error:', status, error);
       },
       complete: function () {
-        $("#verifyBtn").prop("disabled", false).text("Submit");
+        $('#verifyBtn').prop('disabled', false).text('Submit');
       },
     });
   });
 
   // Resend OTP Button Click
-  $("#resendBtn").on("click", function () {
-    var email = $("#email").val();
+  $('#resendBtn').on('click', function () {
+    var email = $('#email').val();
 
     if (!email) {
-      showMessage("Email not found. Please refresh and try again.", "error");
+      showMessage('Email not found. Please refresh and try again.', 'error');
       return;
     }
 
     // Disable button and show loading
-    $("#resendBtn")
-      .prop("disabled", true)
+    $('#resendBtn')
+      .prop('disabled', true)
       .html(
         '<span class="spinner-border spinner-border-sm"></span> Sending...',
       );
 
     // Make AJAX request to resend OTP
     $.ajax({
-      url: "otp_verify.php",
-      type: "POST",
+      url: 'otp_verify.php',
+      type: 'POST',
       data: {
-        action: "resend_otp",
+        action: 'resend_otp',
         email: email,
       },
-      dataType: "json",
+      dataType: 'json',
       success: function (response) {
-        showMessage(response.message, response.success ? "success" : "error");
+        showMessage(response.message, response.success ? 'success' : 'error');
 
         if (response.success) {
           // OTP resent successfully
-          $("#otp").val(""); // Clear OTP input
-          $("#otp").focus();
+          $('#otp').val(''); // Clear OTP input
+          $('#otp').focus();
 
           // Hide resend button, show verify button
-          $("#resendBtn").hide();
-          $("#verifyBtn").show();
+          $('#resendBtn').hide();
+          $('#verifyBtn').show();
 
           // Restart timer
           startOtpTimer();
 
           // Remove any previous expiry styling
-          $("#otpTimer").removeClass("text-danger").addClass("text-muted");
+          $('#otpTimer').removeClass('text-danger').addClass('text-muted');
         }
       },
       error: function (xhr, status, error) {
-        showMessage("An error occurred. Please try again.", "error");
-        console.error("AJAX Error:", status, error);
+        showMessage('An error occurred. Please try again.', 'error');
+        console.error('AJAX Error:', status, error);
       },
       complete: function () {
-        $("#resendBtn").prop("disabled", false).text("Resend OTP");
+        $('#resendBtn').prop('disabled', false).text('Resend OTP');
       },
     });
   });
@@ -394,17 +421,19 @@ $(document).ready(function () {
       var minutes = Math.floor(duration / 60);
       var seconds = duration % 60;
 
-      $("#otpTimer").text("OTP expires in: " + seconds + " seconds");
+      $('#otpTimer').text('OTP expires in: ' + seconds + ' seconds');
 
       if (duration <= 0) {
         clearInterval(otpTimerInterval);
-        $("#otpTimer").text("OTP has expired. Please click Resend OTP to get a new one.");
-        $("#otpTimer").addClass("text-danger");
-        
+        $('#otpTimer').text(
+          'OTP has expired. Please click Resend OTP to get a new one.',
+        );
+        $('#otpTimer').addClass('text-danger');
+
         // Hide verify button and show resend button
-        $("#verifyBtn").hide();
-        $("#resendBtn").show();
-        $("#resendBtn").prop("disabled", false);
+        $('#verifyBtn').hide();
+        $('#resendBtn').show();
+        $('#resendBtn').prop('disabled', false);
       }
 
       duration--;
@@ -415,18 +444,18 @@ $(document).ready(function () {
   function showMessage(message, type) {
     var html =
       '<div class="' +
-      (type === "success"
-        ? "success-message alert alert-success m-2 p-2"
-        : "error-message alert alert-danger m-2 p-2") +
+      (type === 'success'
+        ? 'success-message alert alert-success m-2 p-2'
+        : 'error-message alert alert-danger m-2 p-2') +
       '">' +
       message +
-      "</div>";
-    $("#messageContainer").html(html);
+      '</div>';
+    $('#messageContainer').html(html);
 
     // Auto-hide after 5 seconds for success messages
-    if (type === "success") {
+    if (type === 'success') {
       setTimeout(function () {
-        $("#messageContainer").fadeOut(function () {
+        $('#messageContainer').fadeOut(function () {
           $(this).empty().show();
         });
       }, 5000);
@@ -438,7 +467,7 @@ $(document).ready(function () {
 
   // Age Validation Function (16 years and above)
   function validateAge() {
-    var dobInput = $("#date_of_birth");
+    var dobInput = $('#date_of_birth');
     var dobValue = dobInput.val();
 
     if (!dobValue) return true;
@@ -455,13 +484,13 @@ $(document).ready(function () {
 
     // Check if under 16
     if (age < 16) {
-      showMessage("You must be 16 years or older to register.", "error");
-      dobInput.val(""); // Clear invalid date
+      showMessage('You must be 16 years or older to register.', 'error');
+      dobInput.val(''); // Clear invalid date
       return false;
     }
 
     // Clear any previous error messages when valid age is entered
-    $("#messageContainer").empty();
+    $('#messageContainer').empty();
     return true;
   }
 
@@ -469,37 +498,37 @@ $(document).ready(function () {
   window.validateAge = validateAge;
 
   // Trigger validateAge when date of birth changes
-  $("#date_of_birth").on("change", function () {
+  $('#date_of_birth').on('change', function () {
     validateAge();
   });
 
   // Philippines Postcode Lookup Function
   function lookupPostcode(postcode) {
-    var cityInput = $("#city");
-    var barangayInput = $("#barangay");
-    
+    var cityInput = $('#city');
+    var barangayInput = $('#barangay');
+
     // Clear city and barangay when postcode changes
-    cityInput.val("");
-    barangayInput.val("");
+    cityInput.val('');
+    barangayInput.val('');
 
     // Make AJAX call to lookup city and barangay by postcode
     $.ajax({
-      url: "get_city_by_postcode.php",
-      type: "GET",
+      url: 'get_city_by_postcode.php',
+      type: 'GET',
       data: {
-        postcode: postcode
+        postcode: postcode,
       },
-      dataType: "json",
+      dataType: 'json',
       success: function (response) {
         if (response.success && response.city) {
           // Auto-fill city from response
-          cityInput.val(response.city).trigger("change");
-          
+          cityInput.val(response.city).trigger('change');
+
           // Auto-fill barangay from response if available
           if (response.barangay) {
-            barangayInput.val(response.barangay).trigger("change");
+            barangayInput.val(response.barangay).trigger('change');
           }
-          
+
           // Trigger checkFormCompletion after filling fields
           setTimeout(function () {
             checkFormCompletion();
@@ -507,15 +536,17 @@ $(document).ready(function () {
         } else {
           // Postcode not found in database - show message to user
           showMessage(
-            "City not found in our record, you need to add it manually",
-            "error"
+            'City not found in our record, you need to add it manually',
+            'error',
           );
         }
       },
       error: function (xhr, status, error) {
         // API call failed - user can still proceed manually
-        console.log("Postcode lookup unavailable. Please enter city and barangay manually.");
-      }
+        console.log(
+          'Postcode lookup unavailable. Please enter city and barangay manually.',
+        );
+      },
     });
   }
 
@@ -523,10 +554,10 @@ $(document).ready(function () {
   window.lookupPostcode = lookupPostcode;
 
   // Direct event listener for postcode input to trigger lookup
-  $("#postcode").on("input", function () {
+  $('#postcode').on('input', function () {
     var postcode = $(this).val().trim();
-    var postcodeClean = postcode.replace(/[^A-Za-z0-9]/g, "");
-    
+    var postcodeClean = postcode.replace(/[^A-Za-z0-9]/g, '');
+
     // Philippines postcodes are exactly 4 characters
     if (postcodeClean.length === 4) {
       var postcodeRegex = /^[A-Za-z0-9]{4}$/;
