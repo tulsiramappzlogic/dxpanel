@@ -54,7 +54,7 @@
                     src="./image/icons/curveIcon.png" alt="curve" /></span>
               </h1>
               <p class="lead fw-normal font-family-mulish">
-                Welcome to The Philippines's newest, coolest<br />
+                Welcome to the Philippines' newest, coolest<br />
                 and most rewarding community!
               </p>
             </div>
