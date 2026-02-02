@@ -1,5 +1,15 @@
 // Mobile menu toggle
 $(document).ready(function () {
+  $('#date_of_birth').on('focus', function(){
+    this.type = 'date';
+  })
+
+  $('#date_of_birth').on('blur', function(){
+     if (!this.value) {
+      this.type = 'text';
+    }
+  })
+
   $('#authMenuToggle').on('click', function (e) {
     e.preventDefault();
     $('#authMenuDropdown').slideToggle(300);
