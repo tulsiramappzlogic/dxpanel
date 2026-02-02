@@ -66,7 +66,7 @@ $(document).ready(function () {
   // Make validateEmail globally available
   window.validateEmail = validateEmail;
 
-// Address Validation - Min 15 characters
+// Address Validation - Min 5 characters
   function validateAddress() {
     var address = $("#address").val().trim();
     var minLength = 5;
