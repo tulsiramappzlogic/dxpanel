@@ -37,6 +37,8 @@ foreach ($lines as $line) {
     }
 }
 
+
+
 /**
  * Get environment variable
  * @param string $key The environment variable key
@@ -89,4 +91,3 @@ function getEmailConfig($country) {
         'subject' => getEnvValue("{$prefix}_EMAIL_SUBJECT")
     ];
 }
-

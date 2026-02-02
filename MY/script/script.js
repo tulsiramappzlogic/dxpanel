@@ -1,5 +1,26 @@
 // Mobile menu toggle
 $(document).ready(function () {
+  const $dob = $('#date_of_birth');
+
+  // FIRST touch: switch to date BEFORE focus happens
+  $dob.on('touchstart', function () {
+    if (this.type !== 'date') {
+      this.type = 'date';
+    }
+  });
+
+  // Desktop fallback
+  $dob.on('focus', function () {
+    this.type = 'date';
+  });
+
+  // When validation clears value, restore placeholder mode
+  $dob.on('blur', function () {
+    if (!this.value) {
+      this.type = 'text';
+    }
+  });
+
   $('#authMenuToggle').on('click', function (e) {
     e.preventDefault();
     $('#authMenuDropdown').slideToggle(300);
@@ -157,8 +178,8 @@ $(document).ready(function () {
       return;
     }
 
-    // Validate address (min 15 characters)
-    if (address.length < 15) {
+    // Validate address (min 5 characters)
+    if (address.length < 5) {
       return;
     }
 
@@ -366,7 +387,7 @@ $(document).ready(function () {
 
   // Start OTP Timer
   function startOtpTimer() {
-    var duration = 30; // 30 seconds
+    var duration = 60; // 60 seconds
 
     clearInterval(otpTimerInterval);
 
@@ -436,7 +457,7 @@ $(document).ready(function () {
     // Check if under 16
     if (age < 16) {
       showMessage('You must be 16 years or older to register.', 'error');
-      dobInput.val(''); // Clear invalid date
+      dobInput.val('');
       return false;
     }
 

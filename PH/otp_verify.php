@@ -15,10 +15,16 @@ ini_set('log_errors', 1);
 // Log all errors to a file for later review
 ini_set('error_log', __DIR__ . '/error.log');
 
+
 // Include common database connection
 require_once 'db.php';
 // Include email configuration
 require_once 'email_config.php';
+// Include unified email helper
+require_once  'email_helper.php';
+
+
+
 
 header('Content-Type: application/json');
 
@@ -29,121 +35,6 @@ function logError($message)
 }
 
 $response = ['success' => false, 'message' => ''];
-
-/**
- * Generate a random 6-digit OTP
- */
-function generateOTP()
-{
-    return str_pad(rand(0, 999999), 6, '0', STR_PAD_LEFT);
-}
-
-/**
- * Send OTP via email using PHPMailer
- */
-function sendOTPEmail($email, $otp, $name)
-{
-    logError("Attempting to send OTP email to: $email");
-
-    // Directly include PHPMailer classes without autoloader to avoid conflicts
-    $phpmailer_src = __DIR__ . '/lib/PHPMailer/src';
-
-    // Include Exception first
-    $exceptionFile = $phpmailer_src . '/Exception.php';
-    if (file_exists($exceptionFile) && !class_exists('PHPMailer\PHPMailer\Exception')) {
-        require_once $exceptionFile;
-    }
-
-    // Include SMTP
-    $smtpFile = $phpmailer_src . '/SMTP.php';
-    if (file_exists($smtpFile) && !class_exists('PHPMailer\PHPMailer\SMTP')) {
-        require_once $smtpFile;
-    }
-
-    // Include PHPMailer
-    $mailerFile = $phpmailer_src . '/PHPMailer.php';
-    if (!file_exists($mailerFile)) {
-        logError("PHPMailer.php not found at: $mailerFile");
-        return false;
-    }
-
-    // Only include if class doesn't exist
-    if (!class_exists('PHPMailer\PHPMailer\PHPMailer')) {
-        require_once $mailerFile;
-    }
-
-    logError("PHPMailer classes loaded successfully");
-
-    try {
-        $mail = new PHPMailer\PHPMailer\PHPMailer(true);
-        logError("PHPMailer object created successfully");
-
-        $mail->isSMTP();
-        $mail->Host = SMTP_HOST;
-        $mail->SMTPAuth = true;
-        $mail->Username = SMTP_USERNAME;
-        $mail->Password = SMTP_PASSWORD;
-        $mail->SMTPSecure = SMTP_ENCRYPTION;
-        $mail->Port = SMTP_PORT;
-
-        // Debug settings
-        $mail->SMTPDebug = 2;
-        $mail->Debugoutput = 'error_log';
-
-        $mail->setFrom(FROM_EMAIL, FROM_NAME);
-        $mail->addAddress($email, $name);
-        $mail->addReplyTo(FROM_EMAIL, FROM_NAME);
-
-        $mail->isHTML(true);
-        $mail->Subject = EMAIL_SUBJECT;
-
-        $message_body = "
-            <!DOCTYPE html>
-            <html>
-            <head>
-                <meta charset='UTF-8'>
-                <title>OTP Verification</title>
-            </head>
-            <body style='font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto; padding: 20px;'>
-                <div style='background-color: #f8f9fa; padding: 20px; border-radius: 10px;'>
-                    <h2 style='color: #2c366a; text-align: center;'>Hello $name,</h2>
-                    <p style='text-align: center;'>Thank you for registering with PhilippinesPolls!</p>
-                    
-                    <div style='background-color: #ffffff; padding: 30px; border-radius: 10px; text-align: center; margin: 20px 0; border: 2px solid #2c366a;'>
-                        <p style='font-size: 14px; margin-bottom: 15px; color: #666;'>Your One-Time Password (OTP) is:</p>
-                        <h1 style='color: #d62128; font-size: 42px; letter-spacing: 8px; margin: 10px 0; font-weight: bold;'>$otp</h1>
-                    </div>
-                    
-                    <p style='color: #666; font-size: 12px; text-align: center;'>
-                        This OTP is valid for <strong>1 minute</strong>. Please do not share this OTP with anyone.
-                    </p>
-                    <p style='color: #999; font-size: 11px; text-align: center; margin-top: 20px;'>
-                        If you did not request this OTP, please ignore this email.
-                    </p>
-                </div>
-                
-                <div style='text-align: center; margin-top: 20px; padding-top: 20px; border-top: 1px solid #eee;'>
-                    <p style='color: #999; font-size: 11px;'>
-                        © " . date('Y') . " PhilippinesPolls. All rights reserved.
-                    </p>
-                </div>
-            </body>
-            </html>
-        ";
-
-        $mail->Body = $message_body;
-        $mail->AltBody = "Hello $name,\n\nYour OTP for PhilippinesPolls Registration is: $otp\n\nThis OTP is valid for 1 minute.\n\nIf you did not request this, please ignore this email.";
-
-        logError("Attempting to send email...");
-        $mail->send();
-        logError("Email sent successfully!");
-        return true;
-    } catch (Exception $e) {
-        logError("Email sending failed: " . $e->getMessage());
-        logError("PHPMailer Error Info: " . $mail->ErrorInfo);
-        return false;
-    }
-}
 
 /**
  * Sanitize string input (only define if not already defined)
@@ -234,11 +125,11 @@ function verifyOTPFromDB($pdo, $email, $otp)
         // Debug logging
         logError("OTP verification successful for email: $email");
 
-        // Check if OTP is still valid (30 seconds)
+        // Check if OTP is still valid (60 seconds)
         $otpTime = strtotime($user['otp_created_at']);
         $timeDiff = time() - $otpTime;
         
-        if ($timeDiff > 30) {
+        if ($timeDiff > 60) {
             return 'expired';
         }
 
@@ -345,7 +236,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['action']) && $_POST['
             if ($user_id) {
                 // Data saved successfully, now send OTP email
                 logError("Sending OTP email to $email...");
-                $email_sent = sendOTPEmail($email, $otp, $full_name);
+                $email_sent = \sendOTPEmail('PH', $email, $full_name, $otp);
 
                 if ($email_sent) {
                     logError("OTP email sent successfully!");
@@ -442,9 +333,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['action']) && $_POST['
         logError("Failed to get user name: " . $e->getMessage());
     }
 
-    // Check if 30 seconds have passed since last OTP (cooldown period)
-    if (isset($_SESSION['otp_time']) && (time() - $_SESSION['otp_time']) < 30) {
-        $remaining = 30 - (time() - $_SESSION['otp_time']);
+    // Check if 60 seconds have passed since last OTP (cooldown period)
+    if (isset($_SESSION['otp_time']) && (time() - $_SESSION['otp_time']) < 60) {
+        $remaining = 60 - (time() - $_SESSION['otp_time']);
         $response['message'] = "Please wait $remaining seconds before requesting a new OTP.";
         echo json_encode($response);
         exit;
@@ -466,7 +357,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['action']) && $_POST['
 
     if ($otp_updated) {
         // Send new OTP email
-        $email_sent = sendOTPEmail($email, $otp, $user_name);
+                $email_sent = \sendOTPEmail('PH', $email, $user_name, $otp);
 
         if ($email_sent) {
             $_SESSION['otp_time'] = time();
