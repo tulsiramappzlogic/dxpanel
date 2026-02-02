@@ -1,5 +1,26 @@
 // Mobile menu toggle
 $(document).ready(function () {
+  const $dob = $('#date_of_birth');
+
+  // FIRST touch: switch to date BEFORE focus happens
+  $dob.on('touchstart', function () {
+    if (this.type !== 'date') {
+      this.type = 'date';
+    }
+  });
+
+  // Desktop fallback
+  $dob.on('focus', function () {
+    this.type = 'date';
+  });
+
+  // When validation clears value, restore placeholder mode
+  $dob.on('blur', function () {
+    if (!this.value) {
+      this.type = 'text';
+    }
+  });
+
   $('#authMenuToggle').on('click', function (e) {
     e.preventDefault();
     $('#authMenuDropdown').slideToggle(300);
