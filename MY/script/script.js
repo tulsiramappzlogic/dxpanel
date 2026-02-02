@@ -458,6 +458,7 @@ $(document).ready(function () {
     if (age < 16) {
       showMessage('You must be 16 years or older to register.', 'error');
       dobInput.val(''); // Clear invalid date
+      dobInput.type = 'text';
       return false;
     }
 
