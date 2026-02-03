@@ -122,7 +122,7 @@
                 <g transform="matrix(1,0,0,1,707.0518,2025.0976)">
                     <path d="M0,7.833C0,8.937 -0.896,9.833 -2,9.833L-30.834,9.833C-31.938,9.833 -32.834,8.937 -32.834,7.833L-32.834,0C-32.834,-1.105 -31.938,-2 -30.834,-2L-2,-2C-0.896,-2 0,-1.105 0,0L0,7.833Z" style="fill:rgb(210,29,44);"/>
                 </g>
-                <text x="680.24px" y="2030.725px" style="font-family:'ArialMT', 'Arial', sans-serif;font-size:6px;fill:white;">S<tspan x="684.389px 687.873px 691.37px 696.528px 698.021px " y="2030.725px 2030.725px 2030.725px 2030.725px 2030.725px ">ubmit</tspan></text>
+                <text x="680.24px" y="2030.725px" style="font-family:'ExpletusSans', 'Expletus Sans';font-size:6px;fill:white;">S<tspan x="683.711px 687.38px 691.032px 696.604px 698.3px " y="2030.725px 2030.725px 2030.725px 2030.725px 2030.725px ">ubmit</tspan></text>
                 <g transform="matrix(1,0,0,1,0,-285.872)">
                     <path d="M658.865,2218.26L670.381,2218.26L670.381,2207.17L658.865,2207.17L658.865,2218.26ZM671.731,2219.609L657.512,2219.609L657.512,2205.823L671.731,2205.823L671.731,2219.609Z" style="fill:rgb(188,188,188);fill-rule:nonzero;"/>
                 </g>
@@ -267,17 +267,17 @@
             <g transform="matrix(0.002832,0,0,0.002832,536.796871,1893.211278)">
                 <g transform="matrix(1,0,0,1,8632.231679,-401.364401)">
                     <g transform="matrix(3.170808,0,0,3.170808,39275.575239,2916.509035)">
-                        <g transform="matrix(405.270787,0,0,405.270787,4104.461485,938.813563)">
+                        <g transform="matrix(405.270787,0,0,405.270787,3900.931646,938.813563)">
                         </g>
-                        <text x="144.071px" y="938.814px" style="font-family:'TimesNewRomanPS-BoldMT', 'Times New Roman', serif;font-weight:700;font-size:405.271px;">What Malaysia <tspan x="2883.607px 3157.972px " y="938.814px 938.814px ">Th</tspan>inks</text>
+                        <text x="144.071px" y="938.814px" style="font-family:'MinionPro-Semibold', 'Minion Pro', serif;font-weight:600;font-size:405.271px;">W<tspan x="535.563px 756.03px 934.349px " y="938.814px 938.814px 938.814px ">hat</tspan> M<tspan x="1511.86px 1698.69px 1809.329px 1988.054px 2174.478px 2326.049px 2443.173px " y="938.814px 938.814px 938.814px 938.814px 938.814px 938.814px 938.814px ">alaysia</tspan> T<tspan x="2977.725px " y="938.814px ">h</tspan>in<tspan x="3542.672px " y="938.814px ">k</tspan>s</text>
                     </g>
                     <g transform="matrix(1.926179,0,0,1.926179,1458.241996,885.190926)">
-                        <text x="19862.732px" y="1879.903px" style="font-family:'Arial-BoldMT', 'Arial', sans-serif;font-weight:700;font-size:1130.852px;">MalaysiaPo</text>
-                        <text x="26022.781px" y="1879.903px" style="font-family:'Arial-BoldMT', 'Arial', sans-serif;font-weight:700;font-size:1130.852px;fill:rgb(204,0,0);">l</text>
-                        <text x="26336.968px" y="1879.903px" style="font-family:'Arial-BoldMT', 'Arial', sans-serif;font-weight:700;font-size:1130.852px;fill:rgb(1,1,102);">l</text>
-                        <g transform="matrix(1130.851727,0,0,1130.851727,27280.080816,1879.902942)">
+                        <text x="19862.732px" y="1879.903px" style="font-family:'AdelonSerial-Bold', 'Adelon Serial';font-weight:700;font-size:1130.852px;">M<tspan x="20790.936px " y="1879.903px ">a</tspan>la<tspan x="22133.27px 22666.67px " y="1879.903px 1879.903px ">ys</tspan>iaP<tspan x="24427.552px " y="1879.903px ">o</tspan></text>
+                        <text x="25062.551px" y="1879.903px" style="font-family:'AdelonSerial-Bold', 'Adelon Serial';font-weight:700;font-size:1130.852px;fill:rgb(204,0,0);">l</text>
+                        <text x="25349.682px" y="1879.903px" style="font-family:'AdelonSerial-Bold', 'Adelon Serial';font-weight:700;font-size:1130.852px;fill:rgb(1,1,102);">l</text>
+                        <g transform="matrix(1130.851727,0,0,1130.851727,26069.716078,1879.902942)">
                         </g>
-                        <text x="26651.155px" y="1879.903px" style="font-family:'Arial-BoldMT', 'Arial', sans-serif;font-weight:700;font-size:1130.852px;">s</text>
+                        <text x="25636.812px" y="1879.903px" style="font-family:'AdelonSerial-Bold', 'Adelon Serial';font-weight:700;font-size:1130.852px;">s</text>
                     </g>
                 </g>
             </g>
