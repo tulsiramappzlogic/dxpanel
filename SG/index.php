@@ -178,7 +178,7 @@
         <div class="row mt-5 d-none d-md-flex">
           <div class="col-12">
             <div id="steps-container-desktop" class="mb-3">
-              <img src="./image/step-images/step-image-desktop.svg" alt="step illustration desktop" />
+              <img src="./image/step-images/step-image-desktop.png" alt="step illustration desktop" />
               <div id="step-container-1" class="step-content-container">
                 <h3>Sign Up</h3>
                 <p>and complete your proﬁle for free</p>
