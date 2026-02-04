@@ -177,7 +177,7 @@
         <div class="row mt-5 d-none d-md-flex">
           <div class="col-12">
             <div id="steps-container-desktop" class="mb-3">
-              <img src="./image/step-images/step-image-desktop.svg" alt="step illustration desktop" />
+              <img src="./image/step-images/step-image-desktop.png" alt="step illustration desktop" />
               <div id="step-container-1" class="step-content-container">
                 <h3>Sign Up</h3>
                 <p>and complete your proﬁle for free</p>
@@ -197,7 +197,7 @@
         <div class="row mt-5 d-flex d-md-none">
           <div class="col-12 col-sm-4">
             <div class="step-container text-center mb-5">
-              <img class="w-75" src="./image/step-images/step-image-1.svg" alt="step 1 image" />
+              <img class="w-75" src="./image/step-images/step-image-1.png" alt="step 1 image" />
               <div class="step-content-container text-center">
                 <h3 class="mt-3">Sign Up</h3>
                 <p>and complete your proﬁle for free</p>
@@ -207,7 +207,7 @@
           <div class="col-12 col-sm-4">
             <div class="step-container text-center mb-5">
               <div class="step-content-container text-center">
-                <img class="w-75" src="./image/step-images/step-image-2.svg" alt="step 2 image" />
+                <img class="w-75" src="./image/step-images/step-image-2.png" alt="step 2 image" />
                 <h3 class="mt-3">Take Surveys</h3>
                 <p>and earn i-Points while having fun</p>
               </div>
@@ -216,7 +216,7 @@
           <div class="col-12 col-sm-4">
             <div class="step-container text-center mb-5">
               <div class="step-content-container text-center">
-                <img class="w-75" src="./image/step-images/step-image-3.svg" alt="step 3 image" />
+                <img class="w-75" src="./image/step-images/step-image-3.png" alt="step 3 image" />
                 <h3 class="mt-3">Get Paid</h3>
                 <p>use i-Points to shop or put in wallet</p>
               </div>
